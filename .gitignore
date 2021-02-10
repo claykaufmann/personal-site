@@ -2,7 +2,7 @@ node_modules
 tests/__snapshots__
 .vscode
 
-/.next/
+.next/
 /out/
 
 /build
