@@ -1,0 +1,17 @@
+// import themes
+@use '../theme/_theme' as theme;
+
+// import css reset
+@use '../resets/reset';
+
+html, body {
+    height: 100%;
+}
+
+// set background color
+body {
+    //background-color: theme.$primary;
+    //color: theme.$on-primary;
+    //font-family: theme.$core-font;
+}
+
