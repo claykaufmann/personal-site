@@ -9,6 +9,7 @@ interface Props {
         rocket: string
     }
 }
+
 const IndexPage: NextPage<Props> = ({ launch }) => {
     const date = new Date(launch.timestamp)
     return (
