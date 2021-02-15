@@ -1,0 +1,25 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import * as React from 'react'
+import styles from './Burger.module.scss'
+
+interface Props {
+    open: boolean
+    setOpen: (val: boolean) => void
+}
+
+const Burger = ({ open, setOpen }: Props): JSX.Element => {
+    return (
+        <div
+            className={open ? styles.cross : styles.burger}
+            data-open={open}
+            onClick={() => setOpen(!open)}
+        >
+            <div className={styles.burgerBar} />
+            <div className={styles.burgerBar} />
+            <div className={styles.burgerBar} />
+        </div>
+    )
+}
+
+export default Burger
