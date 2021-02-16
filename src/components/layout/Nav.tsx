@@ -11,27 +11,26 @@ import Link from 'next/link'
 import styles from './Nav.module.scss'
 
 const Nav = (): JSX.Element => {
+    // check the size of the browser window, if less than 800px, use the burger menu
     const isMobile = useMediaQuery('(max-width: 800px)')
-    let innerNav: JSX.Element = <></>
+    let nav: JSX.Element = <React.Fragment></React.Fragment>
 
     const [open, setOpen] = useState(false)
     const node = useRef<HTMLDivElement>(null)
     useOnClickOutside(node, () => setOpen(false))
 
     if (isMobile) {
-        innerNav = (
+        nav = (
             <div ref={node} className={styles.burgerDiv}>
                 <Burger open={open} setOpen={setOpen} />
                 <Menu open={open} setOpen={setOpen} />
             </div>
         )
     } else {
-        innerNav = (
-            <div>
+        nav = (
+            <nav className={styles.nav}>
                 <Link href='/'>
-                    <a className={styles.menuLinkText} onClick={() => setOpen(!open)}>
-                        Home
-                    </a>
+                    <a className={styles.navElement}>Home</a>
                 </Link>
                 {/* UNCOMMENT WHEN BLOG IS DONE
             <Link href='/Blog'>
@@ -41,18 +40,14 @@ const Nav = (): JSX.Element => {
             </Link>
             */}
                 <Link href='/Projects'>
-                    <a className={styles.menuLinkText} onClick={() => setOpen(!open)}>
-                        Projects
-                    </a>
+                    <a className={styles.navElement}>Projects</a>
                 </Link>
-                <Link href='/resume'>
-                    <a className={styles.menuLinkText} onClick={() => setOpen(!open)}>
-                        Resume
-                    </a>
-                </Link>
-            </div>
+                <a className={styles.navElement} href='other/john_clay_kaufmann.pdf'>
+                    Resume
+                </a>
+            </nav>
         )
     }
-    return <React.Fragment>{innerNav}</React.Fragment>
+    return <React.Fragment>{nav}</React.Fragment>
 }
 export default Nav

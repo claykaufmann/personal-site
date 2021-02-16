@@ -27,3 +27,5 @@ yarn-error.log*
 public/images
 
 secure.env
+
+public/other

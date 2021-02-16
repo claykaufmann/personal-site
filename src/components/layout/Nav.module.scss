@@ -1,1 +1,19 @@
 @use '../../styles/theme/theme' as theme;
+
+.nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.navElement {
+    padding-left: 1.5rem;
+
+    &:hover {
+        color: theme.$foreground-light;
+        transition-duration: 0.3s;
+    }
+}

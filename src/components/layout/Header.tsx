@@ -6,8 +6,8 @@ import styles from './Header.module.scss'
 const Header = (): JSX.Element => {
     return (
         <React.Fragment>
-            <h1 className={styles.heading}>Hi! I&apos;m (John) Clay Kaufmann</h1>
             <Nav />
+            <h1 className={styles.heading}>Hi! I&apos;m (John) Clay Kaufmann</h1>
         </React.Fragment>
     )
 }
