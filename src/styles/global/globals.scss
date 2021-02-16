@@ -5,13 +5,13 @@
 @use '../resets/reset';
 
 html, body {
-    height: 100%;
+    //height: 100%; UNKNOWN IF THIS IS NEEDED FOR BURGER MENU, IF SO ADD MEDIA QUERY
 }
 
 // set background color
 body {
-    //background-color: theme.$primary;
-    //color: theme.$on-primary;
-    //font-family: theme.$core-font;
+    background-color: theme.$background-base;
+    color: theme.$foreground-dark;
+    font-family: theme.$core-font;
 }
 

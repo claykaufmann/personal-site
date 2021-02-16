@@ -1,10 +1,12 @@
 import * as React from 'react'
 import Nav from './Nav'
 
+import styles from './Header.module.scss'
+
 const Header = (): JSX.Element => {
     return (
         <React.Fragment>
-            <h1>Clay Kaufmann</h1>
+            <h1 className={styles.heading}>Clay Kaufmann</h1>
             <Nav />
         </React.Fragment>
     )

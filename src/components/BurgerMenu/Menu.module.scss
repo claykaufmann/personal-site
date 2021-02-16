@@ -1,11 +1,11 @@
-@use '../../../styles/theme/theme';
+@use '../../styles/theme/theme';
 
 // mixin to get rid of duplicate styling for opened and closed menu
 @mixin baseMenuStyle {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: theme.$secondary;
+    background: theme.$burger-menu-background;
     height: 100vh;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -52,13 +52,13 @@
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: theme.$on-secondary;
+    color: theme.$on-foreground;
     text-decoration: none;
     transition: color 0.3s linear;
     text-align: center;
 
     &:hover {
-        color: theme.$on-secondary-light;
+        color: theme.$on-foreground-light;
     }
 
     // align text to the left on computers/tablets

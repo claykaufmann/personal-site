@@ -1,4 +1,4 @@
-@use '../../../styles/theme/theme';
+@use '../../styles/theme/theme';
 
 // mixin to get rid of duplicate styling for opened and closed burger
 //  takes in a color which is used as the hover color
@@ -17,16 +17,10 @@
     padding: 0;
     z-index: 10;
     top: 1rem;
-    left: 0.5rem;
+    left: -0.5rem;
   
     &:focus {
         outline: none;
-    }
-
-    &:hover {
-        .burgerBar {
-            background: $color;
-        }
     }
 
     @include theme.media("<=iphone-10") {
@@ -38,7 +32,7 @@
 .burgerBar {
     width: 2rem;
     height: 0.25rem;
-    background: theme.$on-primary;
+    background: theme.$foreground-dark;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
@@ -47,25 +41,37 @@
 
 /* The burger when it is in the 'X' mode */
 .cross {
-    @include baseBurgerStyle(theme.$on-secondary-light);
+    @include baseBurgerStyle(theme.$on-foreground);
 
     :first-child {
-        background: theme.$on-secondary;
+        background: theme.$on-foreground;
         transform: rotate(45deg);
     }
 
     :nth-child(2) {
-        background: theme.$on-secondary;
+        background: theme.$on-foreground;
         opacity: 0;
         transform: translateX(-20px);
     }
     :nth-child(3) {
-        background: theme.$on-secondary;
+        background: theme.$on-foreground;
         transform: rotate(-45deg);
+    }
+
+    &:hover {
+        .burgerBar {
+            background: theme.$on-foreground-light;
+        }
     }
 }
 
 /* The burger when it is burger mode */
 .burger {
-    @include baseBurgerStyle(theme.$on-primary-light);
+    @include baseBurgerStyle(theme.$foreground-dark);
+
+    &:hover {
+        .burgerBar {
+            background: theme.$burger-menu-background;
+        }
+    }
 }
