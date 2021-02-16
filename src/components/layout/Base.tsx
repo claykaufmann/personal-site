@@ -1,13 +1,12 @@
 import * as React from 'react'
-import Nav from './Nav'
+import Header from './Header'
 
 //import styles from './Base.module.scss'
 
-const Base: React.VFC = () => {
+const Base = (): JSX.Element => {
     return (
         <React.Fragment>
-            <h1>Hello!</h1>
-            <Nav />
+            <Header />
         </React.Fragment>
     )
 }
