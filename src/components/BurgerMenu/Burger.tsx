@@ -8,13 +8,9 @@ interface Props {
     setOpen: (val: boolean) => void
 }
 
-const Burger: React.VFC<Props> = ({ open, setOpen }) => {
+const Burger = ({ open, setOpen }: Props): JSX.Element => {
     return (
-        <div
-            className={open ? styles.cross : styles.burger}
-            open={open}
-            onClick={() => setOpen(!open)}
-        >
+        <div className={open ? styles.cross : styles.burger} onClick={() => setOpen(!open)}>
             <div className={styles.burgerBar} />
             <div className={styles.burgerBar} />
             <div className={styles.burgerBar} />
