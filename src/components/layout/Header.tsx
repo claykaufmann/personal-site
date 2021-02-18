@@ -7,7 +7,7 @@ const Header = (): JSX.Element => {
     return (
         <React.Fragment>
             <Nav />
-            <h1 className={styles.heading}>Hi! I&apos;m (John) Clay Kaufmann</h1>
+            <h1 className={styles.heading}>John Clay Kaufmann</h1>
         </React.Fragment>
     )
 }
