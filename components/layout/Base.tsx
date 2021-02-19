@@ -5,12 +5,12 @@ import Header from './Header'
 //import styles from './Base.module.scss'
 
 const Base: React.FC = props => {
-    return (
-        <React.Fragment>
-            <Header />
-            {props.children}
-            <Footer />
-        </React.Fragment>
-    )
+  return (
+    <React.Fragment>
+      <Header />
+      {props.children}
+      <Footer />
+    </React.Fragment>
+  )
 }
 export default Base

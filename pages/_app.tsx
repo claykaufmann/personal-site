@@ -7,14 +7,14 @@ import fonts from '@styles/font-face'
 import { ChakraProvider } from '@chakra-ui/react'
 
 const App: React.VFC<AppProps> = (props: AppProps) => {
-    const { Component, pageProps } = props
-    return (
-        <ChakraProvider theme={theme}>
-            <Global styles={fonts} />
-            <Head />
-            <Component {...pageProps} />
-        </ChakraProvider>
-    )
+  const { Component, pageProps } = props
+  return (
+    <ChakraProvider theme={theme}>
+      <Global styles={fonts} />
+      <Head />
+      <Component {...pageProps} />
+    </ChakraProvider>
+  )
 }
 
 export default App

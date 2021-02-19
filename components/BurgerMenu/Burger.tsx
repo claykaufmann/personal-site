@@ -4,18 +4,18 @@ import * as React from 'react'
 import styles from './Burger.module.scss'
 
 interface Props {
-    open: boolean
-    setOpen: (val: boolean) => void
+  open: boolean
+  setOpen: (val: boolean) => void
 }
 
 const Burger = ({ open, setOpen }: Props): JSX.Element => {
-    return (
-        <div className={open ? styles.cross : styles.burger} onClick={() => setOpen(!open)}>
-            <div className={styles.burgerBar} />
-            <div className={styles.burgerBar} />
-            <div className={styles.burgerBar} />
-        </div>
-    )
+  return (
+    <div className={open ? styles.cross : styles.burger} onClick={() => setOpen(!open)}>
+      <div className={styles.burgerBar} />
+      <div className={styles.burgerBar} />
+      <div className={styles.burgerBar} />
+    </div>
+  )
 }
 
 export default Burger
