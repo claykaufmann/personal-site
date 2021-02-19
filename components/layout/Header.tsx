@@ -1,13 +1,12 @@
 import * as React from 'react'
 import Nav from './Nav'
-
-import styles from './Header.module.scss'
+import { Heading } from '@chakra-ui/react'
 
 const Header = (): JSX.Element => {
   return (
     <React.Fragment>
       <Nav />
-      <h1 className={styles.heading}>John Clay Kaufmann</h1>
+      <Heading as='h1'>John Clay Kaufmann</Heading>
     </React.Fragment>
   )
 }
