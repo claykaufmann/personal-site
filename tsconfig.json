@@ -2,9 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"],
-      "@pages/*": ["src/pages/*"],
+      "@components/*": ["components/*"],
+      "@styles/*": ["styles/*"],
+      "@pages/*": ["pages/*"],
+      "@public/*": ["public/*"]
     },
     "target": "es6",
     "lib": [

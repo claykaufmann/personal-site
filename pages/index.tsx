@@ -5,10 +5,7 @@ import { NextPage } from 'next'
 const Home: NextPage = () => {
     return (
         <React.Fragment>
-            <Base>
-                <h2>Index page!</h2>
-                <h3>lol</h3>
-            </Base>
+            <Base></Base>
         </React.Fragment>
     )
 }

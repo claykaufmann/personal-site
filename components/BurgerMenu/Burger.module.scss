@@ -23,9 +23,9 @@
         outline: none;
     }
 
-    @include theme.media("<=iphone-10") {
-        top: 2rem;
-    }
+    // @include theme.media("<=iphone-10") {
+    //     top: 2rem;
+    // }
 }
 
 /* One bar of the burger */

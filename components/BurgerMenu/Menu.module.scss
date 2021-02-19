@@ -16,14 +16,14 @@
     z-index: 1;
 
     // make the menu take up the entire screen on phones portrait view
-    @include theme.media("<=iphone-6-7-8-plus") {
-        width: 85vw;
-    }
+    // @include theme.media("<=iphone-6-7-8-plus") {
+    //     width: 85vw;
+    // }
 
-    @include theme.media("<=phone") {
-        width: 83vw;
-        padding-bottom: 0;
-    }
+    // @include theme.media("<=phone") {
+    //     width: 83vw;
+    //     padding-bottom: 0;
+    // }
 }
 
 .closedMenu {
@@ -36,14 +36,14 @@
     transform: translateX(0);
 
     // to fix the slight missing part of the menu on the bottom when it opens
-    @include theme.media("<=iphone-6-7-8-plus") {
-        padding-bottom: 0.6rem;
-    }
+    // @include theme.media("<=iphone-6-7-8-plus") {
+    //     padding-bottom: 0.6rem;
+    // }
 
-    @include theme.media("<=phone") {
-        width: 83vw;
-        padding-bottom: 0;
-    }
+    // @include theme.media("<=phone") {
+    //     width: 83vw;
+    //     padding-bottom: 0;
+    // }
 }
 
 .menuLinkText {
@@ -62,7 +62,7 @@
     }
 
     // align text to the left on computers/tablets
-    @include theme.media(">iphone-6-7-8-plus") {
-        text-align: left;
-    }
+    // @include theme.media(">iphone-6-7-8-plus") {
+    //     text-align: left;
+    // }
 }
