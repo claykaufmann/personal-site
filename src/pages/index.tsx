@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Base from '../components/layout/Base'
+import Base from '@components/layout/Base'
 import { NextPage } from 'next'
 
 const Home: NextPage = () => {

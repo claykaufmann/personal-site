@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import * as React from 'react'
 import { useState, useRef } from 'react'
-import Burger from '../BurgerMenu/Burger'
-import Menu from '../BurgerMenu/Menu'
-import { useMediaQuery } from '../hooks/useMediaQuery'
-import { useOnClickOutside } from '../hooks/useOnClickOutside'
+import Burger from '@components/BurgerMenu/Burger'
+import Menu from '@components/BurgerMenu/Menu'
+import { useMediaQuery } from '@components/hooks/useMediaQuery'
+import { useOnClickOutside } from '@components/hooks/useOnClickOutside'
 import Link from 'next/link'
 
 import styles from './Nav.module.scss'

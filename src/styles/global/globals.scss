@@ -1,13 +1,6 @@
 // import themes
 @use '../theme/_theme' as theme;
 
-// import css reset
-@use '../resets/reset';
-
-html, body {
-    //height: 100%; UNKNOWN IF THIS IS NEEDED FOR BURGER MENU, IF SO ADD MEDIA QUERY
-}
-
 // set background color
 body {
     background-color: theme.$background-base;

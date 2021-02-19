@@ -1,16 +1,17 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
-import Head from '../components/layout/Head'
-import '../styles/global/globals.scss'
+import Head from '@components/layout/Head'
+import { ChakraProvider } from '@chakra-ui/react'
+import '@styles/global/globals.scss'
+import theme from '@styles/theme/theme'
 
 const App: React.VFC<AppProps> = (props: AppProps) => {
     const { Component, pageProps } = props
-
     return (
-        <React.Fragment>
+        <ChakraProvider theme={theme}>
             <Head />
             <Component {...pageProps} />
-        </React.Fragment>
+        </ChakraProvider>
     )
 }
 
