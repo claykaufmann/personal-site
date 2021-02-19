@@ -54,6 +54,11 @@ module.exports = {
                         allowConciseArrowFunctionExpressionsStartingWithVoid: true,
                     },
                 ],
+                'sort-imports': [2, {
+                    "ignoreCase": false,
+                    "ignoreMemberSort": false,
+                    "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+                }],
             },
         },
     ],
