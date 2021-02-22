@@ -11,7 +11,7 @@ import NextLink from 'next/link'
 
 import styles from './Nav.module.scss'
 
-const Nav = (): JSX.Element => {
+const Nav: React.VFC = () => {
   // check the size of the browser window, if less than 800px, use the burger menu
   const isMobile = useMediaQuery('(max-width: 800px)')
   let nav: JSX.Element = <React.Fragment></React.Fragment>

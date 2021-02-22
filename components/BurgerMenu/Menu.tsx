@@ -9,7 +9,7 @@ interface Props {
   setOpen: (val: boolean) => void
 }
 
-const Menu = ({ open, setOpen }: Props): JSX.Element => {
+const Menu: React.VFC<Props> = ({ open, setOpen }) => {
   return (
     <nav className={open ? styles.openMenu : styles.closedMenu}>
       <Link href='/'>
