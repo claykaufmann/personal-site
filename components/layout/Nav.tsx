@@ -1,12 +1,7 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import * as React from 'react'
-import { useState, useRef } from 'react'
-import Burger from '@components/BurgerMenu/Burger'
-import Menu from '@components/BurgerMenu/Menu'
 import { useMediaQuery } from '@components/hooks/useMediaQuery'
-import { useOnClickOutside } from '@components/hooks/useOnClickOutside'
-import { Link, HStack } from '@chakra-ui/react'
+import { Link, HStack, Menu, MenuButton, MenuList, MenuItem, IconButton } from '@chakra-ui/react'
+import { AiOutlineMenu } from 'react-icons/ai'
 import NextLink from 'next/link'
 
 import styles from './Nav.module.scss'
@@ -16,16 +11,32 @@ const Nav: React.VFC = () => {
   const isMobile = useMediaQuery('(max-width: 800px)')
   let nav: JSX.Element = <React.Fragment></React.Fragment>
 
-  const [open, setOpen] = useState(false)
-  const node = useRef<HTMLDivElement>(null)
-  useOnClickOutside(node, () => setOpen(false))
-
   if (isMobile) {
     nav = (
-      <div ref={node} className={styles.burgerDiv}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-      </div>
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label='Menu'
+          icon={<AiOutlineMenu />}
+          variant='ghost'
+          size='lg'
+        ></MenuButton>
+        <MenuList>
+          <MenuItem>
+            <NextLink href='/'>
+              <Link>Home</Link>
+            </NextLink>
+          </MenuItem>
+          <MenuItem>
+            <NextLink href='/Projects'>
+              <Link>Projects</Link>
+            </NextLink>
+          </MenuItem>
+          <MenuItem>
+            <Link href='other/john_clay_kaufmann.pdf'>Resume</Link>
+          </MenuItem>
+        </MenuList>
+      </Menu>
     )
   } else {
     nav = (

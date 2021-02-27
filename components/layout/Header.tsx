@@ -1,13 +1,16 @@
 import * as React from 'react'
 import Nav from './Nav'
-import { Heading } from '@chakra-ui/react'
+import { Heading, HStack } from '@chakra-ui/react'
+import styles from './Header.module.scss'
 
 const Header: React.VFC = () => {
   return (
-    <React.Fragment>
+    <HStack justify='space-between' className={styles.header}>
+      <Heading as='h1' className={styles.heading}>
+        John Clay Kaufmann
+      </Heading>
       <Nav />
-      <Heading as='h1'>John Clay Kaufmann</Heading>
-    </React.Fragment>
+    </HStack>
   )
 }
 export default Header

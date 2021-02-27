@@ -1,12 +1,7 @@
 @use '../../styles/theme/theme' as theme;
 
 .nav {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
     margin-right: 1rem;
-    margin-top: 1rem;
 }
 
 .navElement {
