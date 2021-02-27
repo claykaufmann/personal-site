@@ -6,6 +6,8 @@ import theme from '@styles/theme'
 import fonts from '@styles/font-face'
 import { ChakraProvider } from '@chakra-ui/react'
 
+import 'styles/globals.scss'
+
 const App: React.VFC<AppProps> = (props: AppProps) => {
   const { Component, pageProps } = props
   return (

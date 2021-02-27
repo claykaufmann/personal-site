@@ -6,7 +6,7 @@ import Burger from '@components/BurgerMenu/Burger'
 import Menu from '@components/BurgerMenu/Menu'
 import { useMediaQuery } from '@components/hooks/useMediaQuery'
 import { useOnClickOutside } from '@components/hooks/useOnClickOutside'
-import { Link } from '@chakra-ui/react'
+import { Link, HStack } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 import styles from './Nav.module.scss'
@@ -29,7 +29,7 @@ const Nav: React.VFC = () => {
     )
   } else {
     nav = (
-      <nav className={styles.nav}>
+      <HStack className={styles.nav}>
         <NextLink href='/'>
           <Link>Home</Link>
         </NextLink>
@@ -43,9 +43,8 @@ const Nav: React.VFC = () => {
         <NextLink href='/Projects'>
           <Link>Projects</Link>
         </NextLink>
-
         <Link href='other/john_clay_kaufmann.pdf'>Resume</Link>
-      </nav>
+      </HStack>
     )
   }
   return <React.Fragment>{nav}</React.Fragment>
