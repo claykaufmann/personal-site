@@ -6,8 +6,11 @@ import { Heading, Text } from '@chakra-ui/react'
 const Home: NextPage = () => {
   return (
     <Base>
-      <Heading size='lg'>Hello!</Heading>
-      <Text>My name is Clay. I am a Computer Science student at the University of Vermont</Text>
+      <Heading size='lg'></Heading>
+      <Text>
+        Hello! My name is Clay Kaufmann. I am studying computer science at the University of
+        Vermont.
+      </Text>
     </Base>
   )
 }

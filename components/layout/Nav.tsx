@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useMediaQuery } from '@components/hooks/useMediaQuery'
-import { Link, HStack, Menu, MenuButton, MenuList, MenuItem, IconButton } from '@chakra-ui/react'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { Link, HStack } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import BurgerMenu from '@components/BurgerMenu/BurgerMenu'
 
 import styles from './Nav.module.scss'
 
@@ -12,32 +12,7 @@ const Nav: React.VFC = () => {
   let nav: JSX.Element = <React.Fragment></React.Fragment>
 
   if (isMobile) {
-    nav = (
-      <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label='Menu'
-          icon={<AiOutlineMenu />}
-          variant='ghost'
-          size='lg'
-        ></MenuButton>
-        <MenuList>
-          <MenuItem>
-            <NextLink href='/'>
-              <Link>Home</Link>
-            </NextLink>
-          </MenuItem>
-          <MenuItem>
-            <NextLink href='/Projects'>
-              <Link>Projects</Link>
-            </NextLink>
-          </MenuItem>
-          <MenuItem>
-            <Link href='other/john_clay_kaufmann.pdf'>Resume</Link>
-          </MenuItem>
-        </MenuList>
-      </Menu>
-    )
+    nav = <BurgerMenu />
   } else {
     nav = (
       <HStack className={styles.nav}>
@@ -54,7 +29,9 @@ const Nav: React.VFC = () => {
         <NextLink href='/Projects'>
           <Link>Projects</Link>
         </NextLink>
-        <Link href='other/john_clay_kaufmann.pdf'>Resume</Link>
+        <Link href='other/john_clay_kaufmann.pdf' isExternal={true}>
+          Resume
+        </Link>
       </HStack>
     )
   }

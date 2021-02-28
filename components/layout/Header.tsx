@@ -7,7 +7,7 @@ const Header: React.VFC = () => {
   return (
     <HStack justify='space-between' className={styles.header}>
       <Heading as='h1' className={styles.heading}>
-        John Clay Kaufmann
+        Clay Kaufmann
       </Heading>
       <Nav />
     </HStack>
