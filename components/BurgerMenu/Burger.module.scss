@@ -4,7 +4,6 @@
 //  takes in a color which is used as the hover color
 @mixin baseBurgerStyle($color) {
     position: relative;
-    margin-top: 0.5rem;
     margin-left: 1.5rem;
     display: inline-flex;
     flex-direction: column;
@@ -16,8 +15,7 @@
     cursor: pointer;
     padding: 0;
     z-index: 10;
-    top: 1rem;
-    left: -0.5rem;
+    top: -0.4rem;
   
     &:focus {
         outline: none;
