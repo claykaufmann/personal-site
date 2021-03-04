@@ -1,13 +1,11 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import LandingPage from '@components/layout/Splash/LandingPage'
-import About from '@components/layout/Splash/About'
+import SplashPage from '@components/layout/SplashPage'
 
 const Home: NextPage = () => {
   return (
     <React.Fragment>
-      <LandingPage />
-      <About />
+      <SplashPage />
     </React.Fragment>
   )
 }
