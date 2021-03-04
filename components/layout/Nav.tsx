@@ -26,7 +26,7 @@ const Nav: React.VFC = () => {
                 </a>
             </Link>
             */}
-        <NextLink href='/Projects'>
+        <NextLink href='/projects'>
           <Link>Projects</Link>
         </NextLink>
         <Link href='other/john_clay_kaufmann.pdf' isExternal={true}>

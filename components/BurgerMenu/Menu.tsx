@@ -26,7 +26,7 @@ const Menu: React.VFC<Props> = ({ open, setOpen }) => {
                 </Link>
             </NextLink>
             */}
-      <NextLink href='/Projects'>
+      <NextLink href='/projects'>
         <Link className={styles.menuLinkText} onClick={() => setOpen(!open)}>
           Projects
         </Link>
