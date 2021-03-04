@@ -1,15 +1,13 @@
 import * as React from 'react'
-import Footer from '@components/layout/Footer'
 import { NextPage } from 'next'
-import LandingPage from '@components/layout/LandingPage'
+import LandingPage from '@components/layout/Splash/LandingPage'
+import About from '@components/layout/Splash/About'
 
 const Home: NextPage = () => {
   return (
     <React.Fragment>
       <LandingPage />
-      <div>
-        <Footer />
-      </div>
+      <About />
     </React.Fragment>
   )
 }
