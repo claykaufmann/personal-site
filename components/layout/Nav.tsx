@@ -19,15 +19,11 @@ const Nav: React.VFC = () => {
         <NextLink href='/'>
           <Link>Home</Link>
         </NextLink>
-        {/* UNCOMMENT WHEN BLOG IS DONE
-            <Link href='/Blog'>
-                <a className={styles.menuLinkText} onClick={() => setOpen(!open)}>
-                    Blog
-                </a>
-            </Link>
-            */}
         <NextLink href='/projects'>
           <Link>Projects</Link>
+        </NextLink>
+        <NextLink href='/blog'>
+          <Link>Blog</Link>
         </NextLink>
         <Link href='other/john_clay_kaufmann.pdf' isExternal={true}>
           Resume
