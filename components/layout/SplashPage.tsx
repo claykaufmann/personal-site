@@ -37,9 +37,16 @@ export default class SplashPage extends React.Component<props, SplashState> {
           </div>
           <div className={styles.mainContent}>
             <Center h='40vh'>
-              <VStack align='center'>
-                <Heading size='lg'>Hey there!</Heading>
-                <Text align='center'>
+              <VStack
+                align='center'
+                bg='rgba(255, 255, 255, 0.6)'
+                padding='2rem'
+                borderRadius='5px'
+              >
+                <Heading size='lg' opacity='1'>
+                  Hey there!
+                </Heading>
+                <Text align='center' opacity='1'>
                   My name is Clay Kaufmann, and I am endeavoring software engineer, studying
                   computer science at the University of Vermont.
                 </Text>
