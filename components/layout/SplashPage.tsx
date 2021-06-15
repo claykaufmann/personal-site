@@ -31,7 +31,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
   render(): JSX.Element {
     return (
       <React.Fragment>
-        <div className={styles.container}>
+        <div className={styles.splash}>
           <div className={styles.header}>
             <Header />
           </div>

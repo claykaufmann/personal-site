@@ -8,3 +8,10 @@
   flex: 1;
   padding-top: 5rem;
 }
+
+.splash {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: url(/images/me_tetons.jpg) no-repeat center center fixed;
+}

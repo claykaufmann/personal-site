@@ -3,12 +3,9 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 // disable horizontal scrolling
 html, body {
   overflow-x: hidden;
 }
-
