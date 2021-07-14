@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Footer from '@components/layout/Footer'
-import { Button, Center, Heading, Link, Text, VStack } from '@chakra-ui/react'
+import { Button, Center, Heading, Link, Text, VStack, Box } from '@chakra-ui/react'
 import styles from './SplashPage.module.scss'
 import Header from '@components/layout/Header'
 
@@ -37,27 +37,22 @@ export default class SplashPage extends React.Component<props, SplashState> {
           </div>
           <div className={styles.mainContent}>
             <Center h='40vh'>
-              <VStack
-                align='center'
-                bg='rgba(255, 255, 255, 0.6)'
-                padding='2rem'
-                borderRadius='5px'
-              >
-                <Heading size='lg' opacity='1'>
-                  Hey there!
-                </Heading>
-                <Text align='center' opacity='1'>
-                  My name is Clay Kaufmann, and I am endeavoring software engineer, studying
-                  computer science at the University of Vermont.
-                </Text>
+              <VStack align='center'>
+                <Box align='center' bg='rgba(255, 255, 255, 0.8)' padding='2rem' borderRadius='5px'>
+                  <Heading size='lg' opacity='1'>
+                    Hey there!
+                  </Heading>
+                  <Text align='center' opacity='1'>
+                    My name is Clay Kaufmann, and I am endeavoring software engineer, studying
+                    computer science at the University of Vermont.
+                  </Text>
+                </Box>
+                <Button className={styles.aboutButton} onClick={this.handleScrollToAbout}>
+                  About me.
+                </Button>
               </VStack>
             </Center>
           </div>
-          <Center className={styles.buttonContainer}>
-            <Button className={styles.aboutButton} onClick={this.handleScrollToAbout}>
-              About me.
-            </Button>
-          </Center>
           <Footer />
         </div>
         <div className={styles.container}>
