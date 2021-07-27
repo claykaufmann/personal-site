@@ -3,12 +3,20 @@ import { HStack, IconButton, Link, Text } from '@chakra-ui/react'
 import { AiFillGithub, AiOutlineInstagram, AiOutlineMail } from 'react-icons/ai'
 import styles from './Footer.module.scss'
 
-const Footer: React.VFC = () => {
+interface props {
+  textColor?: string
+}
+
+const Footer: React.VFC<props> = ({ textColor }) => {
   return (
     <HStack className={styles.footer}>
-      <Text fontSize='xs'>John Clay Kaufmann 2021</Text>
+      <Text color={textColor} fontSize='xs'>
+        John Clay Kaufmann 2021
+      </Text>
       <Link href='https://www.github.com/claykaufmann' isExternal={true}>
         <IconButton
+          color={textColor}
+          colorScheme='whiteAlpha'
           className={styles.icon}
           aria-label='GitHub link'
           as={AiFillGithub}
@@ -18,6 +26,8 @@ const Footer: React.VFC = () => {
       </Link>
       <Link href='https://www.instagram.com/byclaykay/' isExternal={true}>
         <IconButton
+          color={textColor}
+          colorScheme='whiteAlpha'
           className={styles.icon}
           aria-label='Instagram link'
           as={AiOutlineInstagram}
@@ -27,6 +37,8 @@ const Footer: React.VFC = () => {
       </Link>
       <Link href='mailto:claykaufmann@gmail.com'>
         <IconButton
+          color={textColor}
+          colorScheme='whiteAlpha'
           className={styles.icon}
           aria-label='Email link'
           as={AiOutlineMail}

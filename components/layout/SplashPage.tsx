@@ -38,7 +38,19 @@ export default class SplashPage extends React.Component<props, SplashState> {
           <div className={styles.mainContent}>
             <Center h='40vh'>
               <VStack align='center'>
-                <Box align='center' bg='rgba(255, 255, 255, 0.8)' padding='2rem' borderRadius='5px'>
+                <Box
+                  align='center'
+                  bg='rgba(255, 255, 255, 0.8)'
+                  padding='2rem'
+                  borderRadius='5px'
+                  margin={{
+                    base: '0 1rem',
+                    sm: '0 5rem',
+                    md: '0 10rem',
+                    lg: '0 15rem',
+                    xl: '0 20rem',
+                  }}
+                >
                   <Heading size='lg' opacity='1'>
                     Hey there!
                   </Heading>
@@ -53,7 +65,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
               </VStack>
             </Center>
           </div>
-          <Footer />
+          <Footer textColor='white' />
         </div>
         <div className={styles.container}>
           <div className={styles.mainContent}>
@@ -98,7 +110,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
                 }}
               >
                 I am currently looking for internship opportunities as well as post-graduation job
-                opportunities for software engineering, if you are interested, let&apos;s{' '}
+                opportunities for software engineering. If you are interested, let&apos;s{' '}
                 <Link href='mailto:claykaufmann@gmail.com' color='blue'>
                   get in touch.
                 </Link>
