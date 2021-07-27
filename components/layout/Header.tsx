@@ -6,7 +6,7 @@ import styles from './Header.module.scss'
 const Header: React.VFC = () => {
   return (
     <HStack justify='space-between' className={styles.header}>
-      <Heading as='h1' className={styles.heading}>
+      <Heading as='h1' size='xl'>
         Clay Kaufmann
       </Heading>
       <Nav />

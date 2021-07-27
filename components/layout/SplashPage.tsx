@@ -28,6 +28,11 @@ export default class SplashPage extends React.Component<props, SplashState> {
     window.scrollTo({ top: this.ref.current?.offsetTop, behavior: 'smooth' })
   }
 
+  // FIX: page does not display correctly on large formats
+  // things are not fixed to the background, left and right edges become empty
+
+  // BUG: headings seem to change size between different pages
+  // window of this page
   render(): JSX.Element {
     return (
       <React.Fragment>

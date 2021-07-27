@@ -24,8 +24,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-public/images
-
 secure.env
 
 public/other
