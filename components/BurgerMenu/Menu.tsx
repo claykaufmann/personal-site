@@ -51,7 +51,7 @@ const Menu: React.VFC<Props> = ({ open, setOpen }) => {
         style={{ textDecoration: 'none' }}
         transition='color 0.3s linear'
         color='black'
-        href='/other/john_clay_kaufmann.pdf'
+        href='/other/website_resume.pdf'
         isExternal={true}
         className={styles.menuLinkText}
         onClick={() => setOpen(!open)}
