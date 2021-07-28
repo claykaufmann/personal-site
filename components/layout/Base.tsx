@@ -8,7 +8,7 @@ const Base: React.FC = Props => {
     <React.Fragment>
       <Header />
       <div className={styles.content}>{Props.children}</div>
-      <Footer />
+      <Footer textColor='black' />
     </React.Fragment>
   )
 }

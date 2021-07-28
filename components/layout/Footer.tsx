@@ -4,7 +4,7 @@ import { AiFillGithub, AiOutlineInstagram, AiOutlineMail, AiOutlineLinkedin } fr
 import styles from './Footer.module.scss'
 
 interface props {
-  textColor?: string
+  textColor: string
 }
 
 const Footer: React.VFC<props> = ({ textColor }) => {
