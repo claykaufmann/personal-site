@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { HStack, IconButton, Link, Text } from '@chakra-ui/react'
-import { AiFillGithub, AiOutlineInstagram, AiOutlineMail } from 'react-icons/ai'
+import { AiFillGithub, AiOutlineInstagram, AiOutlineMail, AiOutlineLinkedin } from 'react-icons/ai'
 import styles from './Footer.module.scss'
 
 interface props {
@@ -18,7 +18,7 @@ const Footer: React.VFC<props> = ({ textColor }) => {
           color={textColor}
           colorScheme='whiteAlpha'
           className={styles.icon}
-          aria-label='GitHub link'
+          aria-label='GitHub profile link'
           as={AiFillGithub}
           variant='ghost'
           size='xs'
@@ -29,8 +29,19 @@ const Footer: React.VFC<props> = ({ textColor }) => {
           color={textColor}
           colorScheme='whiteAlpha'
           className={styles.icon}
-          aria-label='Instagram link'
+          aria-label='Instagram profile link'
           as={AiOutlineInstagram}
+          variant='ghost'
+          size='xs'
+        />
+      </Link>
+      <Link href='https://www.linkedin.com/in/claykaufmann/' isExternal={true}>
+        <IconButton
+          color={textColor}
+          colorScheme='whiteAlpha'
+          className={styles.icon}
+          aria-label='LinkedIn profile link'
+          as={AiOutlineLinkedin}
           variant='ghost'
           size='xs'
         />

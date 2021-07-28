@@ -25,7 +25,7 @@ const Nav: React.VFC = () => {
         <NextLink href='/blog'>
           <Link>Blog</Link>
         </NextLink>
-        <Link href='other/john_clay_kaufmann.pdf' isExternal={true}>
+        <Link href='other/website_resume.pdf' isExternal={true}>
           Resume
         </Link>
       </HStack>
