@@ -94,11 +94,10 @@ export default class SplashPage extends React.Component<props, SplashState> {
                   xl: '0 20rem',
                 }}
               >
-                Fast forward a couple of years, and I am now a junior, focusing in full-stack web
-                development, as well as machine learning. My expected graduation date is December
-                2021, where upon my graduation I will continue to attend the University of Vermont
-                as a prospective master&apos;s student, with an expected graduation date of December
-                2022.
+                Fast forward a couple of years, and I am now a senior, focusing on machine learning
+                and backend systems. My expected graduation date is December 2021, where upon my
+                graduation I will continue to attend the University of Vermont as a master&apos;s
+                student, with an expected graduation date of December 2022.
               </Text>
               <Text
                 padding={{
