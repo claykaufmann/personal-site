@@ -49,6 +49,11 @@
   @include sm-screen {
     background: url(/images/me_tetons_small.jpg) no-repeat center fixed;
   }
+
+  @include xs-screen {
+    background: url(/images/me_tetons_small.jpg) no-repeat center fixed;
+    min-height: 100%;
+  }
 }
 
 .about {
