@@ -40,7 +40,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
               <VStack align='center'>
                 <Box
                   align='center'
-                  bg='rgba(255, 255, 255, 0.8)'
+                  color='white'
                   padding='2rem'
                   borderRadius='5px'
                   margin={{
@@ -52,12 +52,12 @@ export default class SplashPage extends React.Component<props, SplashState> {
                   }}
                 >
                   <Heading size='lg' opacity='1'>
-                    Hey there!
+                    <span role='img' aria-label='Wave emoji'>
+                      &#128075;
+                    </span>
+                    &nbsp;Hey There! I&apos;m Clay.
                   </Heading>
-                  <Text align='center' opacity='1'>
-                    My name is Clay Kaufmann, and I am endeavoring software engineer, studying
-                    computer science at the University of Vermont.
-                  </Text>
+                  <Text>Developer, photographer, explorer.</Text>
                 </Box>
                 <Button className={styles.aboutButton} onClick={this.handleScrollToAbout}>
                   About me.

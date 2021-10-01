@@ -15,7 +15,7 @@ const Nav: React.VFC = () => {
     nav = <BurgerMenu />
   } else {
     nav = (
-      <HStack className={styles.nav}>
+      <HStack className={styles.nav} color='white'>
         <NextLink href='/'>
           <Link>Home</Link>
         </NextLink>
