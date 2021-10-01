@@ -37,6 +37,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: url(/images/me_tetons_small.jpg) no-repeat center center fixed;
+
 
   @include lg-screen {
     background: url(/images/me_tetons_large.jpg) no-repeat center center fixed;
@@ -44,16 +46,6 @@
 
   @include md-screen {
     background: url(/images/me_tetons.jpg) no-repeat center center fixed;
-  }
-
-  @include sm-screen {
-    background: url(/images/me_tetons_small.jpg) no-repeat center fixed;
-  }
-
-  @include xs-screen {
-    .splash::after {
-      background: url(/images/me_tetons_small.jpg) no-repeat center fixed;
-    }
   }
 }
 
