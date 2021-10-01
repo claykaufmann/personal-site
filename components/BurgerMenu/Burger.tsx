@@ -6,14 +6,21 @@ import styles from './Burger.module.scss'
 interface Props {
   open: boolean
   setOpen: (val: boolean) => void
+  textColor: string
 }
 
-const Burger: React.VFC<Props> = ({ open, setOpen }) => {
+const Burger: React.VFC<Props> = ({ open, setOpen, textColor }) => {
+  let burgerBars
+  if (textColor == 'white') {
+    burgerBars = styles.burgerBarWhite
+  } else {
+    burgerBars = styles.burgerBarBlack
+  }
   return (
     <div className={open ? styles.cross : styles.burger} onClick={() => setOpen(!open)}>
-      <div className={styles.burgerBar} />
-      <div className={styles.burgerBar} />
-      <div className={styles.burgerBar} />
+      <div className={burgerBars} />
+      <div className={burgerBars} />
+      <div className={burgerBars} />
     </div>
   )
 }

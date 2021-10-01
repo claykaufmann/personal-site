@@ -3,10 +3,14 @@ import Footer from './Footer'
 import Header from './Header'
 import styles from './Base.module.scss'
 
-const Base: React.FC = Props => {
+interface props {
+  headerColor: string
+}
+
+const Base: React.FC<props> = (Props, { headerColor }) => {
   return (
     <React.Fragment>
-      <Header />
+      <Header textColor={headerColor} />
       <div className={styles.content}>{Props.children}</div>
       <Footer textColor='black' />
     </React.Fragment>

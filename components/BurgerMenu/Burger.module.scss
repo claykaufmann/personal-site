@@ -27,10 +27,20 @@
 }
 
 /* One bar of the burger */
-.burgerBar {
+.burgerBarBlack {
     width: 2rem;
     height: 0.25rem;
     background: theme.$foreground-dark;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.burgerBarWhite {
+    width: 2rem;
+    height: 0.25rem;
+    background: white;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

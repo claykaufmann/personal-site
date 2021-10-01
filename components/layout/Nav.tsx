@@ -6,16 +6,20 @@ import BurgerMenu from '@components/BurgerMenu/BurgerMenu'
 
 import styles from './Nav.module.scss'
 
-const Nav: React.VFC = () => {
+interface props {
+  textColor: string
+}
+
+const Nav: React.VFC<props> = ({ textColor }) => {
   // check the size of the browser window, if less than 800px, use the burger menu
   const isMobile = useMediaQuery('(max-width: 800px)')
   let nav: JSX.Element = <React.Fragment></React.Fragment>
 
   if (isMobile) {
-    nav = <BurgerMenu />
+    nav = <BurgerMenu textColor={textColor} />
   } else {
     nav = (
-      <HStack className={styles.nav} color='white'>
+      <HStack className={styles.nav} color={textColor}>
         <NextLink href='/'>
           <Link>Home</Link>
         </NextLink>

@@ -33,7 +33,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
       <React.Fragment>
         <div className={styles.splash}>
           <div className={styles.header}>
-            <Header />
+            <Header textColor='white' />
           </div>
           <div className={styles.mainContent}>
             <Center h='40vh'>
@@ -67,7 +67,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
           </div>
           <Footer textColor='white' />
         </div>
-        <div className={styles.container}>
+        <div className={styles.container + ' ' + styles.about}>
           <div className={styles.mainContent}>
             <VStack>
               <Text

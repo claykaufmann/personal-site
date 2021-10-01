@@ -5,7 +5,7 @@ import * as React from 'react'
 
 const Admin: NextPage = () => {
   return (
-    <Base>
+    <Base headerColor='black'>
       <Heading size='lg'>Admin Page</Heading>
     </Base>
   )

@@ -5,7 +5,7 @@ import { Text } from '@chakra-ui/react'
 
 const Blog: NextPage = () => {
   return (
-    <Base>
+    <Base headerColor='black'>
       <Text>Blog Page</Text>
     </Base>
   )
