@@ -22,10 +22,10 @@ const Menu: React.VFC<Props> = ({ open, setOpen }) => {
           className={styles.menuLinkText}
           onClick={() => setOpen(!open)}
         >
-          Home
+          About
         </Link>
       </NextLink>
-      <NextLink href='/projects'>
+      {/* <NextLink href='/projects'>
         <Link
           style={{ textDecoration: 'none' }}
           transition='color 0.3s linear'
@@ -46,7 +46,7 @@ const Menu: React.VFC<Props> = ({ open, setOpen }) => {
         >
           Blog
         </Link>
-      </NextLink>
+      </NextLink> */}
       <Link
         style={{ textDecoration: 'none' }}
         transition='color 0.3s linear'

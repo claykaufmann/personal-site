@@ -21,14 +21,14 @@ const Nav: React.VFC<props> = ({ textColor }) => {
     nav = (
       <HStack className={styles.nav} color={textColor}>
         <NextLink href='/'>
-          <Link>Home</Link>
+          <Link>About</Link>
         </NextLink>
-        <NextLink href='/projects'>
+        {/* <NextLink href='/projects'>
           <Link>Projects</Link>
         </NextLink>
         <NextLink href='/blog'>
           <Link>Blog</Link>
-        </NextLink>
+        </NextLink> */}
         <Link href='other/website_resume.pdf' isExternal={true}>
           Resume
         </Link>
