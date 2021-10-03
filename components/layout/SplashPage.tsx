@@ -36,7 +36,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
             <Header textColor='white' />
           </div>
           <div className={styles.mainContent}>
-            <Center h='40vh'>
+            <Center h='25vh'>
               <VStack align='center'>
                 <Box
                   align='center'
