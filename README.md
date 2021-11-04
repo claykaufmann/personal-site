@@ -12,8 +12,7 @@ Run:
 `docker run -p 3000:3000 personal-site`
 
 ## How is the site deployed?
-Currently, this site is just simply hosted on a Vercel instance for free. I am
-currently in the process of migrating it to my own AWS instance, for practice
-with AWS and docker. Eventually, it will be a container running on a personal
-AWS instance, behind an nginx proxy under the main route. nginx will also be
-running on its own container.
+This site is hosted on an AWS Lightsail instance behind an nginx reverse-proxy.
+Both nginx and the site are containerized with Docker, and the containers are
+run together with docker-compose. Current I am planning on setting some actions
+to auto redeploy the site on push, and run some tests.
