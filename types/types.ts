@@ -4,6 +4,7 @@ export interface ProjectInfo {
 	slug: string,
 	title: string,
 	description: string,
+	github?: string
 	content: string
 }
 

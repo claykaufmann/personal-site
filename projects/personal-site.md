@@ -16,4 +16,4 @@ It can be accessed at [claykaufmann.com](claykaufmann.com).
 
 ## Production
 
-The website is hosted in an AWS instance, inside a docker container, behind an nginx reverse proxy. It is
+The website is hosted in an AWS instance, inside a docker container, behind an nginx reverse proxy.

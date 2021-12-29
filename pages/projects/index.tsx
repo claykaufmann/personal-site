@@ -5,6 +5,7 @@ import { Text, Heading, SimpleGrid, Box, Link } from '@chakra-ui/react'
 import Project from '@components/layout/Project'
 import { ProjectInfo } from 'types/types'
 import { getAllProjects } from 'lib/handleProjects'
+import Head from 'next/head'
 
 type Props = {
 	projects: ProjectInfo[]
@@ -13,6 +14,7 @@ type Props = {
 const Projects = ({ projects }: Props) => {
 	return (
 		<Base headerColor='black'>
+			<Head><title>Projects</title></Head>
 			<Box padding='1em'>
 				<Heading size='lg'>Projects</Heading>
 				<Text>Find all of my projects here.</Text>

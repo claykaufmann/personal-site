@@ -1,32 +1,67 @@
 import { ProjectInfo } from '../types/types'
+import fs from 'fs'
+import { join } from 'path'
+import matter from 'gray-matter'
+import { remark } from 'remark'
+import html from 'remark-html'
 
-// export const getProjectSlugs = () => {
+const projectDirectory = join(process.cwd(), 'projects')
 
-// }
+export const markdownToHtml = async (markdown: string): Promise<string> => {
+	const res = await remark().use(html).process(markdown)
+	return res.toString()
+}
 
-// export const getProjectBySlug = (slug: string): ProjectInfo => {
+export const getProjectSlugs = () => {
+	const files = fs.readdirSync(projectDirectory)
 
-// }
+	const slugs: string[] = []
+
+	files.forEach((file) => {
+		slugs.push(file.replace(/\.md$/, ''))
+	})
+
+	return slugs
+}
+
+export const getProjectBySlug = (slug: string): ProjectInfo => {
+	// call readfilesync with slug
+	const path = join(projectDirectory, `${slug}.md`)
+
+	// get file contents
+	const contents = fs.readFileSync(path, 'utf8')
+
+	// use gray matter to parse
+	const { data, content } = matter(contents)
+
+	// if github is undefined, don't return an object with it
+	if (data.github === undefined) {
+		return {
+			slug: slug,
+			title: data.title,
+			description: data.description,
+			content: content
+		}
+	}
+
+	// return project info
+	return {
+		slug: slug,
+		title: data.title,
+		description: data.description,
+		github: data.github,
+		content: content
+	}
+}
 
 export const getAllProjects = (): ProjectInfo[] => {
-	const project1: ProjectInfo = {
-		title: "Test Project",
-		description: "a project for testing that shows my coding prowess",
-		content: "some content for the project",
-		slug: "testProject1"
-	}
-	const project2: ProjectInfo = {
-		title: "Test Project",
-		description: "a project for testing that shows my coding prowess",
-		content: "some content for the project",
-		slug: "testProject2"
-	}
-	const project3: ProjectInfo = {
-		title: "Test Project",
-		description: "a project for testing that shows my coding prowess",
-		content: "some content for the project",
-		slug: "testProject3"
-	}
+	const slugs = getProjectSlugs()
 
-	return [project1, project2, project3]
+	const projects: ProjectInfo[] = []
+
+	slugs.forEach((slug) => {
+		projects.push(getProjectBySlug(slug))
+	})
+
+	return projects
 }
