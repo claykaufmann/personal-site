@@ -5,8 +5,8 @@ import * as React from 'react'
 
 const Admin: NextPage = () => {
   return (
-    <Base headerColor='black'>
-      <Heading size='lg'>Admin Page</Heading>
+    <Base headerColor="black">
+      <Heading size="lg">Admin Page</Heading>
     </Base>
   )
 }

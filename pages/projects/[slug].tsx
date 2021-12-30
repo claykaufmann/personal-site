@@ -1,18 +1,24 @@
 import * as React from 'react'
 import Head from 'next/head'
+import { ParsedUrlQuery } from 'querystring'
 import Base from '@components/layout/Base'
 import { HStack, Heading, Box, Link, Center } from '@chakra-ui/react'
-import { getAllProjects, getProjectBySlug, markdownToHtml } from 'lib/handleProjects'
+import {
+  getAllProjects,
+  getProjectBySlug,
+  markdownToHtml,
+} from 'lib/handleProjects'
 import { ProjectInfo } from 'types/types'
 import NextLink from 'next/link'
 import ProjectBody from '@components/layout/ProjectBody'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type Props = {
   project: ProjectInfo
   content: string
 }
 
-function ProjectPage({ project, content }: Props) {
+const ProjectPage: NextPage<Props> = ({ project, content }) => {
   let githubLink = ''
   let gitInfo
 
@@ -26,21 +32,21 @@ function ProjectPage({ project, content }: Props) {
   }
 
   return (
-    <Base headerColor='black'>
+    <Base headerColor="black">
       <Head>
         <title>{project.title}</title>
       </Head>
       <Box>
-        <Heading size='lg'>{project.title}</Heading>
+        <Heading size="lg">{project.title}</Heading>
         <ProjectBody content={content} />
         <Center>
           <HStack>
-            <Box border='1px solid black' borderRadius='4px' padding='0.5em'>
-              <NextLink href='/projects'>
+            <Box border="1px solid black" borderRadius="4px" padding="0.5em">
+              <NextLink href="/projects">
                 <Link>Back to projects</Link>
               </NextLink>
             </Box>
-            <Box border='1px solid black' borderRadius='4px' padding='0.5em'>
+            <Box border="1px solid black" borderRadius="4px" padding="0.5em">
               <div>{gitInfo}</div>
             </Box>
           </HStack>
@@ -52,14 +58,13 @@ function ProjectPage({ project, content }: Props) {
 
 export default ProjectPage
 
-type Params = {
-  params: {
-    slug: string
-  }
+interface IParams extends ParsedUrlQuery {
+  slug: string
 }
 
-export const getStaticProps = async ({ params }: Params) => {
-  const project = getProjectBySlug(params.slug)
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params as IParams
+  const project = getProjectBySlug(slug)
 
   const content = await markdownToHtml(project.content)
 
@@ -71,11 +76,11 @@ export const getStaticProps = async ({ params }: Params) => {
   }
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const projects = getAllProjects()
 
   return {
-    paths: projects.map(project => {
+    paths: projects.map((project) => {
       return {
         params: {
           slug: project.slug,

@@ -6,22 +6,23 @@ import Project from '@components/layout/Project'
 import { ProjectInfo } from 'types/types'
 import { getAllProjects } from 'lib/handleProjects'
 import Head from 'next/head'
+import { GetStaticProps, NextPage } from 'next'
 
-type Props = {
+interface Props {
   projects: ProjectInfo[]
 }
 
-const Projects = ({ projects }: Props) => {
+const ProjectsIndex: NextPage<Props> = ({ projects }) => {
   return (
-    <Base headerColor='black'>
+    <Base headerColor="black">
       <Head>
         <title>Projects</title>
       </Head>
-      <Box padding='1em'>
-        <Heading size='lg'>Projects</Heading>
+      <Box padding="1em">
+        <Heading size="lg">Projects</Heading>
         <Text>Find all of my projects here.</Text>
         <SimpleGrid columns={[2, null, 3, 4]}>
-          {projects.map(project => (
+          {projects.map((project) => (
             <NextLink key={project.slug} href={`projects/${project.slug}`}>
               <Link>
                 <Project title={project.title} description={project.title} />
@@ -34,9 +35,9 @@ const Projects = ({ projects }: Props) => {
   )
 }
 
-export default Projects
+export default ProjectsIndex
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   // call collect project handlers
 
   const projects = getAllProjects()

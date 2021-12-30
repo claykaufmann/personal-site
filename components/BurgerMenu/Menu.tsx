@@ -14,11 +14,11 @@ interface Props {
 const Menu: React.VFC<Props> = ({ open, setOpen }) => {
   return (
     <nav className={open ? styles.openMenu : styles.closedMenu}>
-      <NextLink href='/'>
+      <NextLink href="/">
         <Link
           style={{ textDecoration: 'none' }}
-          transition='color 0.3s linear'
-          color='black'
+          transition="color 0.3s linear"
+          color="black"
           className={styles.menuLinkText}
           onClick={() => setOpen(!open)}
         >
@@ -49,9 +49,9 @@ const Menu: React.VFC<Props> = ({ open, setOpen }) => {
       </NextLink> */}
       <Link
         style={{ textDecoration: 'none' }}
-        transition='color 0.3s linear'
-        color='black'
-        href='/other/John-Clay-Kaufmann-website.pdf'
+        transition="color 0.3s linear"
+        color="black"
+        href="/other/John-Clay-Kaufmann-website.pdf"
         isExternal={true}
         className={styles.menuLinkText}
         onClick={() => setOpen(!open)}
