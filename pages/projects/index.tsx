@@ -8,40 +8,40 @@ import { getAllProjects } from 'lib/handleProjects'
 import Head from 'next/head'
 
 type Props = {
-	projects: ProjectInfo[]
+  projects: ProjectInfo[]
 }
 
 const Projects = ({ projects }: Props) => {
-	return (
-		<Base headerColor='black'>
-			<Head><title>Projects</title></Head>
-			<Box padding='1em'>
-				<Heading size='lg'>Projects</Heading>
-				<Text>Find all of my projects here.</Text>
-				<SimpleGrid columns={[2, null, 3, 4]}>
-					{projects.map((project) => (
-						<NextLink key={project.slug} href={`projects/${project.slug}`}>
-							<Link>
-								<Project title={project.title} description={project.title} />
-							</Link>
-						</NextLink>
-					))}
-				</SimpleGrid>
-			</Box>
-		</Base>
-	)
+  return (
+    <Base headerColor='black'>
+      <Head>
+        <title>Projects</title>
+      </Head>
+      <Box padding='1em'>
+        <Heading size='lg'>Projects</Heading>
+        <Text>Find all of my projects here.</Text>
+        <SimpleGrid columns={[2, null, 3, 4]}>
+          {projects.map(project => (
+            <NextLink key={project.slug} href={`projects/${project.slug}`}>
+              <Link>
+                <Project title={project.title} description={project.title} />
+              </Link>
+            </NextLink>
+          ))}
+        </SimpleGrid>
+      </Box>
+    </Base>
+  )
 }
 
 export default Projects
 
 export const getStaticProps = async () => {
-	// call collect project handlers
+  // call collect project handlers
 
-	const projects = getAllProjects()
+  const projects = getAllProjects()
 
-
-	return {
-		props: { projects },
-	}
-
+  return {
+    props: { projects },
+  }
 }
