@@ -20,9 +20,9 @@ const Projects = ({ projects }: Props) => {
 				<Text>Find all of my projects here.</Text>
 				<SimpleGrid columns={[2, null, 3, 4]}>
 					{projects.map((project) => (
-						<NextLink href={`projects/${project.slug}`}>
+						<NextLink key={project.slug} href={`projects/${project.slug}`}>
 							<Link>
-								<Project key={project.slug} title={project.title} description={project.title} />
+								<Project title={project.title} description={project.title} />
 							</Link>
 						</NextLink>
 					))}

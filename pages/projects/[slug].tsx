@@ -1,10 +1,11 @@
 import * as React from 'react'
 import Head from 'next/head'
 import Base from '@components/layout/Base'
-import { Text, Heading, Box, Link } from '@chakra-ui/react'
+import { HStack, Heading, Box, Link, Center } from '@chakra-ui/react'
 import { getAllProjects, getProjectBySlug, markdownToHtml } from 'lib/handleProjects'
 import { ProjectInfo } from 'types/types'
 import NextLink from 'next/link'
+import ProjectBody from '@components/layout/ProjectBody'
 
 type Props = {
 	project: ProjectInfo
@@ -12,19 +13,42 @@ type Props = {
 }
 
 const ProjectPage = ({ project, content }: Props) => {
+	let githubLink = ''
+	let gitInfo;
+
+	if (project.github !== undefined) {
+		githubLink = project.github
+		gitInfo = (
+			<NextLink href={githubLink} passHref={true} >
+				<Link isExternal={true}>Check this project out on GitHub!</Link>
+			</NextLink >
+		)
+	}
+
+
 	return (
 		<Base headerColor='black'>
 			<Head>
 				<title>{project.title}</title>
 			</Head>
-			<Box padding='1em'>
-				<Heading size='lg'>{project.title}</Heading>
-				<Text>{project.description}</Text>
-				<div dangerouslySetInnerHTML={{ __html: content }} />
+			<Box>
 
-				<NextLink href='/projects'>
-					<Link>Back to projects</Link>
-				</NextLink>
+				<Heading size='lg'>{project.title}</Heading>
+				<ProjectBody content={content} />
+				<Center>
+					<HStack>
+						<Box border='1px solid black' borderRadius='4px' padding='0.5em'>
+							<NextLink href='/projects'>
+								<Link>Back to projects</Link>
+							</NextLink>
+						</Box>
+						<Box border='1px solid black' borderRadius='4px' padding='0.5em'>
+							<div>
+								{gitInfo}
+							</div>
+						</Box>
+					</HStack>
+				</Center>
 			</Box>
 		</Base>
 	)
