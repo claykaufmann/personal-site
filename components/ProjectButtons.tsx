@@ -10,7 +10,6 @@ const ProjectButtons: React.FC<Props> = ({ github }) => {
   let gitInfo
 
   if (github != undefined) {
-    console.log(github)
     gitInfo = (
       <NextLink href={github} passHref={true}>
         <Link isExternal={true} style={{ textDecoration: 'none' }}>

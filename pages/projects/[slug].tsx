@@ -19,7 +19,6 @@ type Props = {
 }
 
 const ProjectPage: NextPage<Props> = ({ project, content }) => {
-  console.log(project.github)
   return (
     <Base headerColor="black">
       <Head>
