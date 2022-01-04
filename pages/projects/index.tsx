@@ -25,7 +25,10 @@ const ProjectsIndex: NextPage<Props> = ({ projects }) => {
           {projects.map((project) => (
             <NextLink key={project.slug} href={`projects/${project.slug}`}>
               <Link>
-                <Project title={project.title} description={project.title} />
+                <Project
+                  title={project.title}
+                  description={project.description}
+                />
               </Link>
             </NextLink>
           ))}

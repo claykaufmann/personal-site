@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Container } from '@chakra-ui/react'
 import styles from './ProjectBody.module.scss'
 
 interface Props {
@@ -7,9 +8,12 @@ interface Props {
 
 const ProjectBody: React.FC<Props> = ({ content }) => {
   return (
-    <React.Fragment>
-      <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: content }} />
-    </React.Fragment>
+    <Container maxW="container.lg">
+      <div
+        className={styles.markdown}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+    </Container>
   )
 }
 
