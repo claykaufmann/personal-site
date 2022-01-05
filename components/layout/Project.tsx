@@ -11,7 +11,7 @@ const Project: React.FC<props> = ({ title, description }) => {
   return (
     <Box
       maxW="sm"
-      height="7.5em"
+      height={['9em', null, '7.5em']}
       borderWidth="1px"
       borderRadius="lg"
       borderColor="black"

@@ -19,7 +19,7 @@ const ProjectButtons: React.FC<Props> = ({ github }) => {
             padding="0.5em"
             as="button"
           >
-            Check this project out on GitHub!
+            GitHub
           </Button>
         </Link>
       </NextLink>
