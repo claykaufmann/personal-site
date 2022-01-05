@@ -1,6 +1,14 @@
 import * as React from 'react'
 import Footer from '@components/layout/Footer'
-import { Button, Center, Heading, Link, Text, VStack, Box } from '@chakra-ui/react'
+import {
+  Button,
+  Center,
+  Heading,
+  Link,
+  Text,
+  VStack,
+  Box,
+} from '@chakra-ui/react'
 import styles from './SplashPage.module.scss'
 import Header from '@components/layout/Header'
 
@@ -33,16 +41,16 @@ export default class SplashPage extends React.Component<props, SplashState> {
       <React.Fragment>
         <div className={styles.splash}>
           <div className={styles.header}>
-            <Header textColor='white' />
+            <Header textColor="white" />
           </div>
           <div className={styles.mainContent}>
-            <Center h='25vh'>
-              <VStack align='center'>
+            <Center h="25vh">
+              <VStack align="center">
                 <Box
-                  align='center'
-                  color='white'
-                  padding='2rem'
-                  borderRadius='5px'
+                  align="center"
+                  color="white"
+                  padding="2rem"
+                  borderRadius="5px"
                   margin={{
                     base: '0 1rem',
                     sm: '0 5rem',
@@ -51,24 +59,27 @@ export default class SplashPage extends React.Component<props, SplashState> {
                     xl: '0 20rem',
                   }}
                 >
-                  <Heading size='lg' opacity='1'>
-                    <span role='img' aria-label='Wave emoji'>
+                  <Heading size="lg" opacity="1">
+                    <span role="img" aria-label="Wave emoji">
                       &#128075;
                     </span>
                     &nbsp;Hey There! I&apos;m Clay.
                   </Heading>
                   <Text>Developer, photographer, explorer.</Text>
                 </Box>
-                <Button className={styles.aboutButton} onClick={this.handleScrollToAbout}>
+                <Button
+                  className={styles.aboutButton}
+                  onClick={this.handleScrollToAbout}
+                >
                   About me.
                 </Button>
               </VStack>
             </Center>
           </div>
-          <Footer textColor='white' />
+          <Footer textColor="white" />
         </div>
         <div className={styles.container + ' ' + styles.about}>
-          <div className={styles.mainContent}>
+          <div className={styles.mainContent} id="about-section">
             <VStack>
               <Text
                 padding={{
@@ -79,11 +90,12 @@ export default class SplashPage extends React.Component<props, SplashState> {
                   xl: '0 20rem',
                 }}
               >
-                I was born and raised in Marin County, just north of the Golden Gate Bridge. From
-                there, I decided to attend the University of Vermont, where I quickly fell in love
-                with programming and computer science. After taking one computer science class, I
-                switched my major from Chemistry to computer science, and began to work towards a
-                degree.
+                I was born and raised in Marin County, just north of the Golden
+                Gate Bridge. From there, I decided to attend the University of
+                Vermont, where I quickly fell in love with programming and
+                computer science. After taking one computer science class, I
+                switched my major from Chemistry to computer science, and began
+                to work towards a degree.
               </Text>
               <Text
                 padding={{
@@ -94,10 +106,11 @@ export default class SplashPage extends React.Component<props, SplashState> {
                   xl: '0 20rem',
                 }}
               >
-                Fast forward a couple of years, and I am now a senior, focusing on machine learning
-                and backend systems. My expected graduation date is December 2021, where upon my
-                graduation I will continue to attend the University of Vermont as a master&apos;s
-                student, with an expected graduation date of December 2022.
+                Fast forward a couple of years, and I am now a senior, focusing
+                on machine learning and backend systems. My expected graduation
+                date is December 2021, where upon my graduation I will continue
+                to attend the University of Vermont as a master&apos;s student,
+                with an expected graduation date of December 2022.
               </Text>
               <Text
                 padding={{
@@ -108,20 +121,24 @@ export default class SplashPage extends React.Component<props, SplashState> {
                   xl: '0 20rem',
                 }}
               >
-                I am currently looking for internship opportunities as well as post-graduation job
-                opportunities for software engineering. If you are interested, let&apos;s{' '}
-                <Link href='mailto:claykaufmann@gmail.com' color='blue'>
+                I am currently looking for internship opportunities as well as
+                post-graduation job opportunities for software engineering. If
+                you are interested, let&apos;s{' '}
+                <Link href="mailto:claykaufmann@gmail.com" color="blue">
                   get in touch.
                 </Link>
               </Text>
             </VStack>
           </div>
           <Center className={styles.buttonContainer} ref={this.ref}>
-            <Button className={styles.aboutButton} onClick={this.handleScrollToTop}>
+            <Button
+              className={styles.aboutButton}
+              onClick={this.handleScrollToTop}
+            >
               Back to top
             </Button>
           </Center>
-          <Footer textColor='black' />
+          <Footer textColor="black" />
         </div>
       </React.Fragment>
     )
