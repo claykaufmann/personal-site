@@ -20,6 +20,9 @@ const Nav: React.VFC<props> = ({ textColor }) => {
   } else {
     nav = (
       <HStack className={styles.nav} color={textColor}>
+        <NextLink href="/#about-section">
+          <Link>About</Link>
+        </NextLink>
         <NextLink href="/projects">
           <Link>Projects</Link>
         </NextLink>
