@@ -1,7 +1,7 @@
 import * as React from 'react'
 import NextLink from 'next/link'
 import Base from '@components/layout/Base'
-import { Text, Heading, SimpleGrid, Box, Link } from '@chakra-ui/react'
+import { Heading, SimpleGrid, Box, Link } from '@chakra-ui/react'
 import Project from '@components/layout/Project'
 import { ProjectInfo } from 'types/types'
 import { getAllProjects } from 'lib/handleProjects'
@@ -19,8 +19,9 @@ const ProjectsIndex: NextPage<Props> = ({ projects }) => {
         <title>Projects</title>
       </Head>
       <Box padding="1em">
-        <Heading size="lg">Projects</Heading>
-        <Text>Find all of my projects here.</Text>
+        <Heading size="lg" marginLeft="1em">
+          Projects
+        </Heading>
         <SimpleGrid columns={[2, null, 3, 4]}>
           {projects.map((project) => (
             <NextLink key={project.slug} href={`projects/${project.slug}`}>
