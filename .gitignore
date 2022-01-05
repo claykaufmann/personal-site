@@ -1,6 +1,7 @@
 node_modules
 tests/__snapshots__
 .vscode
+.log/
 
 .next/
 /out/

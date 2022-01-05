@@ -17,7 +17,10 @@ const Burger: React.VFC<Props> = ({ open, setOpen, textColor }) => {
     burgerBars = styles.burgerBarBlack
   }
   return (
-    <div className={open ? styles.cross : styles.burger} onClick={() => setOpen(!open)}>
+    <div
+      className={open ? styles.cross : styles.burger}
+      onClick={() => setOpen(!open)}
+    >
       <div className={burgerBars} />
       <div className={burgerBars} />
       <div className={burgerBars} />
