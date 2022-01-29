@@ -4,7 +4,7 @@ description: A small blackjack game made with CRA and flask
 github: https://github.com/claykaufmann/cs205-final-project
 ---
 
-This was a small web-app/game I made for a final project for a class I took at UVM, CS205 Software Engineering. It was developed with 3 other groupmates, Rachel Liston, Aidan Siegal, and Vincent Lai over the course of a month and a half. A running version of the game can be found at [cs205.claykaufmann.com](http://cs205.claykaufmann.com).
+This was a small web-app/game I made for a final project for a class I took at UVM, CS205 Software Engineering. It was developed with 3 other groupmates, Rachel Liston, Aidan Siegal, and Vincent Lai over the course of a month and a half.
 
 I spearheaded most of the project development. As the only project member with any React experience, I took over almost all of the React/JS development. On top of that, I drafted the app structure, including the JSON communication between the front end and backend of the app. Finally, I set up both the frontend and backend directory structures, as well as wrote a simple VSCode run script to allow both projects to be started easier.
 
