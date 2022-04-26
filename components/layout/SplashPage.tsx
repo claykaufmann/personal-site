@@ -47,7 +47,7 @@ export default class SplashPage extends React.Component<props, SplashState> {
             <Center h="25vh">
               <VStack align="center">
                 <Box
-                  align="center"
+                  textAlign='center'
                   color="white"
                   padding="2rem"
                   borderRadius="5px"
