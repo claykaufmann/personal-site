@@ -5,17 +5,23 @@ import {
   VStack,
   Center,
   Box,
-  Button,
   Text,
+  Icon,
   Link,
 } from '@chakra-ui/react'
 import Head from 'next/head'
-
+import { BsChevronCompactDown } from 'react-icons/bs'
 import styles from '../styles/Home.module.scss'
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
 
 const Home: NextPage = () => {
+  const aboutRef = React.useRef<HTMLDivElement>(null)
+
+  const handleScroll = () => {
+    aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <>
       <div className={styles.splash}>
@@ -48,7 +54,35 @@ const Home: NextPage = () => {
                   </Heading>
                   <Text>Developer, photographer, explorer.</Text>
                 </Box>
-                <Button>ABOUT</Button>
+                <Box
+                  pos="relative"
+                  top="50vh"
+                  role="group"
+                  onClick={handleScroll}
+                  cursor="pointer"
+                  display="flex"
+                  flexDir="column"
+                  transition="top ease 0.5s"
+                  _hover={{ top: '50.4vh' }}
+                  textAlign="center"
+                >
+                  <Text
+                    textAlign="center"
+                    color="white"
+                    fontSize="130%"
+                    _groupHover={{ color: 'gainsboro' }}
+                    marginBottom={-3}
+                  >
+                    ABOUT
+                  </Text>
+                  <Icon
+                    alignSelf="center"
+                    color="white"
+                    as={BsChevronCompactDown}
+                    fontSize="250%"
+                    _groupHover={{ color: 'gainsboro' }}
+                  ></Icon>
+                </Box>
               </VStack>
             </Center>
           </Box>
@@ -56,7 +90,7 @@ const Home: NextPage = () => {
         <Footer textColor="white" />
       </div>
       <div className={styles.container}>
-        <div className={styles.mainContent} id="about-section">
+        <div className={styles.mainContent} id="about-section" ref={aboutRef}>
           <Box margin="0.5em 2em">
             <Heading>About</Heading>
             <Text>
