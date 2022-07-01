@@ -10,7 +10,7 @@ import {
   Link,
 } from '@chakra-ui/react'
 import Head from 'next/head'
-import { BsChevronCompactDown } from 'react-icons/bs'
+import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
 import styles from '../styles/Home.module.scss'
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
@@ -18,13 +18,19 @@ import Footer from '@components/layout/Footer'
 const Home: NextPage = () => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
 
-  const handleScroll = () => {
+  const scrollDown = () => {
     aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const topRef = React.useRef<HTMLDivElement>(null)
+
+  const scrollUp = () => {
+    topRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <>
-      <div className={styles.splash}>
+      <div className={styles.splash} ref={topRef}>
         <Head>
           <title>Clay Kaufmann</title>
         </Head>
@@ -58,7 +64,7 @@ const Home: NextPage = () => {
                   pos="relative"
                   top="50vh"
                   role="group"
-                  onClick={handleScroll}
+                  onClick={scrollDown}
                   cursor="pointer"
                   display="flex"
                   flexDir="column"
@@ -120,6 +126,36 @@ const Home: NextPage = () => {
             </Text>
           </Box>
         </div>
+        <VStack>
+          <Box
+            role="group"
+            onClick={scrollUp}
+            cursor="pointer"
+            display="flex"
+            position={'relative'}
+            top={0}
+            flexDir="column"
+            transition="top ease 0.5s"
+            _hover={{ top: '-5px' }}
+          >
+            <Icon
+              alignSelf="center"
+              color="black"
+              as={BsChevronCompactUp}
+              fontSize="250%"
+              _groupHover={{ color: '#34495e' }}
+              marginBottom={-3}
+            ></Icon>
+            <Text
+              textAlign="center"
+              color="black"
+              fontSize="100%"
+              _groupHover={{ color: '#34495e' }}
+            >
+              Back to top
+            </Text>
+          </Box>
+        </VStack>
         <Footer textColor="black" />
       </div>
     </>
