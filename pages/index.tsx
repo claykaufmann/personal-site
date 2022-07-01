@@ -94,15 +94,29 @@ const Home: NextPage = () => {
           <Box margin="0.5em 2em">
             <Heading>About</Heading>
             <Text>
-              I am currently a Master&apos;s candidate at the University of
-              Vermont, where I study CS. My main interests within the CS field
-              revolve around the intersection of networking, DevOps, and general
-              systems programming. My expected graduation is December 2022,
-              after which I plan to enter the software engineering industry. If
-              you are interested, let&apos;s{' '}
+              I was born and raised just north of San Francisco, in Marin
+              County. Being the son of a software engineer, I had no option but
+              to embrace computers and what they could do. From a young age, I
+              quickly embraced computers, and as a result, when I got to
+              college, I decided to pursue computer science and software
+              engineering.
+            </Text>
+            <br />
+            <Text>
+              Fast forward 4 years later, and I am currently a Master&apos;s
+              candidate at the University of Vermont, where I continue to study
+              computer science. My main interests within the CS field revolve
+              around the intersection of networking, DevOps, and general systems
+              programming. My expected graduation is December 2022, after which
+              I plan to enter the software engineering industry. If you are
+              interested, let&apos;s{' '}
               <Link href="mailto:claykaufmann@gmail.com" color="blue">
                 get in touch.
-              </Link>
+              </Link>{' '}
+              Upon entering the industry, I would like to get into the field of
+              site reliability engineering, where my unique combination of
+              interests within the software engineering realm would apply quite
+              well.
             </Text>
           </Box>
         </div>
