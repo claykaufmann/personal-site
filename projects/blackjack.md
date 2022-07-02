@@ -1,7 +1,8 @@
 ---
 title: Blackjack
 description: A small blackjack game made with CRA and flask
-github: https://github.com/claykaufmann/cs205-final-project
+githubAPI: https://api.github.com/repos/claykaufmann/cs205-final-project
+githubURL: https://github.com/claykaufmann/cs205-final-project
 ---
 
 This was a small web-app/game I made for a final project for a class I took at UVM, CS205 Software Engineering. It was developed with 3 other groupmates, Rachel Liston, Aidan Siegal, and Vincent Lai over the course of a month and a half.

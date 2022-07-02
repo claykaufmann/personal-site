@@ -1,7 +1,8 @@
 ---
 title: Personal Website
 description: My personal coding portfolio
-github: https://github.com/claykaufmann/personal-site
+githubAPI: https://api.github.com/repos/claykaufmann/personal-site
+githubURL: https://github.com/claykaufmann/personal-site
 ---
 
 This is my personal website. It houses my current resume, a quick blurb about me, and contains links towards my projects.

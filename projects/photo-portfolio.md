@@ -1,7 +1,8 @@
 ---
 title: Photography Portfolio Site
 description: My personal photography portfolio website
-github: https://github.com/claykaufmann/photo-portfolio
+githubAPI: https://api.github.com/repos/claykaufmann/photo-portfolio
+githubURL: https://github.com/claykaufmann/photo-portfolio
 ---
 
 This is my photography portfolio website. It has my photography portfolio, allowing people to see my best photography work. It also contains a short bit about me. Live site available at [https://photo.claykaufmann.com](https://photo.claykaufmann.com).
