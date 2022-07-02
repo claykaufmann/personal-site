@@ -9,6 +9,7 @@ interface props {
   language: string
   stars: number
   forks: number
+  localPage?: string
 }
 
 const RepoCard: React.VFC<props> = ({
@@ -18,6 +19,7 @@ const RepoCard: React.VFC<props> = ({
   language,
   stars,
   forks,
+  localPage,
 }) => {
   const [color, setColor] = useState('')
 
@@ -35,7 +37,7 @@ const RepoCard: React.VFC<props> = ({
   }, [language])
 
   return (
-    <Box
+    <Link
       fontFamily={
         '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'
       }
@@ -48,6 +50,8 @@ const RepoCard: React.VFC<props> = ({
       color={'#24292e'}
       display={'flex'}
       flexDir={'column'}
+      style={{ textDecoration: 'none' }}
+      href={localPage ? localPage : url}
     >
       <Box display={'flex'} alignItems={'center'}>
         <svg
@@ -144,7 +148,7 @@ const RepoCard: React.VFC<props> = ({
           &nbsp;<span>{forks}</span>
         </Box>
       </Box>
-    </Box>
+    </Link>
   )
 }
 

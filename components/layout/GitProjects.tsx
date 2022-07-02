@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
-import { SimpleGrid, Link } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import { fetchRepos } from 'lib/fetchFromGitHub'
 import RepoCard from '@components/GitHubRepoCard'
 import { GitProjectsHome, gitRepoInfo } from 'types/types'
@@ -25,20 +25,16 @@ const GitProjectsHomePage: React.VFC<props> = ({ projects }) => {
   return (
     <SimpleGrid columns={[1, 2, 3]} spacing={'0.5em'}>
       {repos?.map((repo) => (
-        <Link
+        <RepoCard
           key={repo.title}
-          style={{ textDecoration: 'none' }}
-          href={repo.localPage ? repo.localPage : repo.url}
-        >
-          <RepoCard
-            title={repo.title}
-            url={repo.url}
-            description={repo.description}
-            language={repo.language}
-            stars={repo.stars}
-            forks={repo.forks}
-          />
-        </Link>
+          title={repo.title}
+          url={repo.url}
+          description={repo.description}
+          language={repo.language}
+          stars={repo.stars}
+          forks={repo.forks}
+          localPage={repo.localPage}
+        />
       ))}
     </SimpleGrid>
   )
