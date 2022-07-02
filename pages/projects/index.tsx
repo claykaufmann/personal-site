@@ -17,8 +17,8 @@ const ProjectsIndex: NextPage<Props> = ({ projects }) => {
       <Head>
         <title>Development</title>
       </Head>
-      <Box padding="1em">
-        <Heading size="lg" marginLeft="1em">
+      <Box padding="0.5em 6em">
+        <Heading size="lg" textAlign={'center'} paddingBottom={'0.2em'}>
           Development
         </Heading>
         <GitProjects

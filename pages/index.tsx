@@ -105,7 +105,11 @@ const Home: NextPage<props> = ({ projects }) => {
       </div>
       <div className={styles.container}>
         <div className={styles.mainContent} id="about-section" ref={aboutRef}>
-          <Box margin="1em 2em">
+          <Box
+            marginTop={'1em'}
+            marginLeft={['2em', '4em', '8em']}
+            marginRight={['2em', '4em', '8em']}
+          >
             <Heading>About</Heading>
             <Text>
               I was born and raised just north of San Francisco, in Marin
@@ -133,7 +137,11 @@ const Home: NextPage<props> = ({ projects }) => {
             </Text>
           </Box>
 
-          <Box margin="2em 2em">
+          <Box
+            marginTop={'1em'}
+            marginLeft={['2em', '4em', '8em']}
+            marginRight={['2em', '4em', '8em']}
+          >
             <Heading marginBottom={'0.2em'}>Development</Heading>
             <Text marginBottom={'0.4em'}>
               See more at{' '}
@@ -156,7 +164,11 @@ const Home: NextPage<props> = ({ projects }) => {
             />
           </Box>
 
-          <Box margin="1em 2em">
+          <Box
+            marginTop={'1em'}
+            marginLeft={['2em', '4em', '8em']}
+            marginRight={['2em', '4em', '8em']}
+          >
             <Heading>
               <Link href="https://photo.claykaufmann.com" color="#0366d6">
                 Photography
