@@ -14,6 +14,7 @@ import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
 import styles from '../styles/Home.module.scss'
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
+import Projects from '@components/layout/GitProjects'
 
 const Home: NextPage = () => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
@@ -124,6 +125,18 @@ const Home: NextPage = () => {
               interests within the software engineering realm would apply quite
               well.
             </Text>
+          </Box>
+
+          <Box margin="4em 2em">
+            <Heading>Development</Heading>
+            <Projects
+              repoUrls={[
+                'https://api.github.com/repos/claykaufmann/personal-site',
+                'https://api.github.com/repos/claykaufmann/photo-portfolio',
+                'https://api.github.com/repos/claykaufmann/srrw-peak-detection',
+                'https://api.github.com/repos/claykaufmann/cs254-final-project',
+              ]}
+            />
           </Box>
         </div>
         <VStack>

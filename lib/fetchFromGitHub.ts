@@ -9,7 +9,7 @@ interface gitRepoInfo {
   forks: number
 }
 
-const fetchRepos = async (repoUrls: [string]): Promise<gitRepoInfo[]> => {
+const fetchRepos = async (repoUrls: string[]): Promise<gitRepoInfo[]> => {
   // map everything together
   const repos = await Promise.all(
     repoUrls.map(async (url) => {

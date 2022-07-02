@@ -4,14 +4,14 @@ import { fetchRepos, gitRepoInfo } from 'lib/fetchFromGitHub'
 import RepoCard from '@components/GitHubRepoCard'
 
 interface props {
-  repoUrls: [string]
+  repoUrls: string[]
 }
 
 const Projects: React.VFC<props> = ({ repoUrls }) => {
   const [repos, setRepos] = useState<gitRepoInfo[]>()
 
   useEffect(() => {
-    const getRepos = async (repoUrls: [string]) => {
+    const getRepos = async (repoUrls: string[]) => {
       const fetchedRepos = await fetchRepos(repoUrls)
 
       setRepos(fetchedRepos)
