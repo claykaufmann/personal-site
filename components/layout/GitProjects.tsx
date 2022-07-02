@@ -9,7 +9,7 @@ interface props {
 
 const GitProjects: React.VFC<props> = ({ repos }) => {
   return (
-    <SimpleGrid columns={[1, 2, 3]} spacing={'1em 5em'}>
+    <SimpleGrid columns={[1, 1, 2, 3]} spacing={'1em 5em'}>
       {repos.map((repo) => (
         <RepoCard
           key={repo.title}
