@@ -32,7 +32,7 @@ const ProjectPage: NextPage<Props> = ({ project, content }) => {
         </Center>
         <ProjectBody content={content} />
         <Center paddingTop="1em">
-          <ProjectButtons github={project.github} />
+          <ProjectButtons github={project.githubURL} />
         </Center>
       </Box>
     </Base>
