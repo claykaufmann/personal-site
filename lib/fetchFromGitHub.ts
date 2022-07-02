@@ -29,5 +29,4 @@ const fetchRepos = async (
   return repos
 }
 
-export type { gitRepoInfo }
 export { fetchRepos }
