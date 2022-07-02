@@ -14,7 +14,7 @@ import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
 import styles from '../styles/Home.module.scss'
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
-import GitProjectsHomePage from '@components/layout/GitProjects'
+import GitProjects from '@components/layout/GitProjects'
 import NextLink from 'next/link'
 import { getAllProjects } from 'lib/handleProjects'
 import { ProjectInfo } from 'types/types'
@@ -146,7 +146,7 @@ const Home: NextPage<props> = ({ projects }) => {
               </NextLink>
               .
             </Text>
-            <GitProjectsHomePage
+            <GitProjects
               projects={projects.map((project) => {
                 return {
                   localProjectUrl: `projects/${project.slug}`,

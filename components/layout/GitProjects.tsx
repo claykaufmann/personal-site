@@ -3,17 +3,17 @@ import { useState, useEffect } from 'react'
 import { SimpleGrid } from '@chakra-ui/react'
 import { fetchRepos } from 'lib/fetchFromGitHub'
 import RepoCard from '@components/GitHubRepoCard'
-import { GitProjectsHome, gitRepoInfo } from 'types/types'
+import { GitProjects, gitRepoInfo } from 'types/types'
 
 interface props {
-  projects: GitProjectsHome[]
+  projects: GitProjects[]
 }
 
-const GitProjectsHomePage: React.VFC<props> = ({ projects }) => {
+const GitProjects: React.VFC<props> = ({ projects }) => {
   const [repos, setRepos] = useState<gitRepoInfo[]>()
 
   useEffect(() => {
-    const getRepos = async (repoUrls: GitProjectsHome[]) => {
+    const getRepos = async (repoUrls: GitProjects[]) => {
       const fetchedRepos = await fetchRepos(repoUrls)
 
       setRepos(fetchedRepos)
@@ -40,4 +40,4 @@ const GitProjectsHomePage: React.VFC<props> = ({ projects }) => {
   )
 }
 
-export default GitProjectsHomePage
+export default GitProjects

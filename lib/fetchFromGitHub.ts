@@ -1,9 +1,7 @@
 // fetch information from github
-import { GitProjectsHome, gitRepoInfo } from 'types/types'
+import { GitProjects, gitRepoInfo } from 'types/types'
 
-const fetchRepos = async (
-  reposInfo: GitProjectsHome[]
-): Promise<gitRepoInfo[]> => {
+const fetchRepos = async (reposInfo: GitProjects[]): Promise<gitRepoInfo[]> => {
   // map everything together
   const repos = await Promise.all(
     reposInfo.map(async (repo) => {

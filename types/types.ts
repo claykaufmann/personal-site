@@ -23,7 +23,7 @@ export interface gitRepoInfo {
   localPage: string
 }
 
-export interface GitProjectsHome {
+export interface GitProjects {
   localProjectUrl: string
   gitAPIUrl: string
 }
