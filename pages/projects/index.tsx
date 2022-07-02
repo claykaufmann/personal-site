@@ -16,11 +16,11 @@ const ProjectsIndex: NextPage<Props> = ({ projects }) => {
   return (
     <Base headerColor="black">
       <Head>
-        <title>Projects</title>
+        <title>Development</title>
       </Head>
       <Box padding="1em">
         <Heading size="lg" marginLeft="1em">
-          Projects
+          Development
         </Heading>
         <SimpleGrid columns={[2, null, 3, 4]}>
           {projects.map((project) => (
