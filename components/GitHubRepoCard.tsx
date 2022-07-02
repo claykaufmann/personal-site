@@ -8,14 +8,6 @@ interface props {
   language: string
   stars: number
   forks: number
-  fullName: string
-}
-
-interface Colors {
-  language: {
-    color: string
-    url: string
-  }
 }
 
 const RepoCard: React.VFC<props> = ({
@@ -25,24 +17,21 @@ const RepoCard: React.VFC<props> = ({
   language,
   stars,
   forks,
-  fullName,
 }) => {
-  const [colors, setColors] = useState({ language: { color: '', url: '' } })
+  const [color, setColor] = useState('')
 
   // set the colors
   useEffect(() => {
-    const setColorsOnLoad = async () => {
+    const setColorOnLoad = async () => {
       const res = await fetch(
         'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
       )
       const fetchedColors = await res.json()
-      setColors(fetchedColors)
-
-      console.log(fetchedColors)
+      setColor(fetchedColors[language].color)
     }
 
-    setColorsOnLoad()
-  })
+    setColorOnLoad()
+  }, [language])
 
   return (
     <div
@@ -89,7 +78,7 @@ const RepoCard: React.VFC<props> = ({
           style={{ color: 'inherit', textDecoration: 'none' }}
           href={forks ? url : ''}
         >
-          {forks ? fullName : ''}
+          {forks ? title : ''}
         </a>
       </div>
       <div
@@ -111,15 +100,13 @@ const RepoCard: React.VFC<props> = ({
               width: '12px',
               height: '12px',
               borderRadius: '100%',
-              backgroundColor: language
-                ? colors[language as keyof Colors].color
-                : '',
+              backgroundColor: language ? color : '',
               display: 'inline-block',
               top: '1px',
               position: 'relative',
             }}
           ></span>
-          <span>{language}</span>
+          <span> {language}</span>
         </div>
         <div
           style={{
