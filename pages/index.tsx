@@ -64,14 +64,14 @@ const Home: NextPage = () => {
                 </Box>
                 <Box
                   pos="relative"
-                  top="50vh"
+                  top="48vh"
                   role="group"
                   onClick={scrollDown}
                   cursor="pointer"
                   display="flex"
                   flexDir="column"
                   transition="top ease 0.5s"
-                  _hover={{ top: '50.4vh' }}
+                  _hover={{ top: '48.4vh' }}
                   textAlign="center"
                 >
                   <Text
