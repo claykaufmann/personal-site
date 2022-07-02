@@ -128,16 +128,29 @@ const Home: NextPage = () => {
 
           <Box margin="4em 2em">
             <Heading marginBottom={'0.2em'}>Development</Heading>
-            <Link href="/projects" style={{ textDecoration: 'none' }}>
-              <GitProjectsHomePage
-                repoUrls={[
-                  'https://api.github.com/repos/claykaufmann/personal-site',
-                  'https://api.github.com/repos/claykaufmann/photo-portfolio',
-                  'https://api.github.com/repos/claykaufmann/srrw-peak-detection',
-                  'https://api.github.com/repos/claykaufmann/cs254-final-project',
-                ]}
-              />
-            </Link>
+            <GitProjectsHomePage
+              projects={[
+                {
+                  localProjectUrl: '/projects/personal-site',
+                  gitAPIUrl:
+                    'https://api.github.com/repos/claykaufmann/personal-site',
+                },
+                {
+                  localProjectUrl: '/projects/photo-portfolio',
+                  gitAPIUrl:
+                    'https://api.github.com/repos/claykaufmann/photo-portfolio',
+                },
+                {
+                  gitAPIUrl:
+                    'https://api.github.com/repos/claykaufmann/srrw-peak-detection',
+                },
+                {
+                  localProjectUrl: '/projects/art-classifier',
+                  gitAPIUrl:
+                    'https://api.github.com/repos/claykaufmann/cs254-final-project',
+                },
+              ]}
+            />
           </Box>
         </div>
         <VStack>
