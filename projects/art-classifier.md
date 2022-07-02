@@ -1,7 +1,8 @@
 ---
 title: Art Classifier
 description: A classifier that attempts to name an artist, given a painting
-github: https://github.com/claykaufmann/cs254-final-project
+githubAPI: https://api.github.com/repos/claykaufmann/cs254-final-project
+githubURL: https://github.com/claykaufmann/cs254-final-project
 ---
 
 This project is 3 different machine learning models that attempt to classify paintings by artist. This project was developed as a final project for my first machine learning course, UVM CS 254. In order to make the project complex enough, we decided to work together to create a pipeline for loading in our images/data, and then individually develop our models from there. We all decided to use the transfer learning approach, which involves collecting a previously trained advanced neural net, setting its layers to not be trainable, then adding a couple more layers after it, and training those layers on our dataset. This proved to be quite effective. For a more descriptive write-up on our project, visit the GitHub repository, linked below.
