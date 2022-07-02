@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import {
   Heading,
   VStack,
@@ -16,8 +16,14 @@ import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
 import GitProjectsHomePage from '@components/layout/GitProjects'
 import NextLink from 'next/link'
+import { getAllProjects } from 'lib/handleProjects'
+import { ProjectInfo } from 'types/types'
 
-const Home: NextPage = () => {
+interface props {
+  projects: ProjectInfo[]
+}
+
+const Home: NextPage<props> = ({ projects }) => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
 
   const scrollDown = () => {
@@ -141,32 +147,12 @@ const Home: NextPage = () => {
               .
             </Text>
             <GitProjectsHomePage
-              projects={[
-                {
-                  localProjectUrl: '/projects/personal-site',
-                  gitAPIUrl:
-                    'https://api.github.com/repos/claykaufmann/personal-site',
-                },
-                {
-                  localProjectUrl: '/projects/photo-portfolio',
-                  gitAPIUrl:
-                    'https://api.github.com/repos/claykaufmann/photo-portfolio',
-                },
-                {
-                  gitAPIUrl:
-                    'https://api.github.com/repos/claykaufmann/srrw-peak-detection',
-                },
-                {
-                  localProjectUrl: '/projects/art-classifier',
-                  gitAPIUrl:
-                    'https://api.github.com/repos/claykaufmann/cs254-final-project',
-                },
-                {
-                  localProjectUrl: '/projects/blackjack',
-                  gitAPIUrl:
-                    'https://api.github.com/repos/claykaufmann/cs205-final-project',
-                },
-              ]}
+              projects={projects.map((project) => {
+                return {
+                  localProjectUrl: `projects/${project.slug}`,
+                  gitAPIUrl: project.githubAPI,
+                }
+              })}
             />
           </Box>
 
@@ -215,3 +201,11 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async () => {
+  const projects = getAllProjects()
+
+  return {
+    props: { projects },
+  }
+}
