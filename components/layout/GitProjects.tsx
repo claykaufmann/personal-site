@@ -23,7 +23,7 @@ const GitProjects: React.VFC<props> = ({ projects }) => {
   }, [projects])
 
   return (
-    <SimpleGrid columns={[1, 2, 3]} spacing={'0.5em'}>
+    <SimpleGrid columns={[1, 2, 3]} spacing={'1em 5em'}>
       {repos?.map((repo) => (
         <RepoCard
           key={repo.title}
