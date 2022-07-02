@@ -17,13 +17,14 @@ import Footer from '@components/layout/Footer'
 import GitProjects from '@components/layout/GitProjects'
 import NextLink from 'next/link'
 import { getAllProjects } from 'lib/handleProjects'
-import { ProjectInfo } from 'types/types'
+import { gitRepoInfo } from 'types/types'
+import { fetchRepos } from 'lib/fetchFromGitHub'
 
 interface props {
-  projects: ProjectInfo[]
+  repos: gitRepoInfo[]
 }
 
-const Home: NextPage<props> = ({ projects }) => {
+const Home: NextPage<props> = ({ repos }) => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
 
   const scrollDown = () => {
@@ -154,14 +155,7 @@ const Home: NextPage<props> = ({ projects }) => {
               </NextLink>
               .
             </Text>
-            <GitProjects
-              projects={projects.map((project) => {
-                return {
-                  localProjectUrl: `projects/${project.slug}`,
-                  gitAPIUrl: project.githubAPI,
-                }
-              })}
-            />
+            <GitProjects repos={repos} />
           </Box>
 
           <Box
@@ -217,7 +211,16 @@ export default Home
 export const getStaticProps: GetStaticProps = async () => {
   const projects = getAllProjects()
 
+  const repos = await fetchRepos(
+    projects.map((project) => {
+      return {
+        localProjectUrl: `projects/${project.slug}`,
+        gitAPIUrl: project.githubAPI,
+      }
+    })
+  )
+
   return {
-    props: { projects },
+    props: { repos },
   }
 }

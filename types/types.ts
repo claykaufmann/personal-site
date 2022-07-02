@@ -21,9 +21,10 @@ export interface gitRepoInfo {
   stars: number
   forks: number
   localPage: string
+  color: string
 }
 
-export interface GitProjects {
+export interface GitProjectsInterface {
   localProjectUrl: string
   gitAPIUrl: string
 }

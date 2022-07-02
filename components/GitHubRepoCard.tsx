@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
 import { Link, Box } from '@chakra-ui/react'
 
 interface props {
@@ -10,6 +9,7 @@ interface props {
   stars: number
   forks: number
   localPage?: string
+  color: string
 }
 
 const RepoCard: React.VFC<props> = ({
@@ -20,22 +20,8 @@ const RepoCard: React.VFC<props> = ({
   stars,
   forks,
   localPage,
+  color,
 }) => {
-  const [color, setColor] = useState('')
-
-  // set the colors
-  useEffect(() => {
-    const setColorOnLoad = async () => {
-      const res = await fetch(
-        'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
-      )
-      const fetchedColors = await res.json()
-      setColor(fetchedColors[language].color)
-    }
-
-    setColorOnLoad()
-  }, [language])
-
   return (
     <Link
       fontFamily={
@@ -101,7 +87,7 @@ const RepoCard: React.VFC<props> = ({
               width: '12px',
               height: '12px',
               borderRadius: '100%',
-              backgroundColor: language ? color : '',
+              backgroundColor: color ? color : '',
               display: 'inline-block',
               top: '1px',
               position: 'relative',
