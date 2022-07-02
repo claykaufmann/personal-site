@@ -171,14 +171,11 @@ const Home: NextPage = () => {
           </Box>
 
           <Box margin="1em 2em">
-            <Heading>Photography</Heading>
-            <Text>
-              View more on{' '}
+            <Heading>
               <Link href="https://photo.claykaufmann.com" color="#0366d6">
-                my photography portfolio site
+                Photography
               </Link>
-              .
-            </Text>
+            </Heading>
           </Box>
         </div>
         <VStack>
