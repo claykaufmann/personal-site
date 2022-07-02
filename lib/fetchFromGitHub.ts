@@ -1,20 +1,14 @@
 // fetch information from github
+import { GitProjectsHome, gitRepoInfo } from 'types/types'
 
-interface gitRepoInfo {
-  title: string
-  url: string
-  description: string
-  language: string
-  stars: number
-  forks: number
-}
-
-const fetchRepos = async (repoUrls: string[]): Promise<gitRepoInfo[]> => {
+const fetchRepos = async (
+  reposInfo: GitProjectsHome[]
+): Promise<gitRepoInfo[]> => {
   // map everything together
   const repos = await Promise.all(
-    repoUrls.map(async (url) => {
+    reposInfo.map(async (repo) => {
       // fetch data, add it
-      const res = await fetch(url)
+      const res = await fetch(repo.gitAPIUrl)
 
       const data = await res.json()
 
@@ -25,6 +19,7 @@ const fetchRepos = async (repoUrls: string[]): Promise<gitRepoInfo[]> => {
         language: data.language,
         stars: data.stargazers_count,
         forks: data.forks_count,
+        localPage: repo.localProjectUrl,
       }
 
       return info
