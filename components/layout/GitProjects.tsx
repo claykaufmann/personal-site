@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
+import { SimpleGrid } from '@chakra-ui/react'
 import { fetchRepos, gitRepoInfo } from 'lib/fetchFromGitHub'
 import RepoCard from '@components/GitHubRepoCard'
 
@@ -21,7 +22,7 @@ const Projects: React.VFC<props> = ({ repoUrls }) => {
   }, [repoUrls])
 
   return (
-    <>
+    <SimpleGrid columns={[1, 2, 3]}>
       {repos?.map((repo) => (
         <RepoCard
           key={repo.title}
@@ -33,7 +34,7 @@ const Projects: React.VFC<props> = ({ repoUrls }) => {
           forks={repo.forks}
         />
       ))}
-    </>
+    </SimpleGrid>
   )
 }
 
