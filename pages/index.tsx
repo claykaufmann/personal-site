@@ -15,6 +15,7 @@ import styles from '../styles/Home.module.scss'
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
 import GitProjectsHomePage from '@components/layout/GitProjects'
+import NextLink from 'next/link'
 
 const Home: NextPage = () => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
@@ -98,7 +99,7 @@ const Home: NextPage = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.mainContent} id="about-section" ref={aboutRef}>
-          <Box margin="0.5em 2em">
+          <Box margin="1em 2em">
             <Heading>About</Heading>
             <Text>
               I was born and raised just north of San Francisco, in Marin
@@ -126,8 +127,19 @@ const Home: NextPage = () => {
             </Text>
           </Box>
 
-          <Box margin="4em 2em">
+          <Box margin="2em 2em">
             <Heading marginBottom={'0.2em'}>Development</Heading>
+            <Text marginBottom={'0.4em'}>
+              See more at{' '}
+              <Link href="https://github.com/claykaufmann" color="#0366d6">
+                my github profile
+              </Link>{' '}
+              or view write-ups about the projects at the{' '}
+              <NextLink href="/projects">
+                <Link color="#0366d6">projects page</Link>
+              </NextLink>
+              .
+            </Text>
             <GitProjectsHomePage
               projects={[
                 {
@@ -149,8 +161,24 @@ const Home: NextPage = () => {
                   gitAPIUrl:
                     'https://api.github.com/repos/claykaufmann/cs254-final-project',
                 },
+                {
+                  localProjectUrl: '/projects/blackjack',
+                  gitAPIUrl:
+                    'https://api.github.com/repos/claykaufmann/cs205-final-project',
+                },
               ]}
             />
+          </Box>
+
+          <Box margin="1em 2em">
+            <Heading>Photography</Heading>
+            <Text>
+              View more on{' '}
+              <Link href="https://photo.claykaufmann.com" color="#0366d6">
+                my photography portfolio site
+              </Link>
+              .
+            </Text>
           </Box>
         </div>
         <VStack>
