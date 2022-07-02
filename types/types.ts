@@ -4,7 +4,8 @@ export interface ProjectInfo {
   slug: string
   title: string
   description: string
-  github?: string
+  githubAPI: string
+  githubURL: string
   content: string
 }
 
@@ -19,10 +20,10 @@ export interface gitRepoInfo {
   language: string
   stars: number
   forks: number
-  localPage?: string
+  localPage: string
 }
 
 export interface GitProjectsHome {
-  localProjectUrl?: string
+  localProjectUrl: string
   gitAPIUrl: string
 }
