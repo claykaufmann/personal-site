@@ -39,13 +39,15 @@ const RepoCard: React.VFC<props> = ({
       fontFamily={
         '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'
       }
-      border={'1px solid #e1e4e8'}
+      border={'1px solid #d3d7dd'}
       borderRadius={'6px'}
       background={'white'}
       padding={'16px'}
       fontSize={'14px'}
       lineHeight={'1.5'}
       color={'#24292e'}
+      display={'flex'}
+      flexDir={'column'}
     >
       <Box display={'flex'} alignItems={'center'}>
         <svg
@@ -83,7 +85,12 @@ const RepoCard: React.VFC<props> = ({
       >
         {description}
       </Box>
-      <Box fontSize={'12px'} color={'#586069'} display={'flex'}>
+      <Box
+        fontSize={'12px'}
+        color={'#586069'}
+        display={'flex'}
+        marginTop={'auto'}
+      >
         <Box display={language ? 'block' : 'none'} marginRight={'16px'}>
           <span
             style={{
