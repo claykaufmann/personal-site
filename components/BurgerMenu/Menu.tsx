@@ -14,7 +14,7 @@ interface Props {
 const Menu: React.VFC<Props> = ({ open, setOpen }) => {
   return (
     <nav className={open ? styles.openMenu : styles.closedMenu}>
-      <NextLink href="/">
+      <NextLink href="/#about-section">
         <Link
           style={{ textDecoration: 'none' }}
           transition="color 0.3s linear"
@@ -33,7 +33,7 @@ const Menu: React.VFC<Props> = ({ open, setOpen }) => {
           className={styles.menuLinkText}
           onClick={() => setOpen(!open)}
         >
-          Projects
+          Dev
         </Link>
       </NextLink>
       {/* <NextLink href='/blog'>

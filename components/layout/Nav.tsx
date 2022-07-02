@@ -24,7 +24,7 @@ const Nav: React.VFC<props> = ({ textColor }) => {
           <Link>About</Link>
         </NextLink>
         <NextLink href={'/projects'} passHref>
-          <Link>Projects</Link>
+          <Link>Dev</Link>
         </NextLink>
         <Link href="other/John-Clay-Kaufmann-website.pdf" isExternal={true}>
           Resume
