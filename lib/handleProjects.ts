@@ -36,23 +36,13 @@ export const getProjectBySlug = (slug: string): ProjectInfo => {
 
   // use gray matter to parse
   const { data, content } = matter(contents)
-
-  // if github is undefined, don't return an object with it
-  if (data.github === undefined) {
-    return {
-      slug: slug,
-      title: data.title,
-      description: data.description,
-      content: content,
-    }
-  }
-
   // return project info
   return {
     slug: slug,
     title: data.title,
     description: data.description,
-    github: data.github,
+    githubURL: data.githubURL,
+    githubAPI: data.githubAPI,
     content: content,
   }
 }
