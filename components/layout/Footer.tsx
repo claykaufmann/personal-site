@@ -15,8 +15,8 @@ interface props {
 const Footer: React.VFC<props> = ({ textColor }) => {
   return (
     <HStack className={styles.footer}>
-      <Text color={textColor} fontSize="xs">
-        John Clay Kaufmann 2021
+      <Text textColor={textColor}>
+        <Link href="https://claykaufmann.com">Clay Kaufmann 2022</Link>
       </Text>
       <Link href="https://www.github.com/claykaufmann" isExternal={true}>
         <IconButton
