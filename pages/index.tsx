@@ -15,7 +15,6 @@ import styles from '../styles/Home.module.scss'
 import Header from '@components/layout/Header'
 import Footer from '@components/layout/Footer'
 import GitProjects from '@components/layout/GitProjects'
-import NextLink from 'next/link'
 import { getAllProjects } from 'lib/handleProjects'
 import { gitRepoInfo } from 'types/types'
 import { fetchRepos } from 'lib/fetchFromGitHub'
@@ -146,14 +145,15 @@ const Home: NextPage<props> = ({ repos }) => {
             <Heading marginBottom={'0.2em'}>Development</Heading>
             <Text marginBottom={'0.4em'}>
               See more at{' '}
-              <Link href="https://github.com/claykaufmann" color="#0366d6">
+              <Link
+                href="https://github.com/claykaufmann"
+                color="#0366d6"
+                isExternal={true}
+              >
                 my github profile
               </Link>{' '}
-              or view write-ups about the projects at the{' '}
-              <NextLink href="/projects">
-                <Link color="#0366d6">projects page</Link>
-              </NextLink>
-              .
+              or view write-ups about the projects by clicking on the respective
+              project below.
             </Text>
             <GitProjects repos={repos} />
           </Box>
@@ -164,7 +164,11 @@ const Home: NextPage<props> = ({ repos }) => {
             marginRight={['2em', '4em', '8em']}
           >
             <Heading>
-              <Link href="https://photo.claykaufmann.com" color="#0366d6">
+              <Link
+                href="https://photo.claykaufmann.com"
+                color="#0366d6"
+                isExternal={true}
+              >
                 Photography
               </Link>
             </Heading>
