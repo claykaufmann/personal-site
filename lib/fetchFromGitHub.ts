@@ -18,7 +18,8 @@ const fetchRepos = async (
       const fetchedColors = await colorRes.json()
       const color = fetchedColors[data.language].color
 
-      const info: gitRepoInfo = {
+      // return info object
+      return {
         title: data.name,
         url: data.html_url,
         description: data.description,
@@ -28,8 +29,6 @@ const fetchRepos = async (
         localPage: repo.localProjectUrl,
         color: color,
       }
-
-      return info
     })
   )
 
