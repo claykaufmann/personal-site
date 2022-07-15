@@ -4,8 +4,9 @@ export interface ProjectInfo {
   slug: string
   title: string
   description: string
-  githubAPI: string
-  githubURL: string
+  githubAPI?: string
+  githubURL?: string
+  language?: string
   content: string
 }
 
@@ -15,16 +16,11 @@ export interface IParams extends ParsedUrlQuery {
 
 export interface gitRepoInfo {
   title: string
-  url: string
+  gitURL?: string
+  localURL: string
   description: string
-  language: string
-  stars: number
-  forks: number
-  localPage: string
-  color: string
-}
-
-export interface GitProjectsInterface {
-  localProjectUrl: string
-  gitAPIUrl: string
+  language?: string
+  stars?: number
+  forks?: number
+  color?: string
 }

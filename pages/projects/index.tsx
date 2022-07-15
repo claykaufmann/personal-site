@@ -37,10 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const repos = await fetchRepos(
     projects.map((project) => {
-      return {
-        localProjectUrl: `projects/${project.slug}`,
-        gitAPIUrl: project.githubAPI,
-      }
+      return project
     })
   )
 
