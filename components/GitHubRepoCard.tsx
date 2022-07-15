@@ -4,27 +4,27 @@ import NextLink from 'next/link'
 
 interface props {
   title: string
-  url: string
+  gitURL?: string
+  localURL: string
   description: string
-  language: string
-  stars: number
-  forks: number
-  localPage?: string
-  color: string
+  language?: string
+  stars?: number
+  forks?: number
+  color?: string
 }
 
 const RepoCard: React.VFC<props> = ({
   title,
-  url,
+  gitURL,
   description,
   language,
   stars,
   forks,
-  localPage,
+  localURL,
   color,
 }) => {
   return (
-    <NextLink href={localPage ? localPage : url} passHref>
+    <NextLink href={gitURL ? gitURL : localURL} passHref>
       <Link
         fontFamily={
           '-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji'

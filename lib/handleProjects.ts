@@ -36,6 +36,7 @@ export const getProjectBySlug = (slug: string): ProjectInfo => {
 
   // use gray matter to parse
   const { data, content } = matter(contents)
+
   // return project info
   return {
     slug: slug,

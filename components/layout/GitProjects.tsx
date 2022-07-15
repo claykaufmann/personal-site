@@ -14,12 +14,12 @@ const GitProjects: React.VFC<props> = ({ repos }) => {
         <RepoCard
           key={repo.title}
           title={repo.title}
-          url={repo.url}
+          gitURL={repo.gitURL}
           description={repo.description}
           language={repo.language}
           stars={repo.stars}
           forks={repo.forks}
-          localPage={repo.localPage}
+          localURL={repo.localURL}
           color={repo.color}
         />
       ))}
