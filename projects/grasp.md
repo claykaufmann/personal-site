@@ -1,7 +1,7 @@
 ---
 title: GRASP
 description: The NASA Game and Repository for Aperture Solutions and Patterns
-language: HTML+PHP
+language: PHP
 ---
 
 This is the Game and Repository for Aperture Solutions and Patterns. It was developed as a joint project between the NASA Goddard Space Flight Center and UVM. There were two lead developers on the project, myself and Ryan Joseph.
