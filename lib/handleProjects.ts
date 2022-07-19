@@ -2,16 +2,9 @@ import { ProjectInfo } from '../types/types'
 import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
 import { isNotJunk } from 'junk'
 
 const projectDirectory = join(process.cwd(), 'projects')
-
-export const markdownToHtml = async (markdown: string): Promise<string> => {
-  const res = await remark().use(html).process(markdown)
-  return res.toString()
-}
 
 export const getProjectSlugs = (): string[] => {
   const files = fs.readdirSync(projectDirectory)

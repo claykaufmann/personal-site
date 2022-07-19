@@ -3,11 +3,8 @@ import Head from 'next/head'
 import { ParsedUrlQuery } from 'querystring'
 import Base from '@components/layout/Base'
 import { Heading, Box, Center } from '@chakra-ui/react'
-import {
-  getAllProjects,
-  getProjectBySlug,
-  markdownToHtml,
-} from 'lib/handleProjects'
+import { getAllProjects, getProjectBySlug } from 'lib/handleProjects'
+import { markdownToHtml } from 'lib/handleMarkdown'
 import ProjectBody from '@components/layout/ProjectBody'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import ProjectButtons from '@components/ProjectButtons'

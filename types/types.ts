@@ -1,5 +1,12 @@
 import { ParsedUrlQuery } from 'querystring'
 
+export interface BlogPost {
+  slug: string
+  title: string
+  date: string
+  content: string
+}
+
 export interface ProjectInfo {
   slug: string
   title: string
