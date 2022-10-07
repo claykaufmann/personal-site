@@ -3,6 +3,15 @@ tests/__snapshots__
 .vscode
 .log/
 
+# yarn v2
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
 .next/
 /out/
 
