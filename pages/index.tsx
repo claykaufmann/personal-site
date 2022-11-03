@@ -69,14 +69,14 @@ const Home: NextPage<props> = ({ repos }) => {
                 </Box>
                 <Box
                   pos="relative"
-                  top="48vh"
+                  top="52vh"
                   role="group"
                   onClick={() => scrollToRef(aboutRef)}
                   cursor="pointer"
                   display="flex"
                   flexDir="column"
-                  transition="top ease 0.5s"
-                  _hover={{ top: '48.4vh' }}
+                  transition="ease 0.5s"
+                  _hover={{ paddingTop: '7px' }}
                   textAlign="center"
                 >
                   <Text
@@ -165,10 +165,13 @@ const Home: NextPage<props> = ({ repos }) => {
                 Photography
               </Link>
             </Heading>
+            <Text>
+              I am an avid photographer outside of the coding world! Click the
+              above link to see my photography portfolio site.
+            </Text>
           </Box>
-          <VStack>
+          <VStack paddingTop={'1em'}>
             <Box
-              top="48vh"
               role="group"
               onClick={() => scrollToRef(expRef)}
               cursor="pointer"
