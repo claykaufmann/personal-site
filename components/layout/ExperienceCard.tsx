@@ -17,10 +17,10 @@ const ExperienceCard: React.FC<props> = ({
   description,
 }) => {
   return (
-    <Box>
+    <Box marginBottom={'1em'}>
       <Heading size="md">
         {positionTitle} @{' '}
-        <Link href={companyURL} isExternal={true}>
+        <Link href={companyURL} isExternal={true} color="#0366d6">
           {company}
         </Link>
       </Heading>

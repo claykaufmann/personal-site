@@ -137,6 +137,46 @@ const Home: NextPage<props> = ({ repos }) => {
             marginLeft={['2em', '4em', '8em']}
             marginRight={['2em', '4em', '8em']}
           >
+            <Heading marginBottom={'0.2em'}>Development</Heading>
+            <Text marginBottom={'0.4em'}>
+              See more at{' '}
+              <Link
+                href="https://github.com/claykaufmann"
+                color="#0366d6"
+                isExternal={true}
+              >
+                my github profile
+              </Link>{' '}
+              or view write-ups about the projects by clicking on the respective
+              project below.
+            </Text>
+            <GitProjects repos={repos} />
+          </Box>
+
+          <Box
+            marginTop={'1em'}
+            marginLeft={['2em', '4em', '8em']}
+            marginRight={['2em', '4em', '8em']}
+          >
+            <Heading>
+              <Link
+                href="https://photo.claykaufmann.com"
+                color="#0366d6"
+                isExternal={true}
+              >
+                Photography
+              </Link>
+            </Heading>
+          </Box>
+        </div>
+      </div>
+
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <Box
+            marginLeft={['2em', '4em', '8em']}
+            marginRight={['2em', '4em', '8em']}
+          >
             <Heading>Experience</Heading>
             {/* add resume experience here... */}
             <ExperienceCard
@@ -180,75 +220,39 @@ const Home: NextPage<props> = ({ repos }) => {
             />
           </Box>
 
-          <Box
-            marginTop={'1em'}
-            marginLeft={['2em', '4em', '8em']}
-            marginRight={['2em', '4em', '8em']}
-          >
-            <Heading marginBottom={'0.2em'}>Development</Heading>
-            <Text marginBottom={'0.4em'}>
-              See more at{' '}
-              <Link
-                href="https://github.com/claykaufmann"
-                color="#0366d6"
-                isExternal={true}
-              >
-                my github profile
-              </Link>{' '}
-              or view write-ups about the projects by clicking on the respective
-              project below.
-            </Text>
-            <GitProjects repos={repos} />
-          </Box>
-
-          <Box
-            marginTop={'1em'}
-            marginLeft={['2em', '4em', '8em']}
-            marginRight={['2em', '4em', '8em']}
-          >
-            <Heading>
-              <Link
-                href="https://photo.claykaufmann.com"
-                color="#0366d6"
-                isExternal={true}
-              >
-                Photography
-              </Link>
-            </Heading>
-          </Box>
-        </div>
-        <VStack>
-          <Box
-            role="group"
-            onClick={scrollUp}
-            cursor="pointer"
-            display="flex"
-            position={'relative'}
-            top={0}
-            flexDir="column"
-            transition="top ease 0.5s"
-            _hover={{ top: '-5px' }}
-          >
-            <Icon
-              alignSelf="center"
-              color="black"
-              as={BsChevronCompactUp}
-              fontSize="250%"
-              _groupHover={{ color: '#34495e' }}
-              marginBottom={-3}
-            ></Icon>
-            <Text
-              textAlign="center"
-              color="black"
-              fontSize="100%"
-              _groupHover={{ color: '#34495e' }}
+          <VStack>
+            <Box
+              role="group"
+              onClick={scrollUp}
+              cursor="pointer"
+              display="flex"
+              position={'relative'}
+              top={0}
+              flexDir="column"
+              transition="top ease 0.5s"
+              _hover={{ top: '-5px' }}
             >
-              Back to top
-            </Text>
-          </Box>
-        </VStack>
-        <Footer textColor="black" />
+              <Icon
+                alignSelf="center"
+                color="black"
+                as={BsChevronCompactUp}
+                fontSize="250%"
+                _groupHover={{ color: '#34495e' }}
+                marginBottom={-3}
+              ></Icon>
+              <Text
+                textAlign="center"
+                color="black"
+                fontSize="100%"
+                _groupHover={{ color: '#34495e' }}
+              >
+                Back to top
+              </Text>
+            </Box>
+          </VStack>
+        </div>
       </div>
+      <Footer textColor="black" />
     </>
   )
 }
