@@ -25,16 +25,14 @@ interface props {
 }
 
 const Home: NextPage<props> = ({ repos }) => {
+  // refs that are scrolled to in the home page
   const aboutRef = React.useRef<HTMLDivElement>(null)
-
-  const scrollDown = () => {
-    aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
+  const expRef = React.useRef<HTMLDivElement>(null)
   const topRef = React.useRef<HTMLDivElement>(null)
 
-  const scrollUp = () => {
-    topRef.current?.scrollIntoView({ behavior: 'smooth' })
+  // a function to handle scrolling to a ref
+  const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -73,7 +71,7 @@ const Home: NextPage<props> = ({ repos }) => {
                   pos="relative"
                   top="48vh"
                   role="group"
-                  onClick={scrollDown}
+                  onClick={() => scrollToRef(aboutRef)}
                   cursor="pointer"
                   display="flex"
                   flexDir="column"
@@ -168,11 +166,41 @@ const Home: NextPage<props> = ({ repos }) => {
               </Link>
             </Heading>
           </Box>
+          <VStack>
+            <Box
+              top="48vh"
+              role="group"
+              onClick={() => scrollToRef(expRef)}
+              cursor="pointer"
+              display="flex"
+              flexDir="column"
+              transition="ease 0.5s"
+              _hover={{ paddingTop: '5px' }}
+              textAlign="center"
+            >
+              <Text
+                textAlign="center"
+                color="black"
+                fontSize="130%"
+                _groupHover={{ color: '#34495e' }}
+                marginBottom={-3}
+              >
+                EXPERIENCE
+              </Text>
+              <Icon
+                alignSelf="center"
+                color="black"
+                as={BsChevronCompactDown}
+                fontSize="250%"
+                _groupHover={{ color: '#34495e' }}
+              ></Icon>
+            </Box>
+          </VStack>
         </div>
       </div>
 
       <div className={styles.container}>
-        <div className={styles.mainContent}>
+        <div className={styles.mainContent} id="exp-section" ref={expRef}>
           <Box
             marginLeft={['2em', '4em', '8em']}
             marginRight={['2em', '4em', '8em']}
@@ -219,40 +247,39 @@ const Home: NextPage<props> = ({ repos }) => {
               description="Write scripts to help automate the migration of core software product enQuesta onto new machines and systems."
             />
           </Box>
-
-          <VStack>
-            <Box
-              role="group"
-              onClick={scrollUp}
-              cursor="pointer"
-              display="flex"
-              position={'relative'}
-              top={0}
-              flexDir="column"
-              transition="top ease 0.5s"
-              _hover={{ top: '-5px' }}
-            >
-              <Icon
-                alignSelf="center"
-                color="black"
-                as={BsChevronCompactUp}
-                fontSize="250%"
-                _groupHover={{ color: '#34495e' }}
-                marginBottom={-3}
-              ></Icon>
-              <Text
-                textAlign="center"
-                color="black"
-                fontSize="100%"
-                _groupHover={{ color: '#34495e' }}
-              >
-                Back to top
-              </Text>
-            </Box>
-          </VStack>
         </div>
+        <VStack>
+          <Box
+            role="group"
+            onClick={() => scrollToRef(topRef)}
+            cursor="pointer"
+            display="flex"
+            position={'relative'}
+            top={0}
+            flexDir="column"
+            transition="top ease 0.5s"
+            _hover={{ top: '-5px' }}
+          >
+            <Icon
+              alignSelf="center"
+              color="black"
+              as={BsChevronCompactUp}
+              fontSize="250%"
+              _groupHover={{ color: '#34495e' }}
+              marginBottom={-3}
+            ></Icon>
+            <Text
+              textAlign="center"
+              color="black"
+              fontSize="100%"
+              _groupHover={{ color: '#34495e' }}
+            >
+              Back to top
+            </Text>
+          </Box>
+        </VStack>
+        <Footer textColor="black" />
       </div>
-      <Footer textColor="black" />
     </>
   )
 }
