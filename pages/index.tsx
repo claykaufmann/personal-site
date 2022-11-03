@@ -125,15 +125,9 @@ const Home: NextPage<props> = ({ repos }) => {
               candidate at the University of Vermont, where I continue to study
               computer science. My main interests within the CS field revolve
               around the intersection of networking, DevOps, and general systems
-              programming. My expected graduation is December 2022, after which
-              I plan to enter the software engineering industry. Upon entering
-              the industry, I would like to get into the field of site
-              reliability engineering, where my unique combination of interests
-              within the software engineering realm would apply quite well. If
-              you are interested, let&apos;s{' '}
-              <Link href="mailto:claykaufmann@gmail.com" color="blue">
-                get in touch!
-              </Link>
+              programming. My expected graduation date is December 2022. Upon my
+              graduation, I will be joining Beta Technologies as a data
+              engineering intern.
             </Text>
           </Box>
 
