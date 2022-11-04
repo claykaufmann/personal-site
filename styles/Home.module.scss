@@ -23,17 +23,25 @@
 }
 
 .container {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: center;
 }
 
 .mainContent {
   flex: 1;
 }
 
+.mainContainer {
+  overflow-y: scroll;
+  max-height: 100vh;
+  scroll-snap-type: y mandatory;
+}
+
 .splash {
-  min-height: 100vh;
+  height: 100vh;
+  scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   background: url(/images/me_tetons_large.jpg) no-repeat center center fixed;
