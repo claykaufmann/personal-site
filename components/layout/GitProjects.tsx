@@ -7,7 +7,7 @@ interface props {
   repos: gitRepoInfo[]
 }
 
-const GitProjects: React.VFC<props> = ({ repos }) => {
+const GitProjects: React.FC<props> = ({ repos }) => {
   return (
     <SimpleGrid columns={[1, 1, 2, 3]} spacing={'1em 5em'}>
       {repos.map((repo) => (
