@@ -8,7 +8,7 @@ interface props {
   textColor: string
 }
 
-const BurgerMenu: React.VFC<props> = ({ textColor }) => {
+const BurgerMenu: React.FC<props> = ({ textColor }) => {
   const [open, setOpen] = useState(false)
   const node = useRef<HTMLDivElement>(null)
   useOnClickOutside(node, () => setOpen(false))

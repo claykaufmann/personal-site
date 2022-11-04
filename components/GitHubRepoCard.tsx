@@ -13,7 +13,7 @@ interface props {
   color?: string
 }
 
-const RepoCard: React.VFC<props> = ({
+const RepoCard: React.FC<props> = ({
   title,
   gitURL,
   description,

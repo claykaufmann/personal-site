@@ -9,7 +9,7 @@ interface Props {
   textColor: string
 }
 
-const Burger: React.VFC<Props> = ({ open, setOpen, textColor }) => {
+const Burger: React.FC<Props> = ({ open, setOpen, textColor }) => {
   let burgerBars
   if (textColor == 'white') {
     burgerBars = styles.burgerBarWhite
