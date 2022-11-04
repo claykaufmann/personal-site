@@ -12,19 +12,24 @@ const fetchRepos = async (reposInfo: ProjectInfo[]): Promise<gitRepoInfo[]> => {
 
       if (repo.githubAPI) {
         // fetch repo data, add it
+
         const res = await fetch(repo.githubAPI)
+
+        // if we cannot successfully collect data, bail and return basic, non github data
+        if (res.status !== 200) {
+          return {
+            title: repo.title,
+            description: repo.description,
+            localURL: `projects/${repo.slug}`,
+            stars: 0,
+            forks: 0,
+          }
+        }
+
         const data = await res.json()
 
         // fetch color data
-        let color = ''
-
-        // if we hit the github api req limit, and color doesn't exist, just set it to be blue as a fallback
-        // should only happen in development
-        try {
-          color = fetchedColors[data.language].color
-        } catch (e) {
-          color = 'blue'
-        }
+        const color = ''
 
         // return info object
         return {
