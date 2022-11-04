@@ -19,7 +19,6 @@ import { getAllProjects } from 'lib/handleProjects'
 import { gitRepoInfo } from 'types/types'
 import { fetchRepos } from 'lib/fetchFromGitHub'
 import ExperienceCard from 'components/layout/ExperienceCard'
-import ContactForm from 'components/layout/ContactForm'
 
 interface props {
   repos: gitRepoInfo[]
@@ -30,7 +29,6 @@ const Home: NextPage<props> = ({ repos }) => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
   const expRef = React.useRef<HTMLDivElement>(null)
   const topRef = React.useRef<HTMLDivElement>(null)
-  const contRef = React.useRef<HTMLDivElement>(null)
 
   // a function to handle scrolling to a ref
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
@@ -251,52 +249,6 @@ const Home: NextPage<props> = ({ repos }) => {
               timeWorked="May 2021 - August 2021"
               description="Write scripts to help automate the migration of core software product enQuesta onto new machines and systems."
             />
-          </Box>
-        </div>
-        <VStack paddingTop={'1em'}>
-          <Box
-            role="group"
-            onClick={() => scrollToRef(contRef)}
-            cursor="pointer"
-            display="flex"
-            flexDir="column"
-            transition="ease 0.5s"
-            _hover={{ paddingTop: '5px' }}
-            textAlign="center"
-            paddingBottom={'10em'}
-          >
-            <Text
-              textAlign="center"
-              color="black"
-              fontSize="130%"
-              _groupHover={{ color: '#34495e' }}
-              marginBottom={-3}
-            >
-              Contact
-            </Text>
-            <Icon
-              alignSelf="center"
-              color="black"
-              as={BsChevronCompactDown}
-              fontSize="250%"
-              _groupHover={{ color: '#34495e' }}
-            ></Icon>
-          </Box>
-        </VStack>
-      </div>
-
-      <div className={styles.container}>
-        <div className={styles.mainContent} id="contact-section" ref={contRef}>
-          <Box
-            marginLeft={['2em', '4em', '8em']}
-            marginRight={['2em', '4em', '8em']}
-          >
-            <Heading>Contact</Heading>
-            <Text>
-              Want to get in touch? Fill out the below form and I&apos;ll get in
-              contact with you!
-            </Text>
-            <ContactForm />
           </Box>
         </div>
         <VStack>
