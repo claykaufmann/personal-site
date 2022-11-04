@@ -10,7 +10,7 @@ interface props {
   textColor: string
 }
 
-const Nav: React.VFC<props> = ({ textColor }) => {
+const Nav: React.FC<props> = ({ textColor }) => {
   // check the size of the browser window, if less than 800px, use the burger menu
   const isMobile = useMediaQuery('(max-width: 800px)')
   let nav: JSX.Element = <React.Fragment></React.Fragment>

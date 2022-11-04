@@ -9,7 +9,7 @@ import Script from 'next/script'
 
 import 'styles/globals.scss'
 
-const App: React.VFC<AppProps> = (props: AppProps) => {
+const App: React.FC<AppProps> = (props: AppProps) => {
   const { Component, pageProps } = props
   return (
     <ChakraProvider theme={theme}>
