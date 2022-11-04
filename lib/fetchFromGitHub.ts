@@ -29,7 +29,7 @@ const fetchRepos = async (reposInfo: ProjectInfo[]): Promise<gitRepoInfo[]> => {
         const data = await res.json()
 
         // fetch color data
-        const color = ''
+        const color = fetchedColors[data.language].color
 
         // return info object
         return {
