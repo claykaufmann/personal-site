@@ -76,7 +76,7 @@ const Home: NextPage<props> = ({ repos }) => {
                   display="flex"
                   flexDir="column"
                   transition="ease 0.5s"
-                  _hover={{ paddingTop: '7px' }}
+                  _hover={{ transform: 'translate(0, 5px)' }}
                   textAlign="center"
                 >
                   <Text
@@ -178,7 +178,7 @@ const Home: NextPage<props> = ({ repos }) => {
               display="flex"
               flexDir="column"
               transition="ease 0.5s"
-              _hover={{ paddingTop: '5px' }}
+              _hover={{ transform: 'translate(0, 5px)' }}
               textAlign="center"
             >
               <Text
@@ -260,8 +260,8 @@ const Home: NextPage<props> = ({ repos }) => {
             position={'relative'}
             top={0}
             flexDir="column"
-            transition="top ease 0.5s"
-            _hover={{ top: '-5px' }}
+            transition="ease 0.5s"
+            _hover={{ transform: 'translate(0, -5px)' }}
           >
             <Icon
               alignSelf="center"
