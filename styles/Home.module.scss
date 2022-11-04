@@ -23,17 +23,23 @@
 }
 
 .container {
-  height: 100vh;
+  // min height is 100vh incase page goes longer
+  min-height: 100vh;
+
+  // forces footer at bottom
   display: flex;
   flex-direction: column;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .mainContent {
+  // forces the footer to be placed at the bottom
   flex: 1;
 }
 
 .mainContainer {
+  // force scroll snapping
   overflow-y: scroll;
   max-height: 100vh;
   scroll-snap-type: y mandatory;
@@ -41,7 +47,8 @@
 
 .splash {
   height: 100vh;
-  scroll-snap-align: center;
+  // want to align scroll at the start (will take up the whole page regardless)
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   background: url(/images/me_tetons_large.jpg) no-repeat center center fixed;
