@@ -13,7 +13,7 @@ interface props {
   color?: string
 }
 
-const RepoCard: React.FC<props> = ({
+const RepoCard = ({
   title,
   gitURL,
   description,
@@ -22,7 +22,7 @@ const RepoCard: React.FC<props> = ({
   forks,
   localURL,
   color,
-}) => {
+}: props) => {
   return (
     <NextLink href={gitURL ? gitURL : localURL} passHref>
       <Link

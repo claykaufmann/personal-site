@@ -8,7 +8,7 @@ interface props {
   children: JSX.Element[] | JSX.Element
 }
 
-const Base: React.FC<props> = ({ headerColor, children }) => {
+const Base = ({ headerColor, children }: props) => {
   return (
     <React.Fragment>
       <Header textColor={headerColor} />

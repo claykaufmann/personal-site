@@ -6,7 +6,7 @@ interface Props {
   content: string
 }
 
-const ProjectBody: React.FC<Props> = ({ content }) => {
+const ProjectBody = ({ content }: Props) => {
   return (
     <Container maxW="container.lg">
       <div
