@@ -9,13 +9,13 @@ interface props {
   description: string
 }
 
-const ExperienceCard: React.FC<props> = ({
+const ExperienceCard = ({
   positionTitle,
   company,
   companyURL,
   timeWorked,
   description,
-}) => {
+}: props) => {
   return (
     <Box marginBottom={'1em'}>
       <Heading size="md">
