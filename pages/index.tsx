@@ -8,6 +8,7 @@ import {
   Text,
   Icon,
   Link,
+  Flex,
 } from '@chakra-ui/react'
 import Head from 'next/head'
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
@@ -18,7 +19,8 @@ import GitProjects from '@components/layout/GitProjects'
 import { getAllProjects } from 'lib/handleProjects'
 import { gitRepoInfo } from 'types/types'
 import { fetchRepos } from 'lib/fetchFromGitHub'
-import ExperienceCard from 'components/layout/ExperienceCard'
+import ExperienceCard from '@components/layout/ExperienceCard'
+import EducationCard from '@components/layout/EducationCard'
 
 interface props {
   repos: gitRepoInfo[]
@@ -208,47 +210,72 @@ const Home: NextPage<props> = ({ repos }) => {
             marginLeft={['2em', '4em', '8em']}
             marginRight={['2em', '4em', '8em']}
           >
-            <Heading>Experience</Heading>
-            {/* add resume experience here... */}
-            <ExperienceCard
-              positionTitle="Team Member/Data Engineer"
-              company="Beta Technologies"
-              companyURL="https://beta.team"
-              timeWorked="Starting January 2023"
-              description="Work with real flight data from the ALIA experimental aircraft in order to drive development in the plane."
-            />
+            {/* <HStack align={'start'} justify={'space-between'}> */}
+            <Flex>
+              <Box flex={1}>
+                <Heading>Experience</Heading>
+                {/* add resume experience here... */}
+                <ExperienceCard
+                  positionTitle="Team Member/Data Engineer"
+                  company="Beta Technologies"
+                  companyURL="https://beta.team"
+                  timeWorked="Starting January 2023"
+                  description="Work with real flight data from the ALIA experimental aircraft in order to drive development in the plane."
+                />
 
-            <ExperienceCard
-              positionTitle="Software Engineering Intern"
-              company="Precision Bioassay"
-              companyURL="https://www.precisionbioassay.com"
-              timeWorked="August 2022 - Present"
-              description="General PHP development, maintaining core product Xymp - bioassay/statistics software"
-            />
+                <ExperienceCard
+                  positionTitle="Software Engineering Intern"
+                  company="Precision Bioassay"
+                  companyURL="https://www.precisionbioassay.com"
+                  timeWorked="August 2022 - Present"
+                  description="General PHP development, maintaining core product Xymp - bioassay/statistics software"
+                />
 
-            <ExperienceCard
-              positionTitle="Research Assistant"
-              company="the University of Vermont"
-              companyURL="https://www.uvm.edu"
-              timeWorked="January 2022 - August 2022"
-              description="Leverage deep convolutional neural networks in order to detect anomalies in time-series data from a rivershed in Danville Vermont. Worked with professor Byung S. Lee."
-            />
+                <ExperienceCard
+                  positionTitle="Research Assistant"
+                  company="the University of Vermont"
+                  companyURL="https://www.uvm.edu"
+                  timeWorked="January 2022 - August 2022"
+                  description="Leverage deep convolutional neural networks in order to detect anomalies in time-series data from a rivershed in Danville Vermont. Worked with professor Byung S. Lee."
+                />
 
-            <ExperienceCard
-              positionTitle="Software Engineering Intern"
-              company="NASA Goddard Space Flight Center"
-              companyURL="https://www.nasa.gov/goddard"
-              timeWorked="August 2021 - December 2021"
-              description="Help develop the citizen science game GRASP - Game and Repository for Aperture Solutions and Patterns"
-            />
+                <ExperienceCard
+                  positionTitle="Software Engineering Intern"
+                  company="NASA Goddard Space Flight Center"
+                  companyURL="https://www.nasa.gov/goddard"
+                  timeWorked="August 2021 - December 2021"
+                  description="Help develop the citizen science game GRASP - Game and Repository for Aperture Solutions and Patterns"
+                />
 
-            <ExperienceCard
-              positionTitle="Software Engineering Intern"
-              company="Systems and Software/Harris Computer"
-              companyURL="https://www.ssivt.com"
-              timeWorked="May 2021 - August 2021"
-              description="Write scripts to help automate the migration of core software product enQuesta onto new machines and systems."
-            />
+                <ExperienceCard
+                  positionTitle="Software Engineering Intern"
+                  company="Systems and Software/Harris Computer"
+                  companyURL="https://www.ssivt.com"
+                  timeWorked="May 2021 - August 2021"
+                  description="Write scripts to help automate the migration of core software product enQuesta onto new machines and systems."
+                />
+              </Box>
+              <Box flex={1}>
+                <Heading>Education</Heading>
+                <EducationCard
+                  university="University of Vermont"
+                  major="Masters of Computer Science"
+                  degreeName="MSCS"
+                  graduated="December 2022"
+                  univURL="https://www.uvm.edu/"
+                  description="Focused on machine learning, master's project was with professor Byung Lee."
+                />
+
+                <EducationCard
+                  university="University of Vermont"
+                  major="Bachelors of Computer Science"
+                  degreeName="BSCS"
+                  graduated="December 2021"
+                  univURL="https://www.uvm.edu/"
+                  description="GPA 3.51"
+                />
+              </Box>
+            </Flex>
           </Box>
         </div>
         <VStack>
