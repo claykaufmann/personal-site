@@ -211,7 +211,11 @@ const Home: NextPage<props> = ({ repos }) => {
             marginRight={['2em', '4em', '8em']}
           >
             {/* <HStack align={'start'} justify={'space-between'}> */}
-            <Flex>
+            <Flex
+              flexDirection={['column', 'column', 'row']}
+              justify={'space-between'}
+              marginTop={'1em'}
+            >
               <Box flex={1}>
                 <Heading>Experience</Heading>
                 {/* add resume experience here... */}
