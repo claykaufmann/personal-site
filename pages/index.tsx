@@ -9,6 +9,8 @@ import {
   Icon,
   Link,
   Flex,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react'
 import Head from 'next/head'
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
@@ -21,6 +23,11 @@ import { gitRepoInfo } from 'types/types'
 import { fetchRepos } from 'lib/fetchFromGitHub'
 import ExperienceCard from '@components/layout/ExperienceCard'
 import EducationCard from '@components/layout/EducationCard'
+import Image from 'next/image'
+import jayPeakPano from 'public/images/main-pano-1.jpg'
+import shasta from 'public/images/photo-8647.jpg'
+import craterLake from 'public/images/crater-1.jpg'
+import nectars from 'public/images/main-landscape-4.jpg'
 
 interface props {
   repos: gitRepoInfo[]
@@ -31,6 +38,7 @@ const Home: NextPage<props> = ({ repos }) => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
   const expRef = React.useRef<HTMLDivElement>(null)
   const topRef = React.useRef<HTMLDivElement>(null)
+  const photoRef = React.useRef<HTMLDivElement>(null)
 
   // a function to handle scrolling to a ref
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
@@ -152,7 +160,40 @@ const Home: NextPage<props> = ({ repos }) => {
             </Text>
             <GitProjects repos={repos} />
           </Box>
+          <VStack paddingTop={'1em'}>
+            <Box
+              role="group"
+              onClick={() => scrollToRef(photoRef)}
+              cursor="pointer"
+              display="flex"
+              flexDir="column"
+              transition="ease 0.5s"
+              _hover={{ transform: 'translate(0, 5px)' }}
+              textAlign="center"
+            >
+              <Text
+                textAlign="center"
+                color="black"
+                fontSize="130%"
+                _groupHover={{ color: '#34495e' }}
+                marginBottom={-3}
+              >
+                Photography
+              </Text>
+              <Icon
+                alignSelf="center"
+                color="black"
+                as={BsChevronCompactDown}
+                fontSize="250%"
+                _groupHover={{ color: '#34495e' }}
+              ></Icon>
+            </Box>
+          </VStack>
+        </div>
+      </div>
 
+      <div className={styles.container}>
+        <div className={styles.mainContent} id="photo-section" ref={photoRef}>
           <Box
             marginTop={'1em'}
             marginLeft={['2em', '4em', '8em']}
@@ -171,6 +212,29 @@ const Home: NextPage<props> = ({ repos }) => {
               I am an avid photographer outside of the coding world! Click the
               above link to see my photography portfolio site.
             </Text>
+
+            <Grid
+              templateRows={['repeat(5)', 'repeat(2)']}
+              templateColumns={[
+                'repeat(1, 1fr)',
+                'repeat(1, fr)',
+                'repeat(3, 1fr)',
+              ]}
+              gap={4}
+            >
+              <GridItem rowSpan={2} display={['none', 'none', 'inline']}>
+                <Image alt={'mt shasta'} src={shasta} />
+              </GridItem>
+              <GridItem colSpan={2} display={['none', 'none', 'inline']}>
+                <Image alt={'jay peak'} src={jayPeakPano} />
+              </GridItem>
+              <GridItem>
+                <Image alt={'crater lake sunrise'} src={craterLake} />
+              </GridItem>
+              <GridItem>
+                <Image alt={'nectars bar, burlington vt'} src={nectars} />
+              </GridItem>
+            </Grid>
           </Box>
           <VStack paddingTop={'1em'}>
             <Box
