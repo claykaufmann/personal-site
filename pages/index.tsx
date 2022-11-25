@@ -285,7 +285,7 @@ const Home: NextPage<props> = ({ repos }) => {
                 <Heading>Experience</Heading>
                 {/* add resume experience here... */}
                 <ExperienceCard
-                  positionTitle="Team Member/Data Engineer"
+                  positionTitle="Team Member/Data Engineer Intern"
                   company="Beta Technologies"
                   companyURL="https://beta.team"
                   timeWorked="Starting January 2023"
