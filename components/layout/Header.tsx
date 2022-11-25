@@ -8,7 +8,7 @@ interface props {
   textColor: string
 }
 
-const Header: React.VFC<props> = ({ textColor }) => {
+const Header = ({ textColor }: props) => {
   return (
     <HStack justify="space-between" className={styles.header}>
       <NextLink href={'/'} passHref>

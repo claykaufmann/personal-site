@@ -11,7 +11,7 @@ interface Props {
   setOpen: (val: boolean) => void
 }
 
-const Menu: React.VFC<Props> = ({ open, setOpen }) => {
+const Menu = ({ open, setOpen }: Props) => {
   return (
     <nav className={open ? styles.openMenu : styles.closedMenu}>
       <NextLink href="/#about-section">

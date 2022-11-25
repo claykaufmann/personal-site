@@ -7,7 +7,7 @@ interface props {
   imageLink?: string
 }
 
-const Project: React.FC<props> = ({ title, description }) => {
+const Project = ({ title, description }: props) => {
   return (
     <Box
       maxW="sm"

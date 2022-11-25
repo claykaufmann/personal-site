@@ -12,7 +12,7 @@ interface props {
   textColor: string
 }
 
-const Footer: React.VFC<props> = ({ textColor }) => {
+const Footer = ({ textColor }: props) => {
   return (
     <HStack className={styles.footer}>
       <Text textColor={textColor}>

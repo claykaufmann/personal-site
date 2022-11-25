@@ -6,7 +6,7 @@ type Props = {
   github?: string // a link to a github repo
 }
 
-const ProjectButtons: React.FC<Props> = ({ github }) => {
+const ProjectButtons = ({ github }: Props) => {
   let gitInfo
 
   if (github != undefined) {
