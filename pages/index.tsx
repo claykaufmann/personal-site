@@ -160,7 +160,7 @@ const Home: NextPage<props> = ({ repos }) => {
             </Text>
             <GitProjects repos={repos} />
           </Box>
-          <VStack paddingTop={'1em'}>
+          <VStack paddingTop={['0.5em', '0.5em', '0.5em', '10em']}>
             <Box
               role="group"
               onClick={() => scrollToRef(photoRef)}
