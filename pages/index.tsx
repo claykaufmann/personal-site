@@ -345,6 +345,17 @@ const Home: NextPage<props> = ({ repos }) => {
                 />
               </Box>
             </Flex>
+            <Text>
+              You can also find a pdf version of my resume{' '}
+              <Link
+                href="other/John-Clay-Kaufmann-website.pdf"
+                isExternal={true}
+                color="#0366d6"
+              >
+                here
+              </Link>
+              .
+            </Text>
           </Box>
         </div>
         <VStack>
