@@ -8,6 +8,9 @@ import {
   Text,
   Icon,
   Link,
+  Flex,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react'
 import Head from 'next/head'
 import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
@@ -18,26 +21,32 @@ import GitProjects from '@components/layout/GitProjects'
 import { getAllProjects } from 'lib/handleProjects'
 import { gitRepoInfo } from 'types/types'
 import { fetchRepos } from 'lib/fetchFromGitHub'
+import ExperienceCard from '@components/layout/ExperienceCard'
+import EducationCard from '@components/layout/EducationCard'
+import Image from 'next/image'
+import jayPeakPano from 'public/images/main-pano-1.jpg'
+import shasta from 'public/images/photo-8647.jpg'
+import craterLake from 'public/images/crater-1.jpg'
+import nectars from 'public/images/main-landscape-4.jpg'
 
 interface props {
   repos: gitRepoInfo[]
 }
 
 const Home: NextPage<props> = ({ repos }) => {
+  // refs that are scrolled to in the home page
   const aboutRef = React.useRef<HTMLDivElement>(null)
-
-  const scrollDown = () => {
-    aboutRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
+  const expRef = React.useRef<HTMLDivElement>(null)
   const topRef = React.useRef<HTMLDivElement>(null)
+  const photoRef = React.useRef<HTMLDivElement>(null)
 
-  const scrollUp = () => {
-    topRef.current?.scrollIntoView({ behavior: 'smooth' })
+  // a function to handle scrolling to a ref
+  const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <>
+    <div className={styles.mainContainer}>
       <div className={styles.splash} ref={topRef}>
         <Head>
           <title>Clay Kaufmann</title>
@@ -70,14 +79,14 @@ const Home: NextPage<props> = ({ repos }) => {
                 </Box>
                 <Box
                   pos="relative"
-                  top="48vh"
+                  top="52vh"
                   role="group"
-                  onClick={scrollDown}
+                  onClick={() => scrollToRef(aboutRef)}
                   cursor="pointer"
                   display="flex"
                   flexDir="column"
-                  transition="top ease 0.5s"
-                  _hover={{ top: '48.4vh' }}
+                  transition="ease 0.5s"
+                  _hover={{ transform: 'translate(0, 5px)' }}
                   textAlign="center"
                 >
                   <Text
@@ -151,34 +160,215 @@ const Home: NextPage<props> = ({ repos }) => {
             </Text>
             <GitProjects repos={repos} />
           </Box>
+          <VStack paddingTop={['0.5em', '0.5em', '0.5em', '10em']}>
+            <Box
+              role="group"
+              onClick={() => scrollToRef(photoRef)}
+              cursor="pointer"
+              display="flex"
+              flexDir="column"
+              transition="ease 0.5s"
+              _hover={{ transform: 'translate(0, 5px)' }}
+              textAlign="center"
+            >
+              <Text
+                textAlign="center"
+                color="black"
+                fontSize="130%"
+                _groupHover={{ color: '#34495e' }}
+                marginBottom={-3}
+              >
+                Photography
+              </Text>
+              <Icon
+                alignSelf="center"
+                color="black"
+                as={BsChevronCompactDown}
+                fontSize="250%"
+                _groupHover={{ color: '#34495e' }}
+              ></Icon>
+            </Box>
+          </VStack>
+        </div>
+      </div>
 
+      <div className={styles.container}>
+        <div className={styles.mainContent} id="photo-section" ref={photoRef}>
           <Box
             marginTop={'1em'}
             marginLeft={['2em', '4em', '8em']}
             marginRight={['2em', '4em', '8em']}
           >
-            <Heading>
-              <Link
-                href="https://photo.claykaufmann.com"
-                color="#0366d6"
-                isExternal={true}
+            <Link
+              href="https://photo.claykaufmann.com"
+              isExternal={true}
+              textDecor={'none'}
+              textColor={'black'}
+              _hover={{ textDecoration: 'none' }}
+            >
+              <Heading>Photography</Heading>
+              <Text>
+                I am an avid photographer outside of the coding world! Visit{' '}
+                <span style={{ color: '#0366d6' }}>photo.claykaufmann.com</span>{' '}
+                to see my photography!
+              </Text>
+
+              <Grid
+                templateRows={['repeat(5)', 'repeat(2)']}
+                templateColumns={[
+                  'repeat(1, 1fr)',
+                  'repeat(1, fr)',
+                  'repeat(3, 1fr)',
+                ]}
+                gap={4}
               >
-                Photography
+                <GridItem rowSpan={2} display={['none', 'none', 'inline']}>
+                  <Image alt={'mt shasta'} src={shasta} />
+                </GridItem>
+                <GridItem colSpan={2} display={['none', 'none', 'inline']}>
+                  <Image alt={'jay peak'} src={jayPeakPano} />
+                </GridItem>
+                <GridItem>
+                  <Image alt={'crater lake sunrise'} src={craterLake} />
+                </GridItem>
+                <GridItem>
+                  <Image alt={'nectars bar, burlington vt'} src={nectars} />
+                </GridItem>
+              </Grid>
+            </Link>
+          </Box>
+          <VStack paddingTop={'1em'}>
+            <Box
+              role="group"
+              onClick={() => scrollToRef(expRef)}
+              cursor="pointer"
+              display="flex"
+              flexDir="column"
+              transition="ease 0.5s"
+              _hover={{ transform: 'translate(0, 5px)' }}
+              textAlign="center"
+            >
+              <Text
+                textAlign="center"
+                color="black"
+                fontSize="130%"
+                _groupHover={{ color: '#34495e' }}
+                marginBottom={-3}
+              >
+                Experience
+              </Text>
+              <Icon
+                alignSelf="center"
+                color="black"
+                as={BsChevronCompactDown}
+                fontSize="250%"
+                _groupHover={{ color: '#34495e' }}
+              ></Icon>
+            </Box>
+          </VStack>
+        </div>
+      </div>
+
+      <div className={styles.container}>
+        <div className={styles.mainContent} id="exp-section" ref={expRef}>
+          <Box
+            marginLeft={['2em', '4em', '8em']}
+            marginRight={['2em', '4em', '8em']}
+          >
+            {/* <HStack align={'start'} justify={'space-between'}> */}
+            <Flex
+              flexDirection={['column', 'column', 'row']}
+              justify={'space-between'}
+              marginTop={'1em'}
+            >
+              <Box flex={1}>
+                <Heading>Experience</Heading>
+                {/* add resume experience here... */}
+                <ExperienceCard
+                  positionTitle="Team Member/Data Engineer"
+                  company="Beta Technologies"
+                  companyURL="https://beta.team"
+                  timeWorked="Starting January 2023"
+                  description="Work with real flight data from the ALIA experimental aircraft in order to drive development in the plane."
+                />
+
+                <ExperienceCard
+                  positionTitle="Software Engineering Intern"
+                  company="Precision Bioassay"
+                  companyURL="https://www.precisionbioassay.com"
+                  timeWorked="August 2022 - Present"
+                  description="General PHP development, maintaining core product Xymp - bioassay/statistics software"
+                />
+
+                <ExperienceCard
+                  positionTitle="Research Assistant"
+                  company="the University of Vermont"
+                  companyURL="https://www.uvm.edu"
+                  timeWorked="January 2022 - August 2022"
+                  description="Leverage deep convolutional neural networks in order to detect anomalies in time-series data from a rivershed in Danville Vermont. Worked with professor Byung S. Lee."
+                />
+
+                <ExperienceCard
+                  positionTitle="Software Engineering Intern"
+                  company="NASA Goddard Space Flight Center"
+                  companyURL="https://www.nasa.gov/goddard"
+                  timeWorked="August 2021 - December 2021"
+                  description="Help develop the citizen science game GRASP - Game and Repository for Aperture Solutions and Patterns"
+                />
+
+                <ExperienceCard
+                  positionTitle="Software Engineering Intern"
+                  company="Systems and Software/Harris Computer"
+                  companyURL="https://www.ssivt.com"
+                  timeWorked="May 2021 - August 2021"
+                  description="Write scripts to help automate the migration of core software product enQuesta onto new machines and systems."
+                />
+              </Box>
+              <Box flex={1}>
+                <Heading>Education</Heading>
+                <EducationCard
+                  university="University of Vermont"
+                  major="Masters of Computer Science"
+                  degreeName="MSCS"
+                  graduated="December 2022"
+                  univURL="https://www.uvm.edu/"
+                  description="Focused on machine learning, master's project was with professor Byung Lee."
+                />
+
+                <EducationCard
+                  university="University of Vermont"
+                  major="Bachelors of Computer Science"
+                  degreeName="BSCS"
+                  graduated="December 2021"
+                  univURL="https://www.uvm.edu/"
+                  description="GPA 3.51"
+                />
+              </Box>
+            </Flex>
+            <Text>
+              You can also find a pdf version of my resume{' '}
+              <Link
+                href="other/John-Clay-Kaufmann-website.pdf"
+                isExternal={true}
+                color="#0366d6"
+              >
+                here
               </Link>
-            </Heading>
+              .
+            </Text>
           </Box>
         </div>
         <VStack>
           <Box
             role="group"
-            onClick={scrollUp}
+            onClick={() => scrollToRef(topRef)}
             cursor="pointer"
             display="flex"
             position={'relative'}
             top={0}
             flexDir="column"
-            transition="top ease 0.5s"
-            _hover={{ top: '-5px' }}
+            transition="ease 0.5s"
+            _hover={{ transform: 'translate(0, -5px)' }}
           >
             <Icon
               alignSelf="center"
@@ -200,7 +390,7 @@ const Home: NextPage<props> = ({ repos }) => {
         </VStack>
         <Footer textColor="black" />
       </div>
-    </>
+    </div>
   )
 }
 
