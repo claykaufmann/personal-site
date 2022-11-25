@@ -1,17 +1,17 @@
 @mixin lg-screen {
-  @media only screen and (min-width: 3000px) {
-    @content;
-  }
-}
-
-@mixin md-screen {
   @media only screen and (min-width: 1800px) {
     @content;
   }
 }
 
+@mixin md-screen {
+  @media only screen and (min-width: 1101px) {
+    @content;
+  }
+}
+
 @mixin sm-screen {
-  @media only screen and (min-width: 1100px) {
+  @media only screen and (min-width: 901px) {
     @content;
   }
 }
