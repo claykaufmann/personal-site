@@ -199,42 +199,43 @@ const Home: NextPage<props> = ({ repos }) => {
             marginLeft={['2em', '4em', '8em']}
             marginRight={['2em', '4em', '8em']}
           >
-            <Heading>
-              <Link
-                href="https://photo.claykaufmann.com"
-                color="#0366d6"
-                isExternal={true}
-              >
-                Photography
-              </Link>
-            </Heading>
-            <Text>
-              I am an avid photographer outside of the coding world! Click the
-              above link to see my photography portfolio site.
-            </Text>
-
-            <Grid
-              templateRows={['repeat(5)', 'repeat(2)']}
-              templateColumns={[
-                'repeat(1, 1fr)',
-                'repeat(1, fr)',
-                'repeat(3, 1fr)',
-              ]}
-              gap={4}
+            <Link
+              href="https://photo.claykaufmann.com"
+              isExternal={true}
+              textDecor={'none'}
+              textColor={'black'}
+              _hover={{ textDecoration: 'none' }}
             >
-              <GridItem rowSpan={2} display={['none', 'none', 'inline']}>
-                <Image alt={'mt shasta'} src={shasta} />
-              </GridItem>
-              <GridItem colSpan={2} display={['none', 'none', 'inline']}>
-                <Image alt={'jay peak'} src={jayPeakPano} />
-              </GridItem>
-              <GridItem>
-                <Image alt={'crater lake sunrise'} src={craterLake} />
-              </GridItem>
-              <GridItem>
-                <Image alt={'nectars bar, burlington vt'} src={nectars} />
-              </GridItem>
-            </Grid>
+              <Heading>Photography</Heading>
+              <Text>
+                I am an avid photographer outside of the coding world! Visit{' '}
+                <span style={{ color: '#0366d6' }}>photo.claykaufmann.com</span>{' '}
+                to see my photography!
+              </Text>
+
+              <Grid
+                templateRows={['repeat(5)', 'repeat(2)']}
+                templateColumns={[
+                  'repeat(1, 1fr)',
+                  'repeat(1, fr)',
+                  'repeat(3, 1fr)',
+                ]}
+                gap={4}
+              >
+                <GridItem rowSpan={2} display={['none', 'none', 'inline']}>
+                  <Image alt={'mt shasta'} src={shasta} />
+                </GridItem>
+                <GridItem colSpan={2} display={['none', 'none', 'inline']}>
+                  <Image alt={'jay peak'} src={jayPeakPano} />
+                </GridItem>
+                <GridItem>
+                  <Image alt={'crater lake sunrise'} src={craterLake} />
+                </GridItem>
+                <GridItem>
+                  <Image alt={'nectars bar, burlington vt'} src={nectars} />
+                </GridItem>
+              </Grid>
+            </Link>
           </Box>
           <VStack paddingTop={'1em'}>
             <Box
