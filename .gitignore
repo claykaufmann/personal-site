@@ -38,4 +38,3 @@ secure.env
 
 nginx/
 docker-compose.yml
-*.jpg
