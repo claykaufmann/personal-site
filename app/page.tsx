@@ -1,8 +1,220 @@
+import Image from "next/image";
+import {
+  Briefcase,
+  GraduationCap,
+  ExternalLink,
+  Camera,
+} from "lucide-react";
+
+const photos = [
+  { src: "/images/main-landscape-4.jpg", alt: "Landscape photograph" },
+  { src: "/images/crater-1.jpg", alt: "Crater photograph" },
+  { src: "/images/main-pano-1.jpg", alt: "Panoramic photograph" },
+  { src: "/images/photo-8647.jpg", alt: "Nature photograph" },
+];
+
+const experience = [
+  {
+    role: "Software Engineering Intern",
+    company: "NASA Goddard Space Flight Center",
+    location: "Remote",
+    dates: "Aug 2021 – Dec 2021",
+    description:
+      "Lead development on the GRASP citizen science project, an online game that has users come up with different patterns that scientists can use to place telescopes across the world for deep-space imaging.",
+  },
+  {
+    role: "Student Software Engineer",
+    company: "Harris Computer / Systems and Software",
+    location: "Remote",
+    dates: "May 2021 – Aug 2021",
+    description:
+      "Developed and wrote scripts that helped migrate customers to a new platform for the company's main product, enQuesta.",
+  },
+  {
+    role: "Teaching Assistant — Intermediate Programming (CS 110)",
+    company: "University of Vermont",
+    location: "Burlington, VT",
+    dates: "Jan 2020 – May 2021",
+    description:
+      "Helped teach Object-Oriented Programming and Java to UVM students, held weekly office hours to help students with homework and studying for exams.",
+  },
+];
+
+const education = [
+  {
+    degree: "Master of Science in Computer Science",
+    school: "University of Vermont",
+    location: "Burlington, VT",
+    dates: "Graduated Dec 2022",
+  },
+  {
+    degree: "Bachelor of Science in Computer Science",
+    school: "University of Vermont",
+    location: "Burlington, VT",
+    dates: "Graduated Dec 2021",
+    detail: "Minor: Mathematics",
+  },
+];
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Clay Kaufmann</h1>
-      <p className="mt-4 text-lg text-gray-600">Site under construction</p>
-    </main>
+    <>
+      {/* Hero Section */}
+      <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden">
+        <Image
+          src="/images/me_tetons_large.jpg"
+          alt="Clay Kaufmann in the Tetons"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 flex flex-col items-center gap-4 px-6 text-center text-white">
+          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+            Clay Kaufmann
+          </h1>
+          <p className="max-w-md text-lg text-white/90 sm:text-xl">
+            Software Engineer &amp; Photographer
+          </p>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="scroll-mt-16 bg-background py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            About
+          </h2>
+          <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
+            <p>
+              I&apos;m a software engineer with a Master&apos;s degree in Computer Science
+              from the University of Vermont. I&apos;m proficient in Python, JavaScript,
+              TypeScript, and experienced with frameworks like Next.js, Node.js, React,
+              and Django.
+            </p>
+            <p>
+              I&apos;ve had the opportunity to work at NASA Goddard Space Flight Center,
+              where I led development on the GRASP citizen science project, and at
+              Harris Computer as a student software engineer. I also served as a
+              Teaching Assistant for intermediate programming at UVM.
+            </p>
+            <p>
+              Outside of software, I&apos;m an avid photographer. I love capturing
+              landscapes and nature, especially in the mountains. You can find more
+              of my photography work at my dedicated portfolio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Photography Section */}
+      <section
+        id="photography"
+        className="scroll-mt-16 bg-muted/40 py-20"
+      >
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Photography
+            </h2>
+            <a
+              href="https://photo.claykaufmann.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Camera className="size-4" />
+              View Portfolio
+              <ExternalLink className="size-3.5" />
+            </a>
+          </div>
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {photos.map((photo) => (
+              <a
+                key={photo.src}
+                href="https://photo.claykaufmann.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-[3/2] overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="scroll-mt-16 bg-background py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Experience
+          </h2>
+          <div className="mt-10 space-y-6">
+            {experience.map((job) => (
+              <div
+                key={`${job.company}-${job.dates}`}
+                className="rounded-lg border border-border bg-card p-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 hidden sm:block">
+                    <Briefcase className="size-5 text-muted-foreground" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold">{job.role}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {job.company} &middot; {job.location}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{job.dates}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {job.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Education */}
+          <h2 className="mt-16 text-3xl font-bold tracking-tight sm:text-4xl">
+            Education
+          </h2>
+          <div className="mt-10 space-y-6">
+            {education.map((edu) => (
+              <div
+                key={edu.degree}
+                className="rounded-lg border border-border bg-card p-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 hidden sm:block">
+                    <GraduationCap className="size-5 text-muted-foreground" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold">{edu.degree}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {edu.school} &middot; {edu.location}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{edu.dates}</p>
+                    {edu.detail && (
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {edu.detail}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
