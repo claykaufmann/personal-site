@@ -17,6 +17,9 @@ yarn-error.log*
 
 .vercel
 
+# build artifacts
+tsconfig.tsbuildinfo
+
 # runtime
 .beads/
 .runtime/
