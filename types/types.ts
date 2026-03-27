@@ -10,7 +10,7 @@ export interface ProjectInfo {
 
 export interface GitRepoInfo {
   title: string;
-  url?: string;
+  githubURL?: string;
   localURL: string;
   description: string;
   language?: string;
