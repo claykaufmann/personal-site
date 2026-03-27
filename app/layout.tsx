@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Open_Sans, Roboto, Geist } from "next/font/google";
+import { Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
 const openSans = Open_Sans({
-  variable: "--font-open-sans",
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -28,10 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className={`${openSans.variable} ${roboto.variable} antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className={cn(openSans.variable, roboto.variable)}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
