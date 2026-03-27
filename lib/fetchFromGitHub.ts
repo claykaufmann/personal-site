@@ -32,7 +32,7 @@ export async function fetchRepos(
 
         return {
           title: data.name,
-          url: data.html_url,
+          githubURL: data.html_url,
           localURL: `projects/${repo.slug}`,
           description: data.description,
           language: data.language,
