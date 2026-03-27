@@ -1,61 +1,40 @@
-import { ProjectInfo } from '../types/types'
-import fs from 'fs'
-import { join } from 'path'
-import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
-import { isNotJunk } from 'junk'
+import { ProjectInfo } from "@/types/types";
+import fs from "fs";
+import { join } from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
 
-const projectDirectory = join(process.cwd(), 'projects')
+const projectDirectory = join(process.cwd(), "projects");
 
-export const markdownToHtml = async (markdown: string): Promise<string> => {
-  const res = await remark().use(html).process(markdown)
-  return res.toString()
+export async function markdownToHtml(markdown: string): Promise<string> {
+  const result = await remark().use(html).process(markdown);
+  return result.toString();
 }
 
-export const getProjectSlugs = (): string[] => {
-  const files = fs.readdirSync(projectDirectory)
-
-  const filteredFiles = files.filter(isNotJunk)
-
-  const slugs: string[] = []
-
-  filteredFiles.forEach((file) => {
-    slugs.push(file.replace(/\.md$/, ''))
-  })
-
-  return slugs
+export function getProjectSlugs(): string[] {
+  return fs
+    .readdirSync(projectDirectory)
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => file.replace(/\.md$/, ""));
 }
 
-export const getProjectBySlug = (slug: string): ProjectInfo => {
-  // call readfilesync with slug
-  const path = join(projectDirectory, `${slug}.md`)
+export function getProjectBySlug(slug: string): ProjectInfo {
+  const path = join(projectDirectory, `${slug}.md`);
+  const contents = fs.readFileSync(path, "utf8");
+  const { data, content } = matter(contents);
 
-  // get file contents
-  const contents = fs.readFileSync(path, 'utf8')
-
-  // use gray matter to parse
-  const { data, content } = matter(contents)
-
-  // return project info
   return {
-    slug: slug,
+    slug,
     title: data.title,
     description: data.description,
     githubURL: data.githubURL,
     githubAPI: data.githubAPI,
-    content: content,
-  }
+    language: data.language,
+    content,
+  };
 }
 
-export const getAllProjects = (): ProjectInfo[] => {
-  const slugs = getProjectSlugs()
-
-  const projects: ProjectInfo[] = []
-
-  slugs.forEach((slug) => {
-    projects.push(getProjectBySlug(slug))
-  })
-
-  return projects
+export function getAllProjects(): ProjectInfo[] {
+  return getProjectSlugs().map((slug) => getProjectBySlug(slug));
 }

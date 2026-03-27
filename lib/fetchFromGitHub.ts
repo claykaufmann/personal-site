@@ -1,21 +1,22 @@
-// fetch information from github
-import { gitRepoInfo, ProjectInfo } from 'types/types'
+import { GitRepoInfo, ProjectInfo } from "@/types/types";
 
-const fetchRepos = async (reposInfo: ProjectInfo[]): Promise<gitRepoInfo[]> => {
-  // map everything together
-  const repos = await Promise.all(
-    reposInfo.map(async (repo) => {
-      const colorRes = await fetch(
-        'https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'
-      )
-      const fetchedColors = await colorRes.json()
+const COLORS_URL =
+  "https://raw.githubusercontent.com/ozh/github-colors/master/colors.json";
 
+export async function fetchRepos(
+  reposInfo: ProjectInfo[]
+): Promise<GitRepoInfo[]> {
+  // Hoist the colors.json fetch — one request instead of one per repo
+  const colorRes = await fetch(COLORS_URL, { next: { revalidate: 86400 } });
+  const colors = await colorRes.json();
+
+  return Promise.all(
+    reposInfo.map(async (repo): Promise<GitRepoInfo> => {
       if (repo.githubAPI) {
-        // fetch repo data, add it
+        const res = await fetch(repo.githubAPI, {
+          next: { revalidate: 3600 },
+        });
 
-        const res = await fetch(repo.githubAPI)
-
-        // if we cannot successfully collect data, bail and return basic, non github data
         if (res.status !== 200) {
           return {
             title: repo.title,
@@ -23,15 +24,12 @@ const fetchRepos = async (reposInfo: ProjectInfo[]): Promise<gitRepoInfo[]> => {
             localURL: `projects/${repo.slug}`,
             stars: 0,
             forks: 0,
-          }
+          };
         }
 
-        const data = await res.json()
+        const data = await res.json();
+        const color = colors[data.language]?.color;
 
-        // fetch color data
-        const color = fetchedColors[data.language].color
-
-        // return info object
         return {
           title: data.name,
           url: data.html_url,
@@ -40,12 +38,12 @@ const fetchRepos = async (reposInfo: ProjectInfo[]): Promise<gitRepoInfo[]> => {
           language: data.language,
           stars: data.stargazers_count,
           forks: data.forks_count,
-          color: color,
-        }
-      } else if (repo.language) {
-        // we need to handle non git functions, we just set these all to be done
-        const color = fetchedColors[repo.language].color
+          color,
+        };
+      }
 
+      if (repo.language) {
+        const color = colors[repo.language]?.color;
         return {
           title: repo.title,
           description: repo.description,
@@ -53,21 +51,17 @@ const fetchRepos = async (reposInfo: ProjectInfo[]): Promise<gitRepoInfo[]> => {
           language: repo.language,
           stars: 0,
           forks: 0,
-          color: color,
-        }
-      } else {
-        return {
-          title: repo.title,
-          description: repo.description,
-          localURL: `projects/${repo.slug}`,
-          stars: 0,
-          forks: 0,
-        }
+          color,
+        };
       }
+
+      return {
+        title: repo.title,
+        description: repo.description,
+        localURL: `projects/${repo.slug}`,
+        stars: 0,
+        forks: 0,
+      };
     })
-  )
-
-  return repos
+  );
 }
-
-export { fetchRepos }
