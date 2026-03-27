@@ -20,7 +20,7 @@ const experience = [
     location: "Remote",
     dates: "Aug 2021 – Dec 2021",
     description:
-      "Lead development on the GRASP citizen science project, an online game that has users come up with different patterns that scientists can use to place telescopes across the world for deep-space imaging.",
+      "Led development of the GRASP citizen science project — an interactive web application enabling users to generate telescope placement patterns for deep-space imaging research.",
   },
   {
     role: "Student Software Engineer",
@@ -28,7 +28,7 @@ const experience = [
     location: "Remote",
     dates: "May 2021 – Aug 2021",
     description:
-      "Developed and wrote scripts that helped migrate customers to a new platform for the company's main product, enQuesta.",
+      "Built automated migration tooling to transition customers to the next-generation platform for enQuesta, the company's core product.",
   },
   {
     role: "Teaching Assistant — Intermediate Programming (CS 110)",
@@ -36,7 +36,7 @@ const experience = [
     location: "Burlington, VT",
     dates: "Jan 2020 – May 2021",
     description:
-      "Helped teach Object-Oriented Programming and Java to UVM students, held weekly office hours to help students with homework and studying for exams.",
+      "Taught Object-Oriented Programming and Java fundamentals. Ran weekly office hours helping students with coursework and exam preparation.",
   },
 ];
 
@@ -88,21 +88,29 @@ export default function Home() {
           </h2>
           <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m a software engineer with a Master&apos;s degree in Computer Science
-              from the University of Vermont. I&apos;m proficient in Python, JavaScript,
-              TypeScript, and experienced with frameworks like Next.js, Node.js, React,
+              I&apos;m a software engineer with a Master&apos;s in Computer Science from the
+              University of Vermont. I work across the stack with Python, TypeScript,
+              and JavaScript, building with frameworks like Next.js, React, Node.js,
               and Django.
             </p>
             <p>
-              I&apos;ve had the opportunity to work at NASA Goddard Space Flight Center,
-              where I led development on the GRASP citizen science project, and at
-              Harris Computer as a student software engineer. I also served as a
-              Teaching Assistant for intermediate programming at UVM.
+              I&apos;ve built citizen science tools at NASA Goddard Space Flight Center,
+              automated platform migrations at Harris Computer, and taught programming
+              at UVM. I enjoy tackling problems that sit at the intersection of
+              engineering and real-world impact.
             </p>
             <p>
-              Outside of software, I&apos;m an avid photographer. I love capturing
-              landscapes and nature, especially in the mountains. You can find more
-              of my photography work at my dedicated portfolio.
+              Outside of software, I&apos;m an avid landscape and nature photographer.
+              Check out my{" "}
+              <a
+                href="https://photo.claykaufmann.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors"
+              >
+                photography portfolio
+              </a>{" "}
+              for more.
             </p>
           </div>
         </div>

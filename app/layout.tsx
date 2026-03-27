@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+
+const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const openSans = Open_Sans({
   variable: "--font-sans",
@@ -29,6 +32,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(openSans.variable, roboto.variable)}>
+      {gaId && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('consent', 'default', {
+                analytics_storage: 'granted',
+              });
+              gtag('config', '${gaId}');
+            `}
+          </Script>
+        </>
+      )}
       <body className="antialiased flex min-h-screen flex-col">
         <Header />
         <main className="flex-1 pt-16">{children}</main>
