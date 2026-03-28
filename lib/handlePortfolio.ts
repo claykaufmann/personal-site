@@ -53,7 +53,7 @@ export const getPhotosFromPortfolio = async (
   return resources.map(resourceToPhoto)
 }
 
-export const getPortfolioHeaderImage = async (slug: string): Promise<Photo> => {
+export const getPortfolioHeaderImage = async (slug: string): Promise<Photo | null> => {
   const header = await getPortfolioHeader(slug)
 
   if (header) {
@@ -63,13 +63,15 @@ export const getPortfolioHeaderImage = async (slug: string): Promise<Photo> => {
   // Fall back to a random landscape photo from the portfolio
   const photos = await getPhotosFromPortfolio(slug)
 
-  let index = Math.floor(Math.random() * photos.length)
-  let img = photos[index]
-
-  while (img.height > img.width) {
-    index = Math.floor(Math.random() * photos.length)
-    img = photos[index]
+  if (photos.length === 0) {
+    return null
   }
+
+  // Try to find a landscape photo
+  const landscapes = photos.filter((p) => p.width > p.height)
+  const img = landscapes.length > 0
+    ? landscapes[Math.floor(Math.random() * landscapes.length)]
+    : photos[0]
 
   return {
     url: img.url,
@@ -81,9 +83,11 @@ export const getPortfolioHeaderImage = async (slug: string): Promise<Photo> => {
 export const getAllPortfolios = async (): Promise<PortfolioThumbnail[]> => {
   const slugs = await getPortfolioSlugs()
 
-  const portfolios: PortfolioThumbnail[] = await Promise.all(
+  const results = await Promise.all(
     slugs.map(async (slug) => {
       const img = await getPortfolioHeaderImage(slug)
+      if (!img) return null // skip empty portfolios
+
       const portfolioInfo = await getPortfolioInformation(slug)
 
       const portfolio: PortfolioThumbnail = {
@@ -96,6 +100,8 @@ export const getAllPortfolios = async (): Promise<PortfolioThumbnail[]> => {
       return portfolio
     })
   )
+
+  const portfolios = results.filter((p): p is PortfolioThumbnail => p !== null)
 
   for (let i = 0; i < portfolios.length; i++) {
     if (portfolios[i].title === 'Main') {
