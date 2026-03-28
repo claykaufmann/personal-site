@@ -44,7 +44,7 @@ export default function AboutPage() {
           <p>
             You can browse my portfolios on the{" "}
             <a
-              href="/portfolio"
+              href="/photography"
               className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors"
             >
               photography page

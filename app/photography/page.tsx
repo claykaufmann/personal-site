@@ -3,10 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPortfolios } from "@/lib/handlePortfolio";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Portfolio | Clay Kaufmann",
+  title: "Photography | Clay Kaufmann",
   description: "Photography portfolios by Clay Kaufmann",
 };
 
@@ -17,7 +17,7 @@ export default async function PortfolioPage() {
     <section className="py-20">
       <div className="mx-auto max-w-5xl px-6">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Portfolio
+          Photography
         </h1>
         <p className="mt-4 text-muted-foreground">
           A collection of my photography work.
@@ -27,7 +27,7 @@ export default async function PortfolioPage() {
           {portfolios.map((portfolio) => (
             <Link
               key={portfolio.slug}
-              href={`/portfolio/${portfolio.slug}`}
+              href={`/photography/${portfolio.slug}`}
               className="group relative overflow-hidden rounded-lg aspect-[4/3]"
             >
               <Image

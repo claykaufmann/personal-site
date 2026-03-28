@@ -17,11 +17,15 @@ export interface CloudinaryResource {
 }
 
 /**
- * List all sub-folders under portfolio/ (each folder is a portfolio slug).
+ * List all top-level portfolio folders (main, black-white, natl-parks, etc.).
  */
 export async function listPortfolioFolders(): Promise<string[]> {
-  const result = await cloudinary.api.sub_folders('portfolio')
-  return result.folders.map((f: { name: string }) => f.name)
+  if (!process.env.CLOUDINARY_CLOUD_NAME) return []
+  const result = await cloudinary.api.root_folders()
+  const portfolioFolders = ['main', 'black-white', 'natl-parks']
+  return result.folders
+    .map((f: { name: string }) => f.name)
+    .filter((name: string) => portfolioFolders.includes(name))
 }
 
 /**
@@ -31,7 +35,7 @@ export async function listPortfolioImages(
   slug: string
 ): Promise<CloudinaryResource[]> {
   const result = await cloudinary.search
-    .expression(`folder:portfolio/${slug} AND resource_type:image`)
+    .expression(`folder:${slug} AND resource_type:image`)
     .sort_by('public_id', 'asc')
     .max_results(500)
     .execute()
@@ -48,7 +52,7 @@ export async function getPortfolioHeader(
   slug: string
 ): Promise<CloudinaryResource | null> {
   try {
-    const result = await cloudinary.api.resource(`portfolio/${slug}/header`, {
+    const result = await cloudinary.api.resource(`${slug}/header`, {
       resource_type: 'image',
     })
     return result as unknown as CloudinaryResource
@@ -117,7 +121,7 @@ export async function getFeaturedImages(): Promise<CloudinaryResource[]> {
 
       // Fall back to the first landscape image
       const result = await cloudinary.search
-        .expression(`folder:portfolio/${slug} AND resource_type:image`)
+        .expression(`folder:${slug} AND resource_type:image`)
         .sort_by('public_id', 'asc')
         .max_results(10)
         .execute()
