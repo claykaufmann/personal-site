@@ -1,17 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Briefcase,
   GraduationCap,
-  ExternalLink,
   Camera,
+  ArrowRight,
 } from "lucide-react";
+import { getFeaturedImages, imageUrl } from "@/lib/cloudinary";
 
-const photos = [
-  { src: "/images/main-landscape-4.jpg", alt: "Landscape photograph" },
-  { src: "/images/crater-1.jpg", alt: "Crater photograph" },
-  { src: "/images/main-pano-1.jpg", alt: "Panoramic photograph" },
-  { src: "/images/photo-8647.jpg", alt: "Nature photograph" },
-];
+export const revalidate = 3600;
 
 const experience = [
   {
@@ -56,7 +53,9 @@ const education = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const featured = await getFeaturedImages();
+
   return (
     <>
       {/* Hero Section */}
@@ -100,17 +99,13 @@ export default function Home() {
               engineering and real-world impact.
             </p>
             <p>
-              Outside of software, I&apos;m an avid landscape and nature photographer.
-              Check out my{" "}
-              <a
-                href="https://photo.claykaufmann.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              Outside of software, I&apos;m an avid landscape and nature photographer.{" "}
+              <Link
+                href="/about"
                 className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors"
               >
-                photography portfolio
-              </a>{" "}
-              for more.
+                Read more
+              </Link>
             </p>
           </div>
         </div>
@@ -126,35 +121,31 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Photography
             </h2>
-            <a
-              href="https://photo.claykaufmann.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/portfolio"
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <Camera className="size-4" />
               View Portfolio
-              <ExternalLink className="size-3.5" />
-            </a>
+              <ArrowRight className="size-3.5" />
+            </Link>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {photos.map((photo) => (
-              <a
-                key={photo.src}
-                href="https://photo.claykaufmann.com"
-                target="_blank"
-                rel="noopener noreferrer"
+            {featured.map((photo) => (
+              <Link
+                key={photo.public_id}
+                href="/portfolio"
                 className="group relative aspect-[3/2] overflow-hidden rounded-lg"
               >
                 <Image
-                  src={photo.src}
-                  alt={photo.alt}
+                  src={imageUrl(photo.public_id, { width: 800, height: 533, crop: "fill" })}
+                  alt={photo.public_id.split("/").pop()?.replace(/[-_]/g, " ") ?? "Featured photograph"}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
-              </a>
+              </Link>
             ))}
           </div>
         </div>
