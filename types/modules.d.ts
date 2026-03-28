@@ -17,3 +17,19 @@ declare module "rehype-raw" {
   const rehypeRaw: unknown;
   export default rehypeRaw;
 }
+
+declare module "probe-image-size" {
+  export interface ProbeResult {
+    width: number;
+    height: number;
+    type: string;
+    mime: string;
+    wUnits: string;
+    hUnits: string;
+    length: number;
+    url: string;
+  }
+
+  function probe(src: string): Promise<ProbeResult>;
+  export default probe;
+}
