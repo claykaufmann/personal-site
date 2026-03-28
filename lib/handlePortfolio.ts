@@ -4,40 +4,32 @@ import {
   PortfolioThumbnail,
   JSONPortfolioInfo,
 } from '@/types/types'
-import { s3Client, bucketRegion, bucketName } from './s3Client'
 import {
-  ListObjectsV2Command,
-  ListObjectsV2CommandInput,
-  ListObjectsV2CommandOutput,
-} from '@aws-sdk/client-s3'
-import probe, { ProbeResult } from 'probe-image-size'
+  listPortfolioFolders,
+  listPortfolioImages,
+  getPortfolioHeader,
+  imageUrl,
+  CloudinaryResource,
+} from './cloudinary'
 import fs from 'fs'
 import { join } from 'path'
 
 const portfolioDirec = join(process.cwd(), 'portfolios')
 
-const bucketURL = `https://${bucketName}.s3.${bucketRegion}.amazonaws.com/`
+function resourceToPhoto(resource: CloudinaryResource): Photo {
+  const filename = resource.public_id.split('/').pop() ?? ''
+  const alt = filename.replace(/[-_]/g, ' ')
+
+  return {
+    url: imageUrl(resource.public_id, { width: 1600, crop: 'scale' }),
+    width: resource.width,
+    height: resource.height,
+    alt,
+  }
+}
 
 export const getPortfolioSlugs = async (): Promise<string[]> => {
-  const params: ListObjectsV2CommandInput = {
-    Bucket: bucketName,
-    Prefix: 'portfolio/',
-    Delimiter: '/',
-  }
-
-  const command = new ListObjectsV2Command(params)
-  const response = await s3Client.send(command)
-
-  const slugs: string[] = []
-
-  response.CommonPrefixes?.map((prefix) => {
-    if (prefix.Prefix) {
-      const filteredPrefix = prefix.Prefix.slice(10, -1)
-      slugs.push(filteredPrefix)
-    }
-  })
-
-  return slugs
+  return listPortfolioFolders()
 }
 
 export const getPortfolioBySlug = async (
@@ -57,82 +49,32 @@ export const getPortfolioBySlug = async (
 export const getPhotosFromPortfolio = async (
   slug: string
 ): Promise<Photo[]> => {
-  const prefix = 'portfolio/' + slug + '/'
-  const params: ListObjectsV2CommandInput = {
-    Bucket: bucketName,
-    Prefix: prefix,
-  }
-
-  const command = new ListObjectsV2Command(params)
-  const response: ListObjectsV2CommandOutput = await s3Client.send(command)
-
-  const photoURLs = []
-
-  let index = 1
-  if (response.Contents) {
-    while (index < response.Contents?.length) {
-      const url = bucketURL + response.Contents[index].Key
-
-      if (url.slice(-3) == 'jpg' && url.slice(-10) != 'header.jpg') {
-        photoURLs.push(url)
-      }
-      index = index + 1
-    }
-  }
-
-  const images = await Promise.all(
-    photoURLs.map(async (url) => {
-      const photoInfo = await probe(url)
-
-      // Derive alt text from filename (e.g. "my-photo.jpg" → "my photo")
-      const filename = url.split('/').pop()?.replace(/\.[^.]+$/, '') ?? ''
-      const alt = filename.replace(/[-_]/g, ' ')
-
-      const newImage: Photo = {
-        url: url,
-        width: photoInfo.width,
-        height: photoInfo.height,
-        alt,
-      }
-
-      return newImage
-    })
-  )
-
-  return images
+  const resources = await listPortfolioImages(slug)
+  return resources.map(resourceToPhoto)
 }
 
 export const getPortfolioHeaderImage = async (slug: string): Promise<Photo> => {
-  const prefix = `portfolio/${slug}/`
-  const photoURL = `${bucketURL}${prefix}header.jpg`
+  const header = await getPortfolioHeader(slug)
 
-  let photoInfo: ProbeResult
+  if (header) {
+    return resourceToPhoto(header)
+  }
 
-  try {
-    photoInfo = await probe(photoURL)
-  } catch (error) {
-    const photos = await getPhotosFromPortfolio(slug)
+  // Fall back to a random landscape photo from the portfolio
+  const photos = await getPhotosFromPortfolio(slug)
 
-    let index = Math.floor(Math.random() * photos.length)
-    let img = photos[index]
+  let index = Math.floor(Math.random() * photos.length)
+  let img = photos[index]
 
-    while (img.height > img.width) {
-      index = Math.floor(Math.random() * photos.length)
-      img = photos[index]
-    }
-
-    const headerImage: Photo = {
-      url: img.url,
-      width: img.width,
-      height: img.height,
-    }
-    return headerImage
+  while (img.height > img.width) {
+    index = Math.floor(Math.random() * photos.length)
+    img = photos[index]
   }
 
   return {
-    url: photoURL,
-    width: photoInfo.width,
-    height: photoInfo.height,
+    url: img.url,
+    width: img.width,
+    height: img.height,
   }
 }
 
