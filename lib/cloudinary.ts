@@ -17,10 +17,10 @@ export interface CloudinaryResource {
 }
 
 /**
- * List all sub-folders under portfolio/ (each folder is a portfolio slug).
+ * List all root-level folders (each folder is a portfolio slug).
  */
 export async function listPortfolioFolders(): Promise<string[]> {
-  const result = await cloudinary.api.sub_folders('portfolio')
+  const result = await cloudinary.api.root_folders()
   return result.folders.map((f: { name: string }) => f.name)
 }
 
@@ -31,7 +31,7 @@ export async function listPortfolioImages(
   slug: string
 ): Promise<CloudinaryResource[]> {
   const result = await cloudinary.search
-    .expression(`folder:portfolio/${slug} AND resource_type:image`)
+    .expression(`folder:${slug} AND resource_type:image`)
     .sort_by('public_id', 'asc')
     .max_results(500)
     .execute()
@@ -48,7 +48,7 @@ export async function getPortfolioHeader(
   slug: string
 ): Promise<CloudinaryResource | null> {
   try {
-    const result = await cloudinary.api.resource(`portfolio/${slug}/header`, {
+    const result = await cloudinary.api.resource(`${slug}/header`, {
       resource_type: 'image',
     })
     return result as unknown as CloudinaryResource
