@@ -122,11 +122,11 @@ export default async function Home() {
               Photography
             </h2>
             <Link
-              href="/portfolio"
+              href="/photography"
               className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <Camera className="size-4" />
-              View Portfolio
+              View Photography
               <ArrowRight className="size-3.5" />
             </Link>
           </div>
@@ -134,7 +134,7 @@ export default async function Home() {
             {featured.map((photo) => (
               <Link
                 key={photo.public_id}
-                href="/portfolio"
+                href="/photography"
                 className="group relative aspect-[3/2] overflow-hidden rounded-lg"
               >
                 <Image

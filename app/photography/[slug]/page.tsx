@@ -5,9 +5,16 @@ import { notFound } from "next/navigation";
 import { getPortfolioBySlug } from "@/lib/handlePortfolio";
 import { PortfolioGallery } from "@/components/portfolio-gallery";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 type Params = { slug: string };
+
+export async function generateStaticParams() {
+  if (!process.env.CLOUDINARY_CLOUD_NAME) return [];
+  const { getPortfolioSlugs } = await import("@/lib/handlePortfolio");
+  const slugs = await getPortfolioSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -37,11 +44,11 @@ export default async function PortfolioDetailPage({
     <section className="py-20">
       <div className="mx-auto max-w-5xl px-6">
         <Link
-          href="/portfolio"
+          href="/photography"
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="size-4" />
-          Back to Portfolio
+          Back to Photography
         </Link>
 
         <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">

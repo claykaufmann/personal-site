@@ -17,7 +17,7 @@ const navLinks = [
   { href: "#photography", label: "Photography" },
   { href: "#experience", label: "Experience" },
   { href: "/projects", label: "Projects" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/photography", label: "Photography" },
 ];
 
 export function Header() {

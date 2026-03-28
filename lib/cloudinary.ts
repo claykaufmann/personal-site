@@ -17,11 +17,15 @@ export interface CloudinaryResource {
 }
 
 /**
- * List all root-level folders (each folder is a portfolio slug).
+ * List all top-level portfolio folders (main, black-white, natl-parks, etc.).
  */
 export async function listPortfolioFolders(): Promise<string[]> {
+  if (!process.env.CLOUDINARY_CLOUD_NAME) return []
   const result = await cloudinary.api.root_folders()
-  return result.folders.map((f: { name: string }) => f.name)
+  const portfolioFolders = ['main', 'black-white', 'natl-parks']
+  return result.folders
+    .map((f: { name: string }) => f.name)
+    .filter((name: string) => portfolioFolders.includes(name))
 }
 
 /**
@@ -117,7 +121,7 @@ export async function getFeaturedImages(): Promise<CloudinaryResource[]> {
 
       // Fall back to the first landscape image
       const result = await cloudinary.search
-        .expression(`folder:portfolio/${slug} AND resource_type:image`)
+        .expression(`folder:${slug} AND resource_type:image`)
         .sort_by('public_id', 'asc')
         .max_results(10)
         .execute()
