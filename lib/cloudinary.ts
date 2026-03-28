@@ -100,3 +100,34 @@ export function lightboxUrl(publicId: string): string {
 export function heroUrl(publicId: string): string {
   return imageUrl(publicId, { width: 1200, height: 600, crop: 'fill' })
 }
+
+/**
+ * Get featured images across portfolios for the homepage preview.
+ * Returns one header/featured image per portfolio folder.
+ */
+export async function getFeaturedImages(): Promise<CloudinaryResource[]> {
+  if (!process.env.CLOUDINARY_CLOUD_NAME) return []
+
+  const folders = await listPortfolioFolders()
+
+  const images = await Promise.all(
+    folders.map(async (slug) => {
+      const header = await getPortfolioHeader(slug)
+      if (header) return header
+
+      // Fall back to the first landscape image
+      const result = await cloudinary.search
+        .expression(`folder:portfolio/${slug} AND resource_type:image`)
+        .sort_by('public_id', 'asc')
+        .max_results(10)
+        .execute()
+
+      const landscape = (result.resources as CloudinaryResource[]).find(
+        (r) => !r.public_id.endsWith('/header') && r.width > r.height
+      )
+      return landscape ?? (result.resources as CloudinaryResource[])[0] ?? null
+    })
+  )
+
+  return images.filter((img): img is CloudinaryResource => img !== null)
+}
