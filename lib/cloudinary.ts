@@ -63,6 +63,7 @@ export async function getPortfolioHeader(
 
 /**
  * Generate an optimized Cloudinary URL with optional transforms.
+ * Uses direct URL construction to avoid SDK sdk_semver issues.
  */
 export function imageUrl(
   publicId: string,
@@ -74,14 +75,17 @@ export function imageUrl(
     format?: string
   } = {}
 ): string {
-  return cloudinary.url(publicId, {
-    secure: true,
-    width: options.width,
-    height: options.height,
-    crop: options.crop ?? 'fill',
-    quality: options.quality ?? 'auto',
-    fetch_format: options.format ?? 'auto',
-  })
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME
+  const transforms: string[] = []
+
+  if (options.width) transforms.push(`w_${options.width}`)
+  if (options.height) transforms.push(`h_${options.height}`)
+  transforms.push(`c_${options.crop ?? 'fill'}`)
+  transforms.push(`q_${options.quality ?? 'auto'}`)
+  transforms.push(`f_${options.format ?? 'auto'}`)
+
+  const transformStr = transforms.join(',')
+  return `https://res.cloudinary.com/${cloudName}/image/upload/${transformStr}/${publicId}`
 }
 
 /**
