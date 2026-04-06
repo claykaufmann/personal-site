@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,8 +20,31 @@ const navLinks = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [visible, setVisible] = useState(!isHome);
+
+  useEffect(() => {
+    if (!isHome) {
+      setVisible(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      setVisible(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isHome]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm border-b border-border">
+    <header
+      className={`fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm border-b border-border transition-transform duration-300 ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <Link href="/" className="text-lg font-semibold tracking-tight">
           Clay Kaufmann

@@ -59,7 +59,7 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-screen -mt-16 items-center justify-center overflow-hidden">
         <Image
           src="/images/me_tetons_large.jpg"
           alt="Clay Kaufmann in the Tetons"
