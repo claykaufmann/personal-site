@@ -104,7 +104,7 @@ export const getAllPortfolios = async (): Promise<PortfolioThumbnail[]> => {
   const portfolios = results.filter((p): p is PortfolioThumbnail => p !== null)
 
   for (let i = 0; i < portfolios.length; i++) {
-    if (portfolios[i].title === 'Main') {
+    if (portfolios[i].title === 'Best') {
       const temp = portfolios[0]
       portfolios[0] = portfolios[i]
       portfolios[i] = temp

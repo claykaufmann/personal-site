@@ -22,7 +22,7 @@ export interface CloudinaryResource {
 export async function listPortfolioFolders(): Promise<string[]> {
   if (!process.env.CLOUDINARY_CLOUD_NAME) return []
   const result = await cloudinary.api.root_folders()
-  const portfolioFolders = ['main', 'black-white', 'natl-parks']
+  const portfolioFolders = ['best', 'black-white', 'natl-parks']
   return result.folders
     .map((f: { name: string }) => f.name)
     .filter((name: string) => portfolioFolders.includes(name))

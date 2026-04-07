@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Open_Sans, Roboto } from "next/font/google";
+import { Plus_Jakarta_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer";
 
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-const openSans = Open_Sans({
+const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(openSans.variable, roboto.variable)}>
+    <html lang="en" className={cn(plusJakartaSans.variable, roboto.variable)}>
       {gaId && (
         <>
           <Script
@@ -51,7 +51,7 @@ export default function RootLayout({
           </Script>
         </>
       )}
-      <body className="antialiased flex min-h-screen flex-col">
+      <body className="antialiased flex min-h-screen flex-col lowercase">
         <Header />
         <main className="flex-1 pt-16">{children}</main>
         <Footer />

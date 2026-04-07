@@ -62,15 +62,6 @@ export function Header() {
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              href="/other/John-Clay-Kaufmann-website.pdf"
-              target="_blank"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Resume
-            </Link>
-          </li>
         </ul>
 
         {/* Mobile hamburger — CSS-only hide on desktop */}
@@ -101,17 +92,6 @@ export function Header() {
                     {link.label}
                   </SheetClose>
                 ))}
-                <SheetClose
-                  render={
-                    <Link
-                      href="/other/John-Clay-Kaufmann-website.pdf"
-                      target="_blank"
-                      className="text-base text-foreground hover:text-primary transition-colors"
-                    />
-                  }
-                >
-                  Resume
-                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>

@@ -1,15 +1,7 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogClose,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import type { Photo } from "@/types/types";
 
 interface PortfolioGalleryProps {
@@ -17,118 +9,96 @@ interface PortfolioGalleryProps {
 }
 
 export function PortfolioGallery({ photos }: PortfolioGalleryProps) {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
-  const goNext = useCallback(() => {
-    if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex + 1) % photos.length);
-  }, [selectedIndex, photos.length]);
-
-  const goPrev = useCallback(() => {
-    if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex - 1 + photos.length) % photos.length);
-  }, [selectedIndex, photos.length]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [thumbLeft, setThumbLeft] = useState(0);
+  const [thumbWidth, setThumbWidth] = useState(1);
 
   useEffect(() => {
-    if (selectedIndex === null) return;
+    const el = containerRef.current;
+    if (!el) return;
 
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "ArrowRight") goNext();
-      else if (e.key === "ArrowLeft") goPrev();
-    }
+    // Constrain body to viewport so footer stays visible, no vertical scroll
+    document.body.style.height = "100svh";
+    document.body.style.overflowY = "hidden";
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedIndex, goNext, goPrev]);
+    const snapToNearest = () => {
+      const snapOffset = 0.1 * window.innerWidth; // matches 10vw paddingLeft
+      const items = Array.from(el.children) as HTMLElement[];
+      let nearest: HTMLElement | null = null;
+      let minDist = Infinity;
+      for (const item of items) {
+        const dist = Math.abs(el.scrollLeft - (item.offsetLeft - snapOffset));
+        if (dist < minDist) {
+          minDist = dist;
+          nearest = item;
+        }
+      }
+      if (nearest) {
+        el.scrollTo({ left: nearest.offsetLeft - snapOffset, behavior: "smooth" });
+      }
+    };
+
+    let snapTimer: ReturnType<typeof setTimeout>;
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(snapToNearest, 180);
+    };
+
+    const updateScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = el;
+      const ratio = clientWidth / scrollWidth;
+      const maxScroll = scrollWidth - clientWidth;
+      setThumbWidth(ratio);
+      setThumbLeft(maxScroll > 0 ? (scrollLeft / maxScroll) * (1 - ratio) : 0);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    updateScroll();
+    el.addEventListener("scroll", updateScroll);
+
+    return () => {
+      document.body.style.height = "";
+      document.body.style.overflowY = "";
+      window.removeEventListener("wheel", handleWheel);
+      el.removeEventListener("scroll", updateScroll);
+      clearTimeout(snapTimer);
+    };
+  }, []);
 
   return (
-    <>
-      <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-        {photos.map((photo, index) => (
-          <button
-            key={photo.url}
-            onClick={() => setSelectedIndex(index)}
-            className="mb-4 block w-full overflow-hidden rounded-lg cursor-zoom-in break-inside-avoid"
-          >
+    <div>
+      <div
+        ref={containerRef}
+        className="flex gap-3 overflow-x-auto overflow-y-hidden items-center scrollbar-none"
+        style={{ height: "60svh", paddingLeft: "10vw", paddingRight: "6vw" }}
+      >
+        {photos.map((photo) => (
+          <div key={photo.url} className="flex-none h-full py-4">
             <Image
               src={photo.url}
               alt={photo.alt ?? ""}
               width={photo.width}
               height={photo.height}
-              className="w-full h-auto transition-opacity duration-200 hover:opacity-90"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="h-full w-auto object-contain rounded-sm"
+              sizes="auto"
             />
-          </button>
+          </div>
         ))}
       </div>
 
-      <Dialog
-        open={selectedIndex !== null}
-        onOpenChange={(open) => {
-          if (!open) setSelectedIndex(null);
-        }}
-      >
-        <DialogContent
-          showCloseButton={false}
-          className="max-w-[95vw] sm:max-w-[95vw] h-[90vh] bg-black/95 border-none ring-0 p-0 flex items-center justify-center"
-        >
-          <DialogTitle className="sr-only">
-            {selectedIndex !== null
-              ? (photos[selectedIndex].alt ?? "Photo")
-              : "Photo"}
-          </DialogTitle>
-
-          <DialogClose
-            render={
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute top-3 right-3 z-10 text-white/80 hover:text-white hover:bg-white/10"
-              />
-            }
-          >
-            <X className="size-5" />
-            <span className="sr-only">Close</span>
-          </DialogClose>
-
-          {photos.length > 1 && (
-            <>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white hover:bg-white/10"
-                onClick={goPrev}
-              >
-                <ChevronLeft className="size-6" />
-                <span className="sr-only">Previous</span>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white hover:bg-white/10"
-                onClick={goNext}
-              >
-                <ChevronRight className="size-6" />
-                <span className="sr-only">Next</span>
-              </Button>
-            </>
-          )}
-
-          {selectedIndex !== null && (
-            <div className="relative w-full h-full flex items-center justify-center p-8">
-              <Image
-                src={photos[selectedIndex].url}
-                alt={photos[selectedIndex].alt ?? ""}
-                width={photos[selectedIndex].width}
-                height={photos[selectedIndex].height}
-                className="max-w-full max-h-full object-contain"
-                sizes="95vw"
-                priority
-              />
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
+      {/* Scrollbar */}
+      <div className="relative h-px bg-border mx-[10vw] mt-3">
+        <div
+          className="absolute top-0 h-full bg-foreground"
+          style={{
+            width: `${thumbWidth * 100}%`,
+            left: `${thumbLeft * 100}%`,
+          }}
+        />
+      </div>
+    </div>
   );
 }

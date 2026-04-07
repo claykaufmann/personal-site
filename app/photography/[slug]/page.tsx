@@ -41,7 +41,7 @@ export default async function PortfolioDetailPage({
   if (!portfolio) notFound();
 
   return (
-    <section className="py-20">
+    <section className="pt-6 pb-4">
       <div className="mx-auto max-w-5xl px-6">
         <Link
           href="/photography"
@@ -51,17 +51,13 @@ export default async function PortfolioDetailPage({
           Back to Photography
         </Link>
 
-        <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lowercase">
           {portfolio.title}
         </h1>
+      </div>
 
-        {portfolio.description && (
-          <p className="mt-3 text-muted-foreground">{portfolio.description}</p>
-        )}
-
-        <div className="mt-10">
-          <PortfolioGallery photos={portfolio.photos} />
-        </div>
+      <div className="mt-4">
+        <PortfolioGallery photos={portfolio.photos} />
       </div>
     </section>
   );
