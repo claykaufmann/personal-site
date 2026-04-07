@@ -87,32 +87,32 @@ export default async function Home() {
           </h2>
           <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              I&apos;m a software engineer with a Master&apos;s in Computer Science from the
-              University of Vermont. I work across the stack with Python, TypeScript,
-              and JavaScript, building with frameworks like Next.js, React, Node.js,
-              and Django.
+              I&apos;m a software and data engineer with a Masters in Computer Science from the
+              University of Vermont. I work across the stack - <strong>Python, TypeScript, SQL</strong> and more - with a focus on software built around collecting, organizing, and presenting data. That means cloud infrastructure, big data tooling, and application / devops tools.
             </p>
             <p>
-              I&apos;ve built citizen science tools at NASA Goddard Space Flight Center,
-              automated platform migrations at Harris Computer, and taught programming
-              at UVM. I enjoy tackling problems that sit at the intersection of
-              engineering and real-world impact.
+              I&apos;ve built a citizen science tool for <Link className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors" href={"https://www.nasa.gov/goddard/"} target="_blank">NASA Goddard</Link>,
+              taught programming at UVM, and worked on custom software for <Link className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors" href={"https://ssivt.com"} target="_blank">Systems and Software</Link> (a subsidiary of Harris Computer).
             </p>
             <p>
-              Outside of software, I&apos;m an avid landscape and nature photographer.{" "}
+              I&apos;m currently building software and data products that support manufacturing operations for next-generation aircraft at <Link className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors" href={"https://beta.team"} target="_blank">
+                BETA Technologies</Link>.
+            </p>
+            <p>
+              Outside of software, I&apos;m an avid{" "}
               <Link
-                href="/about"
+                href="/photography"
                 className="text-foreground underline underline-offset-4 hover:text-foreground/80 transition-colors"
               >
-                Read more
-              </Link>
+                photographer
+              </Link>, cyclist, and snowboarder.
             </p>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Photography Section */}
-      <section
+      < section
         id="photography"
         className="scroll-mt-16 bg-muted/40 py-20"
       >
@@ -149,10 +149,10 @@ export default async function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Experience Section */}
-      <section id="experience" className="scroll-mt-16 bg-background py-20">
+      < section id="experience" className="scroll-mt-16 bg-background py-20" >
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Experience
@@ -213,7 +213,7 @@ export default async function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
     </>
   );
 }
