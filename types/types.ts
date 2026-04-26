@@ -24,3 +24,28 @@ export interface JSONPortfolioInfo {
   title: string
   description: string
 }
+
+export interface FilmRollFrontmatter {
+  title: string
+  date?: string
+  camera?: string
+  stock?: string
+  location?: string
+  cover?: string
+  folder?: string
+}
+
+export interface FilmRollSummary {
+  slug: string
+  title: string
+  date?: string
+  camera?: string
+  stock?: string
+  location?: string
+  coverImage: Photo | null
+}
+
+export interface FilmIndexIntro {
+  title: string
+  body: string
+}

@@ -54,7 +54,7 @@ const education = [
 ];
 
 export default async function Home() {
-  const featured = await getFeaturedImages();
+  const featured = await getFeaturedImages(3);
 
   return (
     <>
@@ -70,7 +70,7 @@ export default async function Home() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 flex flex-col items-center gap-4 px-6 text-center text-white">
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
             Clay Kaufmann
           </h1>
           <p className="max-w-md text-lg text-white/90 sm:text-xl">
@@ -130,19 +130,19 @@ export default async function Home() {
               <ArrowRight className="size-3.5" />
             </Link>
           </div>
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {featured.map((photo) => (
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {featured.map((photo, i) => (
               <Link
                 key={photo.public_id}
                 href="/photography"
-                className="group relative aspect-[3/2] overflow-hidden rounded-lg"
+                className={`group relative aspect-[3/2] overflow-hidden rounded-lg ${i === 1 ? "hidden sm:block" : i === 2 ? "hidden md:block" : ""}`}
               >
                 <Image
                   src={imageUrl(photo.public_id, { width: 800, height: 533, crop: "fill" })}
                   alt={photo.public_id.split("/").pop()?.replace(/[-_]/g, " ") ?? "Featured photograph"}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
               </Link>

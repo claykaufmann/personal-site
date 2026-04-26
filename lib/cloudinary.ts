@@ -111,31 +111,51 @@ export function heroUrl(publicId: string): string {
 
 /**
  * Get featured images across portfolios for the homepage preview.
- * Returns one header/featured image per portfolio folder.
+ * Fills one image per portfolio first (header or first landscape), then
+ * tops up with additional landscapes round-robin until `count` is reached.
  */
-export async function getFeaturedImages(): Promise<CloudinaryResource[]> {
+export async function getFeaturedImages(
+  count = 3
+): Promise<CloudinaryResource[]> {
   if (!process.env.CLOUDINARY_CLOUD_NAME) return []
 
   const folders = await listPortfolioFolders()
 
-  const images = await Promise.all(
+  const perFolder = await Promise.all(
     folders.map(async (slug) => {
       const header = await getPortfolioHeader(slug)
-      if (header) return header
-
-      // Fall back to the first landscape image
       const result = await cloudinary.search
         .expression(`folder:${slug} AND resource_type:image`)
         .sort_by('public_id', 'asc')
-        .max_results(10)
+        .max_results(50)
         .execute()
-
-      const landscape = (result.resources as CloudinaryResource[]).find(
+      const landscapes = (result.resources as CloudinaryResource[]).filter(
         (r) => !r.public_id.endsWith('/header') && r.width > r.height
       )
-      return landscape ?? (result.resources as CloudinaryResource[])[0] ?? null
+      const all = (result.resources as CloudinaryResource[]).filter(
+        (r) => !r.public_id.endsWith('/header')
+      )
+      return { header, landscapes, all }
     })
   )
 
-  return images.filter((img): img is CloudinaryResource => img !== null)
+  const selected: CloudinaryResource[] = []
+  const seen = new Set<string>()
+  const push = (img: CloudinaryResource | null | undefined) => {
+    if (!img || seen.has(img.public_id) || selected.length >= count) return
+    selected.push(img)
+    seen.add(img.public_id)
+  }
+
+  for (const { header } of perFolder) push(header)
+  for (const { landscapes } of perFolder) push(landscapes[0])
+
+  for (const { landscapes } of perFolder) {
+    for (const img of landscapes.slice(1)) push(img)
+  }
+  for (const { all } of perFolder) {
+    for (const img of all) push(img)
+  }
+
+  return selected
 }

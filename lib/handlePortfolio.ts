@@ -80,6 +80,30 @@ export const getPortfolioHeaderImage = async (slug: string): Promise<Photo | nul
   }
 }
 
+export const getAllPortfolioMeta = async (): Promise<
+  Array<{ slug: string; title: string; description: string }>
+> => {
+  const slugs = await getPortfolioSlugs()
+
+  const metas = await Promise.all(
+    slugs.map(async (slug) => {
+      const info = await getPortfolioInformation(slug)
+      return { slug, title: info.title, description: info.description }
+    })
+  )
+
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].title === 'Best') {
+      const tmp = metas[0]
+      metas[0] = metas[i]
+      metas[i] = tmp
+      break
+    }
+  }
+
+  return metas
+}
+
 export const getAllPortfolios = async (): Promise<PortfolioThumbnail[]> => {
   const slugs = await getPortfolioSlugs()
 
